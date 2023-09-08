@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package VISTAS;
+package VISTA;
 
 import MODELO.Personas;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Multiventana extends javax.swing.JFrame {
     private Personas[] persona = new Personas[30];
+    DefaultTableModel model = new DefaultTableModel();
     /**
      * Creates new form General
      */
@@ -43,7 +45,7 @@ public class Multiventana extends javax.swing.JFrame {
         persona[17] = new Personas("Rosa", "Fernandez", 78901234, 5556543, "Femenino", "Casado", 37);
         persona[18] = new Personas("Mario", "Torres", 89012345, 5558765, "Masculino", "Soltero", 24);
         persona[19] = new Personas("Silvia", "Morales", 90123456, 5559876, "Femenino", "Divorciado", 41);
-        DefaultTableModel model = new DefaultTableModel();
+        
         model.addColumn("Nombre");
         model.addColumn("Apellido");
         model.addColumn("DNI");
@@ -55,14 +57,7 @@ public class Multiventana extends javax.swing.JFrame {
         for (Personas p : persona) {
             if (p != null) {
                 model.addRow(new Object[]{
-                    p.getNombre(),
-                    p.getApellido(),
-                    p.getDni(),
-                    p.getTelefono(),
-                    p.getSexo(),
-                    p.getEstadoCivil(),
-                    p.getEdad()
-                });
+                    p.getNombre(),p.getApellido(),p.getDni(),p.getTelefono(),p.getSexo(),p.getEstadoCivil(),p.getEdad()});
             }
         }
         tblPersonas.setModel(model);
@@ -384,10 +379,10 @@ public class Multiventana extends javax.swing.JFrame {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        int dni = Integer.parseInt(txtDNI.getText());
-        int telefono = Integer.parseInt(txtTelefono.getText());
+        String nombre = txtNombre.getText().trim();
+        String apellido = txtApellido.getText().trim();
+        String dniStr = txtDNI.getText().trim();
+        String telefonoStr = txtTelefono.getText().trim();
         String sexo = "";
 
         if (rbtMasculino.isSelected()) {
@@ -395,25 +390,42 @@ public class Multiventana extends javax.swing.JFrame {
         } else if (rbtFemenino.isSelected()) {
             sexo = "Femenino";
         }
+
         String estado = cmbEstado.getSelectedItem().toString();
-        int edad = Integer.parseInt(txtEdad.getText());
-        
-        DefaultTableModel model = (DefaultTableModel) tblPersonas.getModel();
-        for (int i = 0; i < persona.length; i++) {
-            if (persona[i] == null) {
-                persona[i] = new Personas(nombre, apellido, dni, telefono, sexo, estado, edad);
-                break;
+
+        if (nombre.isEmpty() || apellido.isEmpty() || dniStr.isEmpty() || telefonoStr.isEmpty() ||
+            sexo.isEmpty() || estado.equals("Seleccionar")) {
+            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos correctamente.");
+        } else {
+            if (!dniStr.matches("\\d+") || !telefonoStr.matches("\\d+")) {
+                JOptionPane.showMessageDialog(this, "Los campos de DNI y teléfono deben contener solo números.");
+            } else {
+                if (!txtEdad.getText().matches("\\d+")) {
+                    JOptionPane.showMessageDialog(this, "El campo de Edad debe contener solo números.");
+                } else {
+                    int dni = Integer.parseInt(dniStr);
+                    int telefono = Integer.parseInt(telefonoStr);
+                    int edad = Integer.parseInt(txtEdad.getText().trim());
+
+                    // Agregar una nueva instancia de Personas al vector
+                    for (int i = 0; i < persona.length; i++) {
+                        if (persona[i] == null) {
+                            persona[i] = new Personas(nombre, apellido, dni, telefono, sexo, estado, edad);
+                            break;
+                        }
+                    }
+                    model.addRow(new Object[]{nombre, apellido, dni, telefono, sexo, estado, edad});
+
+                    txtNombre.setText("");
+                    txtApellido.setText("");
+                    txtDNI.setText("");
+                    txtTelefono.setText("");
+                    buttonGroup1.clearSelection();
+                    cmbEstado.setSelectedIndex(0);
+                    txtEdad.setText("");
+                }
             }
         }
-        model.addRow(new Object[]{nombre,apellido,dni,telefono,sexo,estado,edad});
-
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtDNI.setText("");
-        txtTelefono.setText("");
-        buttonGroup1.clearSelection();
-        cmbEstado.setSelectedIndex(0); // Seleccionar el primer elemento en el ComboBox
-        txtEdad.setText("");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
