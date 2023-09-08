@@ -4,7 +4,7 @@
  */
 package VISTAS;
 
-import CONTROLADOR.Personas;
+import MODELO.Personas;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -102,6 +102,7 @@ public class Multiventana extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +187,11 @@ public class Multiventana extends javax.swing.JFrame {
         btnAgregar.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(0, 51, 153));
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,7 +285,7 @@ public class Multiventana extends javax.swing.JFrame {
             .addGap(0, 608, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Buscar datos", jPanel4);
+        jTabbedPane1.addTab("Ordenamiento", jPanel4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -292,7 +298,20 @@ public class Multiventana extends javax.swing.JFrame {
             .addGap(0, 608, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Eliminar datos", jPanel5);
+        jTabbedPane1.addTab("Buscar datos", jPanel5);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 738, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 608, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Eliminar datos", jPanel1);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -320,6 +339,14 @@ public class Multiventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        String apelllido = txtApellido.getText();
+        int dni = Integer.parseInt(txtDNI.getText());
+        
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,6 +397,7 @@ public class Multiventana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
