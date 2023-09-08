@@ -4,12 +4,32 @@
  */
 package CONTROLADOR;
 
+import MODELO.Personas;
+
 /**
  *
  * @author Leo
  */
 public class ControlPersona {
 
+    Personas personas[];
+    int indice = 0;
+
+    public ControlPersona(int n){
+        personas = new Personas[n];
+    }
+
+    public void agregar(Personas p){
+        personas[indice] = p;
+        indice++;
+    }
+    public int getIndice(){
+        return indice;
+    }
+
+    public Personas getPersona(int indice){
+        return personas[indice];
+    }
 
     public int[] deBurbuja(int[] array){
         for(int i = 0; i < array.length; i++){
