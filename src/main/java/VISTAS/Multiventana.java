@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author brandonluismenesessolorzano
  */
 public class Multiventana extends javax.swing.JFrame {
-
+    private Personas[] persona = new Personas[30];
     /**
      * Creates new form General
      */
@@ -22,7 +22,7 @@ public class Multiventana extends javax.swing.JFrame {
         
     }
     public void carga(){
-        Personas[] persona = new Personas[30];
+        
         persona[0] = new Personas("Juan", "Perez", 12345678, 5551234, "Masculino", "Soltero", 25);
         persona[1] = new Personas("Maria", "Lopez", 87654321, 5555678, "Femenino", "Casado", 30);
         persona[2] = new Personas("Carlos", "Gonzalez", 98765432, 5559876, "Masculino", "Divorciado", 40);
@@ -99,7 +99,7 @@ public class Multiventana extends javax.swing.JFrame {
         txtEdad = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbEstado = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -123,7 +123,7 @@ public class Multiventana extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "DNI", "Telefono", "Sexo", "Estado Civil", "Edad"
+                "Nombre", "Apellido", "Telefono", "DNI", "Sexo", "Estado Civil", "Edad"
             }
         ) {
             Class[] types = new Class [] {
@@ -204,7 +204,7 @@ public class Multiventana extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Nombre:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero", "Casado", "Viudo", "Divorciado" }));
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero", "Casado", "Viudo", "Divorciado" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -231,7 +231,7 @@ public class Multiventana extends javax.swing.JFrame {
                             .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                             .addComponent(txtEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(236, 236, 236)
                         .addComponent(btnAgregar)))
@@ -265,7 +265,7 @@ public class Multiventana extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -385,9 +385,35 @@ public class Multiventana extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         String nombre = txtNombre.getText();
-        String apelllido = txtApellido.getText();
+        String apellido = txtApellido.getText();
         int dni = Integer.parseInt(txtDNI.getText());
+        int telefono = Integer.parseInt(txtTelefono.getText());
+        String sexo = "";
+
+        if (rbtMasculino.isSelected()) {
+            sexo = "Masculino";
+        } else if (rbtFemenino.isSelected()) {
+            sexo = "Femenino";
+        }
+        String estado = cmbEstado.getSelectedItem().toString();
+        int edad = Integer.parseInt(txtEdad.getText());
         
+        DefaultTableModel model = (DefaultTableModel) tblPersonas.getModel();
+        for (int i = 0; i < persona.length; i++) {
+            if (persona[i] == null) {
+                persona[i] = new Personas(nombre, apellido, dni, telefono, sexo, estado, edad);
+                break;
+            }
+        }
+        model.addRow(new Object[]{nombre,apellido,dni,telefono,sexo,estado,edad});
+
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtDNI.setText("");
+        txtTelefono.setText("");
+        buttonGroup1.clearSelection();
+        cmbEstado.setSelectedIndex(0); // Seleccionar el primer elemento en el ComboBox
+        txtEdad.setText("");
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
@@ -431,7 +457,7 @@ public class Multiventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
