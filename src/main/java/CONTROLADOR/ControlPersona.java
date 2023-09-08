@@ -9,5 +9,5 @@ package CONTROLADOR;
  * @author Leo
  */
 public class ControlPersona {
-    
+    int xd;
 }
