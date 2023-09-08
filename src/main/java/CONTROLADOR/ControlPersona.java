@@ -10,4 +10,5 @@ package CONTROLADOR;
  */
 public class ControlPersona {
     int xd;
+    int xds;
 }
