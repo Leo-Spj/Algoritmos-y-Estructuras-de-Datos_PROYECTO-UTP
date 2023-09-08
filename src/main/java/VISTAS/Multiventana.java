@@ -18,7 +18,10 @@ public class Multiventana extends javax.swing.JFrame {
      */
     public Multiventana() {
         initComponents();
+        carga();
         
+    }
+    public void carga(){
         Personas[] persona = new Personas[30];
         persona[0] = new Personas("Juan", "Perez", 12345678, 5551234, "Masculino", "Soltero", 25);
         persona[1] = new Personas("Maria", "Lopez", 87654321, 5555678, "Femenino", "Casado", 30);
@@ -41,9 +44,28 @@ public class Multiventana extends javax.swing.JFrame {
         persona[18] = new Personas("Mario", "Torres", 89012345, 5558765, "Masculino", "Soltero", 24);
         persona[19] = new Personas("Silvia", "Morales", 90123456, 5559876, "Femenino", "Divorciado", 41);
         DefaultTableModel model = new DefaultTableModel();
-        for (Personas personas : persona) {
-            model.addRow(persona);
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("DNI");
+        model.addColumn("Teléfono");
+        model.addColumn("Sexo");
+        model.addColumn("Estado Civil");
+        model.addColumn("Edad");
+
+        for (Personas p : persona) {
+            if (p != null) {
+                model.addRow(new Object[]{
+                    p.getNombre(),
+                    p.getApellido(),
+                    p.getDni(),
+                    p.getTelefono(),
+                    p.getSexo(),
+                    p.getEstadoCivil(),
+                    p.getEdad()
+                });
+            }
         }
+        tblPersonas.setModel(model);
     }
 
     /**
