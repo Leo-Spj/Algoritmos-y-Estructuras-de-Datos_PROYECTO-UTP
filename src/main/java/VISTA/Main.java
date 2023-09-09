@@ -51,20 +51,20 @@ public class Main {
         estanteriaLibrosTexto.listarLibros();
 
         //simulando venta de libros
-        libroDeTexto1.establecerPrecio(100);
-        libroDeTexto2.establecerPrecio(200);
-        libroDeTexto3.establecerPrecio(300);
-        libroDeTexto4.establecerPrecio(400);
-        libroDeTexto5.establecerPrecio(500);
-        libroDeTexto6.establecerPrecio(600);
+        libroDeTexto1.establecerPrecio(50);
+        libroDeTexto2.establecerPrecio(50);
+        libroDeTexto3.establecerPrecio(30);
+        libroDeTexto4.establecerPrecio(40);
+        libroDeTexto5.establecerPrecio(50);
+        libroDeTexto6.establecerPrecio(60);
 
         // simulando venta de novelas
-        novela1.establecerPrecio(1000);
-        novela2.establecerPrecio(2000);
-        novela3.establecerPrecio(3000);
-        novela4.establecerPrecio(4000);
-        novela5.establecerPrecio(5000);
-        novela6.establecerPrecio(6000);
+        novela1.establecerPrecio(40);
+        novela2.establecerPrecio(50);
+        novela3.establecerPrecio(30);
+        novela4.establecerPrecio(40);
+        novela5.establecerPrecio(50);
+        novela6.establecerPrecio(60);
 
         System.out.println(novela1.estaPrestado());
         novela1.prestar();
