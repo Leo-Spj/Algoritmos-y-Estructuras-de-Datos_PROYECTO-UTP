@@ -42,27 +42,7 @@ public class Main {
         estanteriaLibrosTexto.agregarLibro(libroDeTexto5);
         estanteriaLibrosTexto.agregarLibro(libroDeTexto6);
 
-        // Elimino un libro de texto
-        estanteriaLibrosTexto.removerLibro(libroDeTexto1);
-
-        // Listando novelas
-        System.out.println("Novelas:");
-        estanteriaNovelas.deBurbuja();
-        estanteriaNovelas.listarLibros();
-
-        // Listando libros de texto
-        System.out.println("Libros de texto:");
-        estanteriaLibrosTexto.listarLibros();
-
-        //simulando venta de libros
-        libroDeTexto1.establecerPrecio(50);
-        libroDeTexto2.establecerPrecio(50);
-        libroDeTexto3.establecerPrecio(30);
-        libroDeTexto4.establecerPrecio(40);
-        libroDeTexto5.establecerPrecio(50);
-        libroDeTexto6.establecerPrecio(60);
-
-        // simulando venta de novelas
+        // Estableciendo precios de Novelas
         novela1.establecerPrecio(40);
         novela2.establecerPrecio(50);
         novela3.establecerPrecio(30);
@@ -70,13 +50,35 @@ public class Main {
         novela5.establecerPrecio(50);
         novela6.establecerPrecio(60);
 
-        System.out.println(novela1.estaPrestado());
-        novela1.prestar();
-        System.out.println(novela1.estaPrestado());
-        novela1.prestar();
-        novela1.devolver();
-        System.out.println(novela1.estaPrestado());
+        // Estableciendo precios de Libros de texto
+        libroDeTexto1.establecerPrecio(50);
+        libroDeTexto2.establecerPrecio(50);
+        libroDeTexto3.establecerPrecio(30);
+        libroDeTexto4.establecerPrecio(40);
+        libroDeTexto5.establecerPrecio(50);
+        libroDeTexto6.establecerPrecio(60);
 
+
+        // Prestando libros
+        estanteriaNovelas.obtenerUnLibro(2).prestar();
+        estanteriaNovelas.obtenerUnLibro(2).estaPrestado();
+        estanteriaNovelas.obtenerUnLibro(2).prestar();
+        estanteriaNovelas.obtenerUnLibro(2).devolver();
+
+        // Elimino un libro de texto
+        estanteriaLibrosTexto.removerLibro(libroDeTexto1);
+
+
+        // Listando novelas
+        System.out.println("Novelas:");
+        // Ordeno las novelas por año de publicación
+        estanteriaNovelas.deBurbuja();
+        estanteriaNovelas.listarLibros();
+
+        // Listando libros de texto
+        System.out.println("Libros de texto:");
+        estanteriaLibrosTexto.deBurbuja();
+        estanteriaLibrosTexto.listarLibros();
 
 
     }

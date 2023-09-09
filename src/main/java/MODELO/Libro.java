@@ -18,6 +18,8 @@ public abstract class Libro {
         return this.titulo + " (" + this.anioPublicacion + ")" + " - " + this.autor;
     }
 
+    public abstract Libro getLibro();
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }

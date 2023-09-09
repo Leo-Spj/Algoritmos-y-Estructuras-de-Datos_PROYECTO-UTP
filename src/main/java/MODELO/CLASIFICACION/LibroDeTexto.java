@@ -55,4 +55,9 @@ public class LibroDeTexto extends Libro implements Prestable, Vendible {
     public void establecerPrecio(double precio) {
         this.setPrecio(precio);
     }
+
+    @Override
+    public Libro getLibro() {
+        return this;
+    }
 }

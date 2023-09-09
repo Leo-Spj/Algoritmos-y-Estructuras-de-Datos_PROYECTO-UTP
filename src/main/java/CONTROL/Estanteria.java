@@ -13,7 +13,6 @@ public class Estanteria <L extends Libro> implements Ordenamiento, Busqueda {
         listaLibros = new Libro[1];
     }
 
-
     public void agregarLibro(L libro){
         if(listaLibros[listaLibros.length-1] == null){
             listaLibros[listaLibros.length-1] = libro;
@@ -58,11 +57,13 @@ public class Estanteria <L extends Libro> implements Ordenamiento, Busqueda {
         }
     }
 
+    public L obtenerUnLibro(int posicion){
+        return (L) listaLibros[posicion];
+    }
+
     public void listarLibros(){
         for(Libro libro : listaLibros){
-            if(libro != null){
-                System.out.println(libro.getTitulo());
-            }
+            System.out.println(libro.getTitulo());
         }
     }
 
