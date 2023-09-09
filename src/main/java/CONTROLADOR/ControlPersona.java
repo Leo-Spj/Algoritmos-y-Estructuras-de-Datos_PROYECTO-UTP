@@ -12,17 +12,29 @@ import MODELO.Persona;
  */
 public class ControlPersona {
 
-    Persona personas[];
-    int indice = 0;
+    private Persona personas[];
+    private int indice = 0;
 
     public ControlPersona(int n){
         personas = new Persona[n];
     }
 
     public void agregar(Persona p){
+        if(indice == personas.length){
+            duplicarLongArreglo();
+        }
         personas[indice] = p;
         indice++;
     }
+
+    public void duplicarLongArreglo(){
+        Persona aux[] = new Persona[personas.length*2];
+        for(int i = 0; i < personas.length; i++){
+            aux[i] = personas[i];
+        }
+        personas = aux;
+    }
+
     public int getIndice(){
         return indice;
     }

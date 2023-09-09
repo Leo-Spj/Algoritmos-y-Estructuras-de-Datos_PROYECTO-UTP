@@ -25,7 +25,7 @@ public class Multiventana extends javax.swing.JFrame {
     }
     public void carga(){
 
-        cPersona = new ControlPersona(30);
+        cPersona = new ControlPersona(1);
 
         cPersona.agregar(new Persona("Juan", "Perez", 12345678, 5551234, "Masculino", "Soltero", 25));
         cPersona.agregar(new Persona("Maria", "Lopez", 87654321, 5555678, "Femenino", "Casado", 30));
