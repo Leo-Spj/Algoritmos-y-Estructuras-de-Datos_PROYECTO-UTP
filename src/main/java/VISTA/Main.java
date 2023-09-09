@@ -8,19 +8,19 @@ public class Main {
     public static void main(String[] args) {
 
         // Creando novelas
-        Novela novela1 = new Novela("El señor de los anillos", "J.R.R. Tolkien", 1954, "Fantasía");
-        Novela novela2 = new Novela("El código Da Vinci", "Dan Brown", 2003, "Misterio");
-        Novela novela3 = new Novela("El alquimista", "Paulo Coelho", 1988, "Aventura");
-        Novela novela4 = new Novela("El principito", "Antoine de Saint-Exupéry", 1943, "Infantil");
-        Novela novela5 = new Novela("El nombre del viento", "Patrick Rothfuss", 2007, "Fantasía");
-        Novela novela6 = new Novela("El retrato de Dorian Gray", "Oscar Wilde", 1890, "Terror");
+        Novela novela1 = new Novela("El señor de los anillos", "J.R.R. Tolkien", 1954, 234345263, "Fantasía");
+        Novela novela2 = new Novela("El código Da Vinci", "Dan Brown", 2003, 3298745, "Misterio");
+        Novela novela3 = new Novela("El alquimista", "Paulo Coelho", 1988, 234875, "Aventura");
+        Novela novela4 = new Novela("El principito", "Antoine de Saint-Exupéry", 1943, 2348745,"Infantil");
+        Novela novela5 = new Novela("El nombre del viento", "Patrick Rothfuss", 2007, 9872163, "Fantasía");
+        Novela novela6 = new Novela("El retrato de Dorian Gray", "Oscar Wilde", 1890, 283740, "Terror");
         // Creando libros de texto
-        LibroDeTexto libroDeTexto1 = new LibroDeTexto("Matemáticas", "Rafael Espinoza", 2000, "Matemáticas");
-        LibroDeTexto libroDeTexto2 = new LibroDeTexto("Física", "Alberto A", 2018, "Física");
-        LibroDeTexto libroDeTexto3 = new LibroDeTexto("Química", "Beto B", 1998, "Química");
-        LibroDeTexto libroDeTexto4 = new LibroDeTexto("Biología", "Carlos C", 2010, "Biología");
-        LibroDeTexto libroDeTexto5 = new LibroDeTexto("Historia", "Daniel D", 2005, "Historia");
-        LibroDeTexto libroDeTexto6 = new LibroDeTexto("Geografía", "Eduardo E", 1994, "Geografía");
+        LibroDeTexto libroDeTexto1 = new LibroDeTexto("Matemáticas", "Rafael Espinoza", 2000, 2343426, "Matemáticas");
+        LibroDeTexto libroDeTexto2 = new LibroDeTexto("Física", "Alberto A", 2018, 245897324, "Física");
+        LibroDeTexto libroDeTexto3 = new LibroDeTexto("Química", "Beto B", 1998, 2354934, "Química");
+        LibroDeTexto libroDeTexto4 = new LibroDeTexto("Biología", "Carlos C", 2010, 85377934, "Biología");
+        LibroDeTexto libroDeTexto5 = new LibroDeTexto("Historia", "Daniel D", 2005, 36793406,"Historia");
+        LibroDeTexto libroDeTexto6 = new LibroDeTexto("Geografía", "Eduardo E", 1994, 2984320, "Geografía");
 
         // Creando estanterías
         Estanteria<Novela> estanteriaNovelas = new Estanteria();

@@ -7,8 +7,8 @@ import MODELO.Vendible;
 public class Novela extends Libro implements Prestable, Vendible {
 
     String genero;
-    public Novela(String titulo, String autor, int anioPublicacion, String genero) {
-        super(titulo, autor, anioPublicacion);
+    public Novela(String titulo, String autor, int anioPublicacion, int ISBN, String genero) {
+        super(titulo, autor, anioPublicacion, ISBN);
         this.genero = genero;
     }
 

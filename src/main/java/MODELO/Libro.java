@@ -4,14 +4,17 @@ public abstract class Libro {
     private String titulo;
     private String autor;
     private int anioPublicacion;
+
+    private int ISBN;
     private boolean prestado = false;
     private double precio;
 
 
-    public Libro(String titulo, String autor, int anioPublicacion) {
+    public Libro(String titulo, String autor, int anioPublicacion, int ISBN) {
         this.titulo = titulo;
         this.autor = autor;
         this.anioPublicacion = anioPublicacion;
+        this.ISBN = ISBN;
     }
 
     public String getTitulo(){
