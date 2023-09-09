@@ -15,16 +15,16 @@ public class Main {
         Novela novela5 = new Novela("El nombre del viento", "Patrick Rothfuss", 2007, "Fantasía");
         Novela novela6 = new Novela("El retrato de Dorian Gray", "Oscar Wilde", 1890, "Terror");
         // Creando libros de texto
-        LibroDeTexto libroDeTexto1 = new LibroDeTexto("Matemáticas", "Rafael Espinoza", 2010, "Matemáticas");
-        LibroDeTexto libroDeTexto2 = new LibroDeTexto("Física", "Alberto A", 2010, "Física");
-        LibroDeTexto libroDeTexto3 = new LibroDeTexto("Química", "Beto B", 2010, "Química");
+        LibroDeTexto libroDeTexto1 = new LibroDeTexto("Matemáticas", "Rafael Espinoza", 2000, "Matemáticas");
+        LibroDeTexto libroDeTexto2 = new LibroDeTexto("Física", "Alberto A", 2018, "Física");
+        LibroDeTexto libroDeTexto3 = new LibroDeTexto("Química", "Beto B", 1998, "Química");
         LibroDeTexto libroDeTexto4 = new LibroDeTexto("Biología", "Carlos C", 2010, "Biología");
-        LibroDeTexto libroDeTexto5 = new LibroDeTexto("Historia", "Daniel D", 2010, "Historia");
-        LibroDeTexto libroDeTexto6 = new LibroDeTexto("Geografía", "Eduardo E", 2010, "Geografía");
+        LibroDeTexto libroDeTexto5 = new LibroDeTexto("Historia", "Daniel D", 2005, "Historia");
+        LibroDeTexto libroDeTexto6 = new LibroDeTexto("Geografía", "Eduardo E", 1994, "Geografía");
 
         // Creando estanterías
-        Estanteria<Novela> estanteriaNovelas = new Estanteria(100);
-        Estanteria<LibroDeTexto> estanteriaLibrosTexto = new Estanteria(100);
+        Estanteria<Novela> estanteriaNovelas = new Estanteria();
+        Estanteria<LibroDeTexto> estanteriaLibrosTexto = new Estanteria();
 
         // Agregando novelas a la estantería
         estanteriaNovelas.agregarLibro(novela1);
@@ -42,8 +42,12 @@ public class Main {
         estanteriaLibrosTexto.agregarLibro(libroDeTexto5);
         estanteriaLibrosTexto.agregarLibro(libroDeTexto6);
 
+        // Elimino un libro de texto
+        estanteriaLibrosTexto.removerLibro(libroDeTexto1);
+
         // Listando novelas
         System.out.println("Novelas:");
+        estanteriaNovelas.deBurbuja();
         estanteriaNovelas.listarLibros();
 
         // Listando libros de texto
