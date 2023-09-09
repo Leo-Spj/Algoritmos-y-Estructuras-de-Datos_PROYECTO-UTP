@@ -61,10 +61,15 @@ public class Estanteria <L extends Libro> implements Ordenamiento, Busqueda {
         return (L) listaLibros[posicion];
     }
 
-    public void listarLibros(){
+    public void listarLibros(){ // Este listado es para mostrar en consola, no usar, solo pruebas
         for(Libro libro : listaLibros){
             System.out.println(libro.getTitulo());
         }
+    }
+
+
+    public Libro[] getListaLibros() { //obtener libros en modo array de objetos, usar para mostrar en JTable
+        return listaLibros;
     }
 
     @Override

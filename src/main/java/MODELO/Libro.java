@@ -17,11 +17,11 @@ public abstract class Libro {
         this.ISBN = ISBN;
     }
 
-    public String getTitulo(){
-        return this.titulo + " (" + this.anioPublicacion + ")" + " - " + this.autor;
-    }
-
     public abstract Libro getLibro();
+
+    public String getTitulo(){
+        return this.titulo; //+ " (" + this.anioPublicacion + ")" + " - " + this.autor;
+    }
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -57,5 +57,13 @@ public abstract class Libro {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public int getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(int ISBN) {
+        this.ISBN = ISBN;
     }
 }
