@@ -8,7 +8,7 @@ package MODELO;
  *
  * @author brandonluismenesessolorzano
  */
-public class Personas {
+public class Persona {
     private String nombre;
     private String apellido;
     private int dni;
@@ -17,10 +17,10 @@ public class Personas {
     private String estadoCivil;
     private int edad;
 
-    public Personas() {
+    public Persona() {
     }
     
-    public Personas(String nombre, String apellido, int dni, int telefono, String sexo, String estadoCivil, int edad) {
+    public Persona(String nombre, String apellido, int dni, int telefono, String sexo, String estadoCivil, int edad) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;

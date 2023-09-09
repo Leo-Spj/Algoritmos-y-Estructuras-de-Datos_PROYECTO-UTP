@@ -5,7 +5,7 @@
 package VISTA;
 
 import CONTROLADOR.ControlPersona;
-import MODELO.Personas;
+import MODELO.Persona;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,26 +27,26 @@ public class Multiventana extends javax.swing.JFrame {
 
         cPersona = new ControlPersona(30);
 
-        cPersona.agregar(new Personas("Juan", "Perez", 12345678, 5551234, "Masculino", "Soltero", 25));
-        cPersona.agregar(new Personas("Maria", "Lopez", 87654321, 5555678, "Femenino", "Casado", 30));
-        cPersona.agregar(new Personas("Carlos", "Gonzalez", 98765432, 5559876, "Masculino", "Divorciado", 40));
-        cPersona.agregar(new Personas("Ana", "Martinez", 34567890, 5554321, "Femenino", "Casado", 35));
-        cPersona.agregar( new Personas("Pedro", "Rodriguez", 23456789, 5558765, "Masculino", "Soltero", 28));
-        cPersona.agregar( new Personas("Laura", "Fernandez", 45678901, 5553456, "Femenino", "Soltero", 22));
-        cPersona.agregar( new Personas("Javier", "Lopez", 56789012, 5556543, "Masculino", "Viudo", 50));
-        cPersona.agregar( new Personas("Sara", "Gomez", 67890123, 5552345, "Femenino", "Casado", 45));
-        cPersona.agregar( new Personas("Luis", "Sanchez", 78901234, 5555432, "Masculino", "Soltero", 29));
-        cPersona.agregar( new Personas("Elena", "Mendoza", 89012345, 5557890, "Femenino", "Casado", 38));
-        cPersona.agregar( new Personas("Fernando", "Hernandez", 90123456, 5554567, "Masculino", "Divorciado", 42));
-        cPersona.agregar( new Personas("Carmen", "Gutierrez", 12345667, 5558901, "Femenino", "Soltero", 27));
-        cPersona.agregar( new Personas("Diego", "Ramirez", 23456778, 5555678, "Masculino", "Soltero", 26));
-        cPersona.agregar( new Personas("Marta", "Diaz", 34567890, 5551234, "Femenino", "Casado", 33));
-        cPersona.agregar( new Personas("Antonio", "Perez", 45678901, 5552345, "Masculino", "Viudo", 55));
-        cPersona.agregar( new Personas("Isabel", "Garcia", 56789012, 5553456, "Femenino", "Casado", 36));
-        cPersona.agregar( new Personas("Eduardo", "Lopez", 67890123, 5554321, "Masculino", "Soltero", 31));
-        cPersona.agregar( new Personas("Rosa", "Fernandez", 78901234, 5556543, "Femenino", "Casado", 37));
-        cPersona.agregar( new Personas("Mario", "Torres", 89012345, 5558765, "Masculino", "Soltero", 24));
-        cPersona.agregar( new Personas("Silvia", "Morales", 90123456, 5559876, "Femenino", "Divorciado", 41));
+        cPersona.agregar(new Persona("Juan", "Perez", 12345678, 5551234, "Masculino", "Soltero", 25));
+        cPersona.agregar(new Persona("Maria", "Lopez", 87654321, 5555678, "Femenino", "Casado", 30));
+        cPersona.agregar(new Persona("Carlos", "Gonzalez", 98765432, 5559876, "Masculino", "Divorciado", 40));
+        cPersona.agregar(new Persona("Ana", "Martinez", 34567890, 5554321, "Femenino", "Casado", 35));
+        cPersona.agregar( new Persona("Pedro", "Rodriguez", 23456789, 5558765, "Masculino", "Soltero", 28));
+        cPersona.agregar( new Persona("Laura", "Fernandez", 45678901, 5553456, "Femenino", "Soltero", 22));
+        cPersona.agregar( new Persona("Javier", "Lopez", 56789012, 5556543, "Masculino", "Viudo", 50));
+        cPersona.agregar( new Persona("Sara", "Gomez", 67890123, 5552345, "Femenino", "Casado", 45));
+        cPersona.agregar( new Persona("Luis", "Sanchez", 78901234, 5555432, "Masculino", "Soltero", 29));
+        cPersona.agregar( new Persona("Elena", "Mendoza", 89012345, 5557890, "Femenino", "Casado", 38));
+        cPersona.agregar( new Persona("Fernando", "Hernandez", 90123456, 5554567, "Masculino", "Divorciado", 42));
+        cPersona.agregar( new Persona("Carmen", "Gutierrez", 12345667, 5558901, "Femenino", "Soltero", 27));
+        cPersona.agregar( new Persona("Diego", "Ramirez", 23456778, 5555678, "Masculino", "Soltero", 26));
+        cPersona.agregar( new Persona("Marta", "Diaz", 34567890, 5551234, "Femenino", "Casado", 33));
+        cPersona.agregar( new Persona("Antonio", "Perez", 45678901, 5552345, "Masculino", "Viudo", 55));
+        cPersona.agregar( new Persona("Isabel", "Garcia", 56789012, 5553456, "Femenino", "Casado", 36));
+        cPersona.agregar( new Persona("Eduardo", "Lopez", 67890123, 5554321, "Masculino", "Soltero", 31));
+        cPersona.agregar( new Persona("Rosa", "Fernandez", 78901234, 5556543, "Femenino", "Casado", 37));
+        cPersona.agregar( new Persona("Mario", "Torres", 89012345, 5558765, "Masculino", "Soltero", 24));
+        cPersona.agregar( new Persona("Silvia", "Morales", 90123456, 5559876, "Femenino", "Divorciado", 41));
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
@@ -418,7 +418,7 @@ public class Multiventana extends javax.swing.JFrame {
                     int edad = Integer.parseInt(txtEdad.getText().trim());
 
                     // Agrega la persona al array
-                    cPersona.agregar(new Personas(nombre, apellido, dni, telefono, sexo, estado, edad));
+                    cPersona.agregar(new Persona(nombre, apellido, dni, telefono, sexo, estado, edad));
 
                     // Agrega la persona a la tabla
 

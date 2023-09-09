@@ -4,7 +4,7 @@
  */
 package CONTROLADOR;
 
-import MODELO.Personas;
+import MODELO.Persona;
 
 /**
  *
@@ -12,14 +12,14 @@ import MODELO.Personas;
  */
 public class ControlPersona {
 
-    Personas personas[];
+    Persona personas[];
     int indice = 0;
 
     public ControlPersona(int n){
-        personas = new Personas[n];
+        personas = new Persona[n];
     }
 
-    public void agregar(Personas p){
+    public void agregar(Persona p){
         personas[indice] = p;
         indice++;
     }
@@ -27,7 +27,7 @@ public class ControlPersona {
         return indice;
     }
 
-    public Personas getPersona(int indice){
+    public Persona getPersona(int indice){
         return personas[indice];
     }
 
