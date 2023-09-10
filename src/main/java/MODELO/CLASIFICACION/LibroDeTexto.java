@@ -8,7 +8,7 @@ public class LibroDeTexto extends Libro implements Prestable, Vendible {
 
     String asignatura;
 
-    public LibroDeTexto(String titulo, String autor, int anioPublicacion, int ISBN, String asignatura) {
+    public LibroDeTexto(String titulo, String autor, int anioPublicacion, long ISBN, String asignatura) {
         super(titulo, autor, anioPublicacion, ISBN);
         this.asignatura = asignatura;
     }

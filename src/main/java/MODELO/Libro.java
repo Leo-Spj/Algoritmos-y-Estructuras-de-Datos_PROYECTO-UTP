@@ -5,12 +5,12 @@ public abstract class Libro {
     private String autor;
     private int anioPublicacion;
 
-    private int ISBN;
+    private long ISBN;
     private boolean prestado = false;
     private double precio;
 
 
-    public Libro(String titulo, String autor, int anioPublicacion, int ISBN) {
+    public Libro(String titulo, String autor, int anioPublicacion, long ISBN) {
         this.titulo = titulo;
         this.autor = autor;
         this.anioPublicacion = anioPublicacion;
@@ -20,7 +20,7 @@ public abstract class Libro {
     public abstract Libro getLibro();
 
     public String getTitulo(){
-        return this.titulo; //+ " (" + this.anioPublicacion + ")" + " - " + this.autor;
+        return this.titulo; // + " (" + this.anioPublicacion + ")" + " - " + this.autor;
     }
 
     public void setTitulo(String titulo) {
@@ -59,7 +59,7 @@ public abstract class Libro {
         this.precio = precio;
     }
 
-    public int getISBN() {
+    public long getISBN() {
         return ISBN;
     }
 

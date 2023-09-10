@@ -1,6 +1,6 @@
 package VISTA;
 
-import CONTROL.Estanteria;
+import CONTROL.ControlEstanteria;
 import MODELO.CLASIFICACION.LibroDeTexto;
 import MODELO.CLASIFICACION.Novela;
 
@@ -23,8 +23,8 @@ public class Main {
         LibroDeTexto libroDeTexto6 = new LibroDeTexto("Geografía", "Eduardo E", 1994, 2984320, "Geografía");
 
         // Creando estanterías
-        Estanteria<Novela> estanteriaNovelas = new Estanteria();
-        Estanteria<LibroDeTexto> estanteriaLibrosTexto = new Estanteria();
+        ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
+        ControlEstanteria<LibroDeTexto> estanteriaLibrosTexto = new ControlEstanteria();
 
         // Agregando novelas a la estantería
         estanteriaNovelas.agregarLibro(novela1);
@@ -72,12 +72,12 @@ public class Main {
         // Listando novelas
         System.out.println("Novelas:");
         // Ordeno las novelas por año de publicación
-        estanteriaNovelas.deBurbuja();
+        estanteriaNovelas.deBurbuja("anioPublicacion");
         estanteriaNovelas.listarLibros();
 
         // Listando libros de texto
         System.out.println("Libros de texto:");
-        estanteriaLibrosTexto.deBurbuja();
+        estanteriaLibrosTexto.deBurbuja("anioPublicacion");
         estanteriaLibrosTexto.listarLibros();
 
 

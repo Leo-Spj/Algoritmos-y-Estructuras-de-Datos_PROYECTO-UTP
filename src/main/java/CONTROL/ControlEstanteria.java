@@ -5,11 +5,11 @@ import CONTROL.ALGORITMOS.Busqueda;
 import CONTROL.ALGORITMOS.Ordenamiento;
 import MODELO.Libro;
 
-public class Estanteria <L extends Libro> implements Ordenamiento, Busqueda {
+public class ControlEstanteria<L extends Libro> implements Ordenamiento, Busqueda {
 
     private Libro listaLibros[];
 
-    public Estanteria(){
+    public ControlEstanteria(){
         listaLibros = new Libro[1];
     }
 
@@ -73,14 +73,22 @@ public class Estanteria <L extends Libro> implements Ordenamiento, Busqueda {
     }
 
     @Override
-    public void deBurbuja() {
+    public void deBurbuja(String atributo) {
         //se ordenana por anioPublicacion:
         for (int i = 0; i < listaLibros.length; i++){
             for (int j = 0; j < listaLibros.length-1; j++){
-                if (listaLibros[j].getAnioPublicacion() > listaLibros[j+1].getAnioPublicacion()){
-                    Libro aux = listaLibros[j];
-                    listaLibros[j] = listaLibros[j+1];
-                    listaLibros[j+1] = aux;
+                if (atributo.equals("anioPublicacion")){
+                    if (listaLibros[j].getAnioPublicacion() > listaLibros[j+1].getAnioPublicacion()){
+                        Libro aux = listaLibros[j];
+                        listaLibros[j] = listaLibros[j+1];
+                        listaLibros[j+1] = aux;
+                    }
+                } else if (atributo.equals("ISBN")){
+                    if (listaLibros[j].getISBN() > listaLibros[j+1].getISBN()){
+                        Libro aux = listaLibros[j];
+                        listaLibros[j] = listaLibros[j+1];
+                        listaLibros[j+1] = aux;
+                    }
                 }
             }
         }

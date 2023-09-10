@@ -98,10 +98,8 @@
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jButton4" pref="200" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtAutor" max="32767" attributes="0"/>
-                                  <Component id="txtTitulo" pref="200" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="txtAutor" max="32767" attributes="0"/>
+                              <Component id="txtTitulo" pref="200" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="455" max="32767" attributes="0"/>
                       </Group>
@@ -252,6 +250,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="A&#xf1;o de Publicaci&#xf3;n"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdNum_AnioPublicActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnOrdNum_ISBN">
                   <Properties>
@@ -260,6 +261,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="ISBN"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdNum_ISBNActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>

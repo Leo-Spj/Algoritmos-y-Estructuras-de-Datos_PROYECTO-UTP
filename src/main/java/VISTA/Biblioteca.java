@@ -4,7 +4,7 @@
  */
 package VISTA;
 
-import CONTROL.Estanteria;
+import CONTROL.ControlEstanteria;
 import MODELO.CLASIFICACION.LibroDeTexto;
 import MODELO.CLASIFICACION.Novela;
 
@@ -22,6 +22,10 @@ public class Biblioteca extends javax.swing.JFrame {
 
     DefaultTableModel model = new DefaultTableModel();
 
+    // Estanterías
+    ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
+    ControlEstanteria<LibroDeTexto> estanteriaLibrosTexto = new ControlEstanteria();
+
     public Biblioteca() {
         initComponents();
         mostrarTabla();
@@ -29,40 +33,43 @@ public class Biblioteca extends javax.swing.JFrame {
 
     public void mostrarTabla(){
 
-        // Creando novelas
-        Novela novela1 = new Novela("El señor de los anillos", "J.R.R. Tolkien", 1954, 234345263, "Fantasía");
-        Novela novela2 = new Novela("El código Da Vinci", "Dan Brown", 2003, 3298745, "Misterio");
-        Novela novela3 = new Novela("El alquimista", "Paulo Coelho", 1988, 234875, "Aventura");
-        Novela novela4 = new Novela("El principito", "Antoine de Saint-Exupéry", 1943, 2348745,"Infantil");
-        Novela novela5 = new Novela("El nombre del viento", "Patrick Rothfuss", 2007, 9872163, "Fantasía");
-        Novela novela6 = new Novela("El retrato de Dorian Gray", "Oscar Wilde", 1890, 283740, "Terror");
-        // Creando libros de texto
-        LibroDeTexto libroDeTexto1 = new LibroDeTexto("Matemáticas", "Rafael Espinoza", 2000, 2343426, "Matemáticas");
-        LibroDeTexto libroDeTexto2 = new LibroDeTexto("Física", "Alberto A", 2018, 245897324, "Física");
-        LibroDeTexto libroDeTexto3 = new LibroDeTexto("Química", "Beto B", 1998, 2354934, "Química");
-        LibroDeTexto libroDeTexto4 = new LibroDeTexto("Biología", "Carlos C", 2010, 85377934, "Biología");
-        LibroDeTexto libroDeTexto5 = new LibroDeTexto("Historia", "Daniel D", 2005, 36793406,"Historia");
-        LibroDeTexto libroDeTexto6 = new LibroDeTexto("Geografía", "Eduardo E", 1994, 2984320, "Geografía");
-
-        // Creando estanterías
-        Estanteria<Novela> estanteriaNovelas = new Estanteria();
-        Estanteria<LibroDeTexto> estanteriaLibrosTexto = new Estanteria();
-
         // Agregando novelas a la estantería
-        estanteriaNovelas.agregarLibro(novela1);
-        estanteriaNovelas.agregarLibro(novela2);
-        estanteriaNovelas.agregarLibro(novela3);
-        estanteriaNovelas.agregarLibro(novela4);
-        estanteriaNovelas.agregarLibro(novela5);
-        estanteriaNovelas.agregarLibro(novela6);
+        estanteriaNovelas.agregarLibro(new Novela("Harry Potter y la piedra filosofal", "J.K. Rowling", 1997, 9788478884454L, "Fantasía"));
+        estanteriaNovelas.agregarLibro(new Novela("Cien años de soledad", "Gabriel García Márquez", 1967, 9780307350428L, "Realismo mágico"));
+        estanteriaNovelas.agregarLibro(new Novela("1984", "George Orwell", 1949, 9788420674220L, "Distopía"));
+        estanteriaNovelas.agregarLibro(new Novela("Matar a un ruiseñor", "Harper Lee", 1960, 9788498383186L, "Ficción social"));
+        estanteriaNovelas.agregarLibro(new Novela("Don Quijote de la Mancha", "Miguel de Cervantes", 1605, 9788424117386L, "Parodia"));
+        estanteriaNovelas.agregarLibro(new Novela("En busca del tiempo perdido", "Marcel Proust", 1913, 9788420412140L, "Novela psicológica"));
+        estanteriaNovelas.agregarLibro(new Novela("Orgullo y prejuicio", "Jane Austen", 1813, 9788497644881L, "Romance"));
+        estanteriaNovelas.agregarLibro(new Novela("Ulises", "James Joyce", 1922, 9788489644362L, "Modernismo"));
+        estanteriaNovelas.agregarLibro(new Novela("Los juegos del hambre", "Suzanne Collins", 2008, 9788427202122L, "Ciencia ficción"));
+        estanteriaNovelas.agregarLibro(new Novela("Crónica de una muerte anunciada", "Gabriel García Márquez", 1981, 9780307474729L, "Ficción latinoamericana"));
+        estanteriaNovelas.agregarLibro(new Novela("El gran Gatsby", "F. Scott Fitzgerald", 1925, 9788497932072L, "Ficción moderna"));
+        estanteriaNovelas.agregarLibro(new Novela("Moby-Dick", "Herman Melville", 1851, 9788467028435L, "Aventura"));
+        estanteriaNovelas.agregarLibro(new Novela("Los pilares de la Tierra", "Ken Follett", 1989, 9788497594758L, "Histórica"));
+        estanteriaNovelas.agregarLibro(new Novela("El retrato de Dorian Gray", "Oscar Wilde", 1890, 9788491052052L, "Ficción gótica"));
+        estanteriaNovelas.agregarLibro(new Novela("El guardián entre el centeno", "J.D. Salinger", 1951, 9788499890944L, "Literatura juvenil"));
+        estanteriaNovelas.agregarLibro(new Novela("Los hombres me explican cosas", "Rebecca Solnit", 2014, 9788417081643L, "Ensayo"));
+        estanteriaNovelas.agregarLibro(new Novela("La naranja mecánica", "Anthony Burgess", 1962, 9788433960059L, "Ficción distópica"));
+        estanteriaNovelas.agregarLibro(new Novela("La sombra del viento", "Carlos Ruiz Zafón", 2001, 9788408043643L, "Misterio"));
+        estanteriaNovelas.agregarLibro(new Novela("Los miserables", "Victor Hugo", 1862, 9788499897943L, "Histórica"));
+        estanteriaNovelas.agregarLibro(new Novela("Rayuela", "Julio Cortázar", 1963, 9788437601720L, "Ficción experimental"));
+        estanteriaNovelas.agregarLibro(new Novela("La carretera", "Cormac McCarthy", 2006, 9788433974025L, "Postapocalíptica"));
+        estanteriaNovelas.agregarLibro(new Novela("Las uvas de la ira", "John Steinbeck", 1939, 9788445074699L, "Realismo"));
+        estanteriaNovelas.agregarLibro(new Novela("Crimen y castigo", "Fyodor Dostoevsky", 1866, 9788420674206L, "Novela psicológica"));
+        estanteriaNovelas.agregarLibro(new Novela("La Odisea", "Homero", 1800, 9788491050706L, "Épica"));
+        estanteriaNovelas.agregarLibro(new Novela("La isla del tesoro", "Robert Louis Stevenson", 1883, 9788426103302L, "Aventura"));
+        estanteriaNovelas.agregarLibro(new Novela("Los detectives salvajes", "Roberto Bolaño", 1998, 9788433969755L, "Narrativa latinoamericana"));
+        estanteriaNovelas.agregarLibro(new Novela("Siddhartha", "Hermann Hesse", 1922, 9788499897448L, "Filosófica"));
+        estanteriaNovelas.agregarLibro(new Novela("La insoportable levedad del ser", "Milan Kundera", 1984, 9788483832242L, "Filosofía existencial"));
+        estanteriaNovelas.agregarLibro(new Novela("Los renglones torcidos de Dios", "Tori Kiersten", 1979, 9786070735154L, "Psicológica"));
+        estanteriaNovelas.agregarLibro(new Novela("El amor en los tiempos del cólera", "Gabriel García Márquez", 1985, 9788420471833L, "Romance"));
+        estanteriaNovelas.agregarLibro(new Novela("El alquimista", "Paulo Coelho", 1988, 9780062511409L, "Autoayuda"));
+        estanteriaNovelas.agregarLibro(new Novela("Memorias de Adriano", "Marguerite Yourcenar", 1951, 9788435008082L, "Histórica"));
+        estanteriaNovelas.agregarLibro(new Novela("La ladrona de libros", "Markus Zusak", 2005, 9788498383704L, "Ficción histórica"));
+        estanteriaNovelas.agregarLibro(new Novela("El nombre de la rosa", "Umberto Eco", 1980, 9788432217523L, "Misterio"));
+        estanteriaNovelas.agregarLibro(new Novela("Pedro Páramo", "Juan Rulfo", 1955, 9786074211479L, "Realismo mágico"));
 
-        // Agregando libros de texto a la estantería
-        estanteriaLibrosTexto.agregarLibro(libroDeTexto1);
-        estanteriaLibrosTexto.agregarLibro(libroDeTexto2);
-        estanteriaLibrosTexto.agregarLibro(libroDeTexto3);
-        estanteriaLibrosTexto.agregarLibro(libroDeTexto4);
-        estanteriaLibrosTexto.agregarLibro(libroDeTexto5);
-        estanteriaLibrosTexto.agregarLibro(libroDeTexto6);
 
         model.addColumn("Titulo");
         model.addColumn("Autor");
@@ -168,9 +175,8 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtAutor)
-                        .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                    .addComponent(txtAutor)
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                 .addContainerGap(455, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -199,9 +205,19 @@ public class Biblioteca extends javax.swing.JFrame {
 
         btnOrdNum_AnioPublic.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnOrdNum_AnioPublic.setText("Año de Publicación");
+        btnOrdNum_AnioPublic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdNum_AnioPublicActionPerformed(evt);
+            }
+        });
 
         btnOrdNum_ISBN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnOrdNum_ISBN.setText("ISBN");
+        btnOrdNum_ISBN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdNum_ISBNActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setText("Ordenar Por:");
@@ -391,6 +407,39 @@ public class Biblioteca extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOrdNum_AnioPublicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdNum_AnioPublicActionPerformed
+
+        model.setRowCount(0);
+
+        estanteriaNovelas.deBurbuja("anioPublicacion"); // "anioPublicacion
+        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
+            model.addRow(new Object[]{
+                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
+                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+            });
+        }
+
+    }//GEN-LAST:event_btnOrdNum_AnioPublicActionPerformed
+
+    private void btnOrdNum_ISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdNum_ISBNActionPerformed
+
+
+        model.setRowCount(0);
+
+        estanteriaNovelas.deBurbuja("ISBN");
+        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
+            model.addRow(new Object[]{
+                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
+                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+            });
+        }
+
+    }//GEN-LAST:event_btnOrdNum_ISBNActionPerformed
 
     /**
      * @param args the command line arguments
