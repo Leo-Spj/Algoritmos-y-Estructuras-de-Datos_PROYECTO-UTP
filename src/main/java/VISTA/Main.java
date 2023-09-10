@@ -1,7 +1,6 @@
 package VISTA;
 
 import CONTROL.ControlEstanteria;
-import MODELO.CLASIFICACION.LibroDeTexto;
 import MODELO.CLASIFICACION.Novela;
 
 public class Main {

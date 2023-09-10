@@ -1,13 +1,11 @@
 package MODELO;
 
 public abstract class Libro {
+
     private String titulo;
     private String autor;
     private int anioPublicacion;
-
     private long ISBN;
-    private boolean prestado = false;
-    private double precio;
 
 
     public Libro(String titulo, String autor, int anioPublicacion, long ISBN) {
@@ -20,7 +18,7 @@ public abstract class Libro {
     public abstract Libro getLibro();
 
     public String getTitulo(){
-        return this.titulo; // + " (" + this.anioPublicacion + ")" + " - " + this.autor;
+        return this.titulo;
     }
 
     public void setTitulo(String titulo) {
@@ -41,22 +39,6 @@ public abstract class Libro {
 
     public void setAnioPublicacion(int anioPublicacion) {
         this.anioPublicacion = anioPublicacion;
-    }
-
-    public boolean isPrestado() {
-        return prestado;
-    }
-
-    public void setPrestado(boolean prestado) {
-        this.prestado = prestado;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
     }
 
     public long getISBN() {

@@ -5,6 +5,7 @@ import MODELO.Libro;
 public class Novela extends Libro{
 
     String genero;
+
     public Novela(String titulo, String autor, int anioPublicacion, long ISBN, String genero) {
         super(titulo, autor, anioPublicacion, ISBN);
         this.genero = genero;

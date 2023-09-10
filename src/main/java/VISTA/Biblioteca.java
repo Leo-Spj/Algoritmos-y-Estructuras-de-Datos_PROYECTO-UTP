@@ -5,7 +5,6 @@
 package VISTA;
 
 import CONTROL.ControlEstanteria;
-import MODELO.CLASIFICACION.LibroDeTexto;
 import MODELO.CLASIFICACION.Novela;
 
 import javax.swing.table.DefaultTableModel;
@@ -21,18 +20,15 @@ public class Biblioteca extends javax.swing.JFrame {
      */
 
     DefaultTableModel model = new DefaultTableModel();
-
-    // Estanterías
     ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
 
 
     public Biblioteca() {
         initComponents();
-        mostrarTabla();
-//        estanteriaNovelas.ordenamiento.imprimirListaLibros();
+        datosPruebaEnTabla();
     }
 
-    public void mostrarTabla(){
+    public void datosPruebaEnTabla(){
 
         // Agregando novelas a la estantería
         estanteriaNovelas.agregarLibro(new Novela("Harry Potter y la piedra filosofal", "J.K. Rowling", 1997, 9788478884454L, "Fantasía"));
