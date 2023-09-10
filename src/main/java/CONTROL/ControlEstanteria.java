@@ -7,8 +7,19 @@ public class ControlEstanteria<L extends Libro>  {
 
     private Libro listaLibros[] = new Libro[1] ;
 
-//    public Ordenamiento ordenamiento = new Ordenamiento(this.listaLibros);
+    public Libro obtenerUnLibro(int posicion){
+        return listaLibros[posicion];
+    }
 
+    public Libro[] getListaLibros() { //obtener libros en modo array de objetos, usar para mostrar en JTable
+        return listaLibros;
+    }
+
+    public void listarLibros(){ // Este listado es para mostrar en consola, no usar, solo pruebas
+        for(Libro libro : listaLibros){
+            System.out.println(libro.getTitulo());
+        }
+    }
 
     public void agregarLibro(L libro){
         if(listaLibros[listaLibros.length-1] == null){
@@ -38,12 +49,11 @@ public class ControlEstanteria<L extends Libro>  {
                     AuxDerecha[j] = listaLibros[j + i + 1];
                 }
 
-                listaLibros = new Libro[AuxIzquierda.length + AuxDerecha.length];
+                listaLibros = new Libro[listaLibros.length - 1];
 
                 for(int j = 0; j < AuxIzquierda.length; j++){
                     listaLibros[j] = AuxIzquierda[j];
                 }
-
                 for(int j = 0; j < AuxDerecha.length; j++){
                     listaLibros[j + AuxIzquierda.length] = AuxDerecha[j];
                 }
@@ -53,22 +63,8 @@ public class ControlEstanteria<L extends Libro>  {
         }
     }
 
-    public L obtenerUnLibro(int posicion){
-        return (L) listaLibros[posicion];
-    }
 
-    public void listarLibros(){ // Este listado es para mostrar en consola, no usar, solo pruebas
-        for(Libro libro : listaLibros){
-            System.out.println(libro.getTitulo());
-        }
-    }
-
-
-    public Libro[] getListaLibros() { //obtener libros en modo array de objetos, usar para mostrar en JTable
-        return listaLibros;
-    }
-
-
+    // ------------------ Métodos de ordenamiento : ------------------
     public void deBurbuja(String atributo) {
         //se ordenana por anioPublicacion:
         for (int i = 0; i < listaLibros.length; i++){
@@ -96,6 +92,10 @@ public class ControlEstanteria<L extends Libro>  {
         return new int[0];
     }
 
+
+
+
+    // ------------------ Métodos de búsqueda : ------------------
 
     public int busquedaOrdenada_String(String valor, String atributo) {
         return 0;

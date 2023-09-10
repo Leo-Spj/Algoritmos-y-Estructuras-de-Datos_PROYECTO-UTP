@@ -5,7 +5,6 @@ import MODELO.Libro;
 public class LibroDeTexto extends Libro{
 
     String asignatura;
-
     public LibroDeTexto(String titulo, String autor, int anioPublicacion, long ISBN, String asignatura) {
         super(titulo, autor, anioPublicacion, ISBN);
         this.asignatura = asignatura;
@@ -21,6 +20,6 @@ public class LibroDeTexto extends Libro{
 
     @Override
     public Libro getLibro() {
-        return null;
+        return this;
     }
 }
