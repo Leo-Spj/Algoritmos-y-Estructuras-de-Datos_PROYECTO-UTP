@@ -578,7 +578,7 @@ public class Biblioteca extends javax.swing.JFrame {
 
         model.setRowCount(0);
 
-        estanteriaNovelas.deBurbuja_String("autor");
+        estanteriaNovelas.deBurbuja("autor");
         for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
             model.addRow(new Object[]{
                     estanteriaNovelas.obtenerUnLibro(i).getTitulo(),

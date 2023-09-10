@@ -83,13 +83,6 @@ public class ControlEstanteria<L extends Libro>  {
                         listaLibros[j+1] = aux;
                     }
                 }
-            }
-        }
-    }
-
-    public void deBurbuja_String(String atributo){
-        for (int i = 0; i < listaLibros.length; i++){
-            for (int j = 0; j < listaLibros.length-1; j++){
                 if (atributo.equals("titulo")){
                     if (listaLibros[j].getTitulo().compareTo(listaLibros[j+1].getTitulo()) > 0){
                         Libro aux = listaLibros[j];
