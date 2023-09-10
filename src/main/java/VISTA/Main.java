@@ -42,31 +42,6 @@ public class Main {
         estanteriaLibrosTexto.agregarLibro(libroDeTexto5);
         estanteriaLibrosTexto.agregarLibro(libroDeTexto6);
 
-        // Estableciendo precios de Novelas
-        novela1.establecerPrecio(40);
-        novela2.establecerPrecio(50);
-        novela3.establecerPrecio(30);
-        novela4.establecerPrecio(40);
-        novela5.establecerPrecio(50);
-        novela6.establecerPrecio(60);
-
-        // Estableciendo precios de Libros de texto
-        libroDeTexto1.establecerPrecio(50);
-        libroDeTexto2.establecerPrecio(50);
-        libroDeTexto3.establecerPrecio(30);
-        libroDeTexto4.establecerPrecio(40);
-        libroDeTexto5.establecerPrecio(50);
-        libroDeTexto6.establecerPrecio(60);
-
-
-        // Prestando libros
-//        estanteriaNovelas.obtenerUnLibro(2).prestar();
-//        estanteriaNovelas.obtenerUnLibro(2).estaPrestado();
-//        estanteriaNovelas.obtenerUnLibro(2).prestar();
-//        estanteriaNovelas.obtenerUnLibro(2).devolver();
-
-        // Elimino un libro de texto
-//        estanteriaLibrosTexto.removerLibro(libroDeTexto1);
 
 
         // Listando novelas

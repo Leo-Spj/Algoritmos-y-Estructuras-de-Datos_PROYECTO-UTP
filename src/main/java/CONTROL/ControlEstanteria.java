@@ -1,8 +1,6 @@
 package CONTROL;
 
 
-import CONTROL.ALGORITMOS.Busqueda;
-import CONTROL.ALGORITMOS.Ordenamiento;
 import MODELO.Libro;
 
 public class ControlEstanteria<L extends Libro>  {
@@ -101,5 +99,37 @@ public class ControlEstanteria<L extends Libro>  {
 
     public int busquedaOrdenada_String(String valor, String atributo) {
         return 0;
+    }
+
+    public int busquedaOrdenada(int array[], int valor){
+
+        //ordenamiento por seleccion
+        int aux;
+        int indice;
+        for (int i = 0; i < array.length; i++){
+            indice = i;
+            int pequeño = array[i];
+            for (int j = i; j < array.length; j++){
+                if (array[j] < pequeño){
+                    pequeño = array[j];
+                    indice = j;
+                }
+            }
+            aux = array[i];
+            array[i] = array[indice];
+            array[indice] = aux;
+        }
+
+        //Busqueda binaria
+        int indMayor = array.length-1;
+        int ind = 0;
+        while(ind<indMayor && valor != array[ind]) {
+            ind++;
+        }
+        if(valor == array[ind]){
+            return ind;
+        }else{
+            return -1;
+        }
     }
 }

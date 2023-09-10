@@ -4,7 +4,6 @@
  */
 package VISTA;
 
-import CONTROL.ALGORITMOS.Busqueda;
 import CONTROL.ControlEstanteria;
 import MODELO.CLASIFICACION.LibroDeTexto;
 import MODELO.CLASIFICACION.Novela;
