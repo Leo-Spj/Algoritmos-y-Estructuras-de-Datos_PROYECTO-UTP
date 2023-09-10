@@ -7,8 +7,13 @@ public class ControlEstanteria<L extends Libro>  {
 
     private Libro listaLibros[] = new Libro[1] ;
 
-    public Libro obtenerUnLibro(int posicion){
-        return listaLibros[posicion];
+    public L obtenerUnLibro(long isbn){
+        for(Libro libro : listaLibros){
+            if(libro.getISBN() == isbn){
+                return (L) libro;
+            }
+        }
+        return null;
     }
 
     public Libro[] getListaLibros() { //obtener libros en modo array de objetos, usar para mostrar en JTable
@@ -147,21 +152,6 @@ public class ControlEstanteria<L extends Libro>  {
             return -1;
         }
     }
-
-    //Busqueda secuencial de un numero en un array de objetos, si el numero es 3 y el valor a buscar es 34793 lo agrega a un nuevo array y
-    /**
-     ejemplo:
-     valoresArray = [1321, 3452,3246,4564, 3456]
-
-     si busco el 3 devuelve un array con los que comienzan con 3: [3246, 3456]
-     si busco el 34 devuelve un array con los que comienzan con 34: [3452, 3456]
-     si busco el 45 devuelve un array con los que comienzan con 45: [4564]
-
-     en este caso se devuelven objetos de tipo Libro,
-     */
-
-    // recuerda que basta con que el primer digito sea igual para que se agregue al array de resultados
-    // buscando por isbn
 
     public Libro[] busquedaSecuencial(String atributo, String buscar){
         Libro[] resultados = new Libro[0];

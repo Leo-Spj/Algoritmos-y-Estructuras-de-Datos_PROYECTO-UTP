@@ -77,10 +77,12 @@ public class Biblioteca extends javax.swing.JFrame {
 
         for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
             model.addRow(new Object[]{
-                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
-                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+
+                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
+                    estanteriaNovelas.getListaLibros()[i].getAutor(),
+                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
+                    estanteriaNovelas.getListaLibros()[i].getISBN()
+
             });
         }
 
@@ -508,10 +510,12 @@ public class Biblioteca extends javax.swing.JFrame {
         estanteriaNovelas.deBurbuja("anioPublicacion"); // "anioPublicacion
         for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
             model.addRow(new Object[]{
-                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
-                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+
+                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
+                    estanteriaNovelas.getListaLibros()[i].getAutor(),
+                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
+                    estanteriaNovelas.getListaLibros()[i].getISBN()
+
             });
         }
 
@@ -525,10 +529,12 @@ public class Biblioteca extends javax.swing.JFrame {
         estanteriaNovelas.deBurbuja("ISBN");
         for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
             model.addRow(new Object[]{
-                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
-                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+
+                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
+                    estanteriaNovelas.getListaLibros()[i].getAutor(),
+                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
+                    estanteriaNovelas.getListaLibros()[i].getISBN()
+
             });
         }
 
@@ -561,7 +567,14 @@ public class Biblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxBuscarLibrosActionPerformed
 
     private void btnEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibroActionPerformed
-        // TODO add your handling code here:
+
+        int filaSeleccionada = tblLibrosEstante.getSelectedRow();
+        long isbn = Long.parseLong(tblLibrosEstante.getValueAt(filaSeleccionada, 3).toString());
+
+        estanteriaNovelas.removerLibro(estanteriaNovelas.obtenerUnLibro(isbn));
+
+        model.removeRow(filaSeleccionada);
+
     }//GEN-LAST:event_btnEliminarLibroActionPerformed
 
     private void btnOrdString_TituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdString_TituloActionPerformed
@@ -571,10 +584,10 @@ public class Biblioteca extends javax.swing.JFrame {
         estanteriaNovelas.porSeleccion_String("titulo");
         for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
             model.addRow(new Object[]{
-                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
-                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
+                    estanteriaNovelas.getListaLibros()[i].getAutor(),
+                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
+                    estanteriaNovelas.getListaLibros()[i].getISBN()
             });
         }
     }//GEN-LAST:event_btnOrdString_TituloActionPerformed
@@ -586,18 +599,15 @@ public class Biblioteca extends javax.swing.JFrame {
         estanteriaNovelas.deBurbuja("autor");
         for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
             model.addRow(new Object[]{
-                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
-                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
-                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
+                    estanteriaNovelas.getListaLibros()[i].getAutor(),
+                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
+                    estanteriaNovelas.getListaLibros()[i].getISBN()
             });
         }
     }//GEN-LAST:event_btnOrdString_AutorActionPerformed
 
     private void txtBuscarLibrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosKeyTyped
-
-        // por el combobox cbxBuscarLibros
-        // si está seleccionado "ISBN" entonces buscar por ISBN
 
         String atributo = cbxBuscarLibros.getSelectedItem().toString();
         String valor = txtBuscarLibros.getText();
