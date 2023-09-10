@@ -65,6 +65,7 @@ public class ControlEstanteria<L extends Libro>  {
 
 
     // ------------------ Métodos de ordenamiento : ------------------
+
     public void deBurbuja(String atributo) {
         //se ordenana por anioPublicacion:
         for (int i = 0; i < listaLibros.length; i++){
@@ -86,13 +87,55 @@ public class ControlEstanteria<L extends Libro>  {
         }
     }
 
-
-
-    public int[] porSelección() {
-        return new int[0];
+    public void deBurbuja_String(String atributo){
+        for (int i = 0; i < listaLibros.length; i++){
+            for (int j = 0; j < listaLibros.length-1; j++){
+                if (atributo.equals("titulo")){
+                    if (listaLibros[j].getTitulo().compareTo(listaLibros[j+1].getTitulo()) > 0){
+                        Libro aux = listaLibros[j];
+                        listaLibros[j] = listaLibros[j+1];
+                        listaLibros[j+1] = aux;
+                    }
+                } else if (atributo.equals("autor")){
+                    if (listaLibros[j].getAutor().compareTo(listaLibros[j+1].getAutor()) > 0){
+                        Libro aux = listaLibros[j];
+                        listaLibros[j] = listaLibros[j+1];
+                        listaLibros[j+1] = aux;
+                    }
+                }
+            }
+        }
     }
 
-
+    public void porSeleccion_String(String atributo){
+        int aux;
+        int indice;
+        for (int i = 0; i < listaLibros.length; i++){
+            indice = i;
+            String pequeño = "";
+            if (atributo.equals("titulo")){
+                pequeño = listaLibros[i].getTitulo();
+            } else if (atributo.equals("autor")) {
+                pequeño = listaLibros[i].getAutor();
+            }
+            for (int j = i; j < listaLibros.length; j++){
+                if (atributo.equals("titulo")){
+                    if (listaLibros[j].getTitulo().compareTo(pequeño) < 0){
+                        pequeño = listaLibros[j].getTitulo();
+                        indice = j;
+                    }
+                } else if (atributo.equals("autor")) {
+                    if (listaLibros[j].getAutor().compareTo(pequeño) < 0) {
+                        pequeño = listaLibros[j].getAutor();
+                        indice = j;
+                    }
+                }
+            }
+            Libro auxLibro = listaLibros[i];
+            listaLibros[i] = listaLibros[indice];
+            listaLibros[indice] = auxLibro;
+        }
+    }
 
 
     // ------------------ Métodos de búsqueda : ------------------

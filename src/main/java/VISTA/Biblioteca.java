@@ -341,9 +341,19 @@ public class Biblioteca extends javax.swing.JFrame {
 
         btnOrdString_Titulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnOrdString_Titulo.setText("Titulo");
+        btnOrdString_Titulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdString_TituloActionPerformed(evt);
+            }
+        });
 
         btnOrdString_Autor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnOrdString_Autor.setText("Autor");
+        btnOrdString_Autor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdString_AutorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -548,6 +558,36 @@ public class Biblioteca extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnOrdString_TituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdString_TituloActionPerformed
+
+        model.setRowCount(0);
+
+        estanteriaNovelas.porSeleccion_String("titulo");
+        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
+            model.addRow(new Object[]{
+                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
+                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+            });
+        }
+    }//GEN-LAST:event_btnOrdString_TituloActionPerformed
+
+    private void btnOrdString_AutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdString_AutorActionPerformed
+
+        model.setRowCount(0);
+
+        estanteriaNovelas.deBurbuja_String("autor");
+        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
+            model.addRow(new Object[]{
+                    estanteriaNovelas.obtenerUnLibro(i).getTitulo(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAutor(),
+                    estanteriaNovelas.obtenerUnLibro(i).getAnioPublicacion(),
+                    estanteriaNovelas.obtenerUnLibro(i).getISBN()
+            });
+        }
+    }//GEN-LAST:event_btnOrdString_AutorActionPerformed
 
     /**
      * @param args the command line arguments
