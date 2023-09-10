@@ -133,30 +133,9 @@ public class ControlEstanteria<L extends Libro>  {
 
     // ------------------ Métodos de búsqueda : ------------------
 
-    public int busquedaOrdenada_String(String valor, String atributo) {
-        return 0;
-    }
-
     public int busquedaOrdenada(int array[], int valor){
 
-        //ordenamiento por seleccion
-        int aux;
-        int indice;
-        for (int i = 0; i < array.length; i++){
-            indice = i;
-            int pequeño = array[i];
-            for (int j = i; j < array.length; j++){
-                if (array[j] < pequeño){
-                    pequeño = array[j];
-                    indice = j;
-                }
-            }
-            aux = array[i];
-            array[i] = array[indice];
-            array[indice] = aux;
-        }
-
-        //Busqueda binaria
+        //Busqueda secuencial
         int indMayor = array.length-1;
         int ind = 0;
         while(ind<indMayor && valor != array[ind]) {
@@ -167,5 +146,55 @@ public class ControlEstanteria<L extends Libro>  {
         }else{
             return -1;
         }
+    }
+
+    //Busqueda secuencial de un numero en un array de objetos, si el numero es 3 y el valor a buscar es 34793 lo agrega a un nuevo array y
+    /**
+     ejemplo:
+     valoresArray = [1321, 3452,3246,4564, 3456]
+
+     si busco el 3 devuelve un array con los que comienzan con 3: [3246, 3456]
+     si busco el 34 devuelve un array con los que comienzan con 34: [3452, 3456]
+     si busco el 45 devuelve un array con los que comienzan con 45: [4564]
+
+     en este caso se devuelven objetos de tipo Libro,
+     */
+
+    // recuerda que basta con que el primer digito sea igual para que se agregue al array de resultados
+    // buscando por isbn
+
+    public Libro[] busquedaSecuencial(String atributo, String buscar){
+        Libro[] resultados = new Libro[0];
+        for (int i = 0; i < listaLibros.length; i++){
+            if (atributo.equals("Titulo")){
+                if (listaLibros[i].getTitulo().toLowerCase().indexOf(buscar.toLowerCase()) != -1){
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++){
+                        aux[j] = resultados[j];
+                    }
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
+            } else if (atributo.equals("ISBN")){
+                if (String.valueOf(listaLibros[i].getISBN()).indexOf(buscar) != -1){
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++){
+                        aux[j] = resultados[j];
+                    }
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
+            } else if (atributo.equals("Autor")){
+                if (listaLibros[i].getAutor().toLowerCase().indexOf(buscar.toLowerCase()) != -1){
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++){
+                        aux[j] = resultados[j];
+                    }
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
+            }
+        }
+        return resultados;
     }
 }

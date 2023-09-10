@@ -6,6 +6,7 @@ package VISTA;
 
 import CONTROL.ControlEstanteria;
 import MODELO.CLASIFICACION.Novela;
+import MODELO.Libro;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -112,10 +113,10 @@ public class Biblioteca extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnEliminarLibro = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        cbxBuscarEliminar = new javax.swing.JComboBox<>();
-        txtBuscarEliminar = new javax.swing.JTextField();
+        cbxBuscarLibros = new javax.swing.JComboBox<>();
+        txtBuscarLibros = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnOrdNum_AnioPublic = new javax.swing.JButton();
         btnOrdNum_ISBN = new javax.swing.JButton();
@@ -179,26 +180,31 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel9.setText("Eliminar Libro");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarLibro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEliminarLibro.setText("Eliminar");
+        btnEliminarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEliminarLibroActionPerformed(evt);
             }
         });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Buscar por:");
 
-        cbxBuscarEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxBuscarEliminar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN" }));
-        cbxBuscarEliminar.addActionListener(new java.awt.event.ActionListener() {
+        cbxBuscarLibros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxBuscarLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN" }));
+        cbxBuscarLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxBuscarEliminarActionPerformed(evt);
+                cbxBuscarLibrosActionPerformed(evt);
             }
         });
 
-        txtBuscarEliminar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscarLibros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscarLibros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarLibrosKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -231,15 +237,14 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel11)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(cbxBuscarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbxBuscarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtBuscarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtBuscarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarLibro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -257,11 +262,11 @@ public class Biblioteca extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbxBuscarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtBuscarEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbxBuscarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBuscarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39))))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel8)
@@ -551,13 +556,13 @@ public class Biblioteca extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void cbxBuscarEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxBuscarEliminarActionPerformed
+    private void cbxBuscarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxBuscarLibrosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxBuscarEliminarActionPerformed
+    }//GEN-LAST:event_cbxBuscarLibrosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEliminarLibroActionPerformed
 
     private void btnOrdString_TituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdString_TituloActionPerformed
 
@@ -588,6 +593,65 @@ public class Biblioteca extends javax.swing.JFrame {
             });
         }
     }//GEN-LAST:event_btnOrdString_AutorActionPerformed
+
+    private void txtBuscarLibrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosKeyTyped
+
+        // por el combobox cbxBuscarLibros
+        // si está seleccionado "ISBN" entonces buscar por ISBN
+
+        String atributo = cbxBuscarLibros.getSelectedItem().toString();
+        String valor = txtBuscarLibros.getText();
+
+        if(atributo.equals("ISBN")){
+
+            Libro encontrado[] = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            model.setRowCount(0);
+
+            for (int i = 0; i < encontrado.length; i++) {
+                model.addRow(new Object[]{
+                        encontrado[i].getTitulo(),
+                        encontrado[i].getAutor(),
+                        encontrado[i].getAnioPublicacion(),
+                        encontrado[i].getISBN()
+                });
+            }
+        }
+
+        if (atributo.equals("Titulo")) {
+
+            Libro encontrado[] = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            model.setRowCount(0);
+
+            for (int i = 0; i < encontrado.length; i++) {
+                model.addRow(new Object[]{
+                        encontrado[i].getTitulo(),
+                        encontrado[i].getAutor(),
+                        encontrado[i].getAnioPublicacion(),
+                        encontrado[i].getISBN()
+                });
+            }
+        }
+
+        if (atributo.equals("Autor")) {
+
+            Libro encontrado[] = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            model.setRowCount(0);
+
+            for (int i = 0; i < encontrado.length; i++) {
+                model.addRow(new Object[]{
+                        encontrado[i].getTitulo(),
+                        encontrado[i].getAutor(),
+                        encontrado[i].getAnioPublicacion(),
+                        encontrado[i].getISBN()
+                });
+            }
+        }
+
+
+    }//GEN-LAST:event_txtBuscarLibrosKeyTyped
 
     /**
      * @param args the command line arguments
@@ -625,12 +689,12 @@ public class Biblioteca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnOrdNum_AnioPublic;
     private javax.swing.JButton btnOrdNum_ISBN;
     private javax.swing.JButton btnOrdString_Autor;
     private javax.swing.JButton btnOrdString_Titulo;
-    private javax.swing.JComboBox<String> cbxBuscarEliminar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> cbxBuscarLibros;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -657,7 +721,7 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JTable tblLibrosEstante;
     private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtBuscarEliminar;
+    private javax.swing.JTextField txtBuscarLibros;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtISBN;
     private javax.swing.JTextField txtTitulo;
