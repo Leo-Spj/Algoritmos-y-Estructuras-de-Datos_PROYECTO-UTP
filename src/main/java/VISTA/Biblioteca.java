@@ -7,8 +7,12 @@ package VISTA;
 import CONTROL.ControlEstanteria;
 import MODELO.CLASIFICACION.Novela;
 import MODELO.Libro;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.swing.table.DefaultTableModel;
+import java.io.File;
+import java.io.PrintWriter;
 
 /**
  *
@@ -20,6 +24,7 @@ public class Biblioteca extends javax.swing.JFrame {
      * Creates new form Biblioteca
      */
 
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
     DefaultTableModel model = new DefaultTableModel();
     ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
 
@@ -27,6 +32,18 @@ public class Biblioteca extends javax.swing.JFrame {
     public Biblioteca() {
         initComponents();
         datosPruebaEnTabla();
+        guardarEnFichero(estanteriaNovelas);
+    }
+
+    public void guardarEnFichero(ControlEstanteria estanteria){
+
+        try(PrintWriter pw = new PrintWriter(new File("src/main/java/estanteriaNovelas.json"))){
+
+            pw.write(gson.toJson(estanteria.getListaLibros()));
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void datosPruebaEnTabla(){
