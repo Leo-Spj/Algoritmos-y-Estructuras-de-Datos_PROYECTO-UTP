@@ -15,12 +15,12 @@ public class Main {
         Novela novela5 = new Novela("El nombre del viento", "Patrick Rothfuss", 2007, 9872163, "Fantasía");
         Novela novela6 = new Novela("El retrato de Dorian Gray", "Oscar Wilde", 1890, 283740, "Terror");
         // Creando libros de texto
-        LibroDeTexto libroDeTexto1 = new LibroDeTexto("Matemáticas", "Rafael Espinoza", 2000, 2343426, "Matemáticas");
-        LibroDeTexto libroDeTexto2 = new LibroDeTexto("Física", "Alberto A", 2018, 245897324, "Física");
-        LibroDeTexto libroDeTexto3 = new LibroDeTexto("Química", "Beto B", 1998, 2354934, "Química");
-        LibroDeTexto libroDeTexto4 = new LibroDeTexto("Biología", "Carlos C", 2010, 85377934, "Biología");
-        LibroDeTexto libroDeTexto5 = new LibroDeTexto("Historia", "Daniel D", 2005, 36793406,"Historia");
-        LibroDeTexto libroDeTexto6 = new LibroDeTexto("Geografía", "Eduardo E", 1994, 2984320, "Geografía");
+        LibroDeTexto libroDeTexto1 = new LibroDeTexto("Numeros y Matemáticas", "Rafael Espinoza", 2000, 2343426, "Matemáticas");
+        LibroDeTexto libroDeTexto2 = new LibroDeTexto("Frascos en Física", "Alberto A", 2018, 245897324, "Física");
+        LibroDeTexto libroDeTexto3 = new LibroDeTexto("La Reaccion Química", "Beto B", 1998, 2354934, "Química");
+        LibroDeTexto libroDeTexto4 = new LibroDeTexto("Animales y Biología", "Carlos C", 2010, 85377934, "Biología");
+        LibroDeTexto libroDeTexto5 = new LibroDeTexto("Conquista e Historia", "Daniel D", 2005, 36793406,"Historia");
+        LibroDeTexto libroDeTexto6 = new LibroDeTexto("Mares y Geografía", "Eduardo E", 1994, 2984320, "Geografía");
 
         // Creando estanterías
         ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
@@ -60,13 +60,13 @@ public class Main {
 
 
         // Prestando libros
-        estanteriaNovelas.obtenerUnLibro(2).prestar();
-        estanteriaNovelas.obtenerUnLibro(2).estaPrestado();
-        estanteriaNovelas.obtenerUnLibro(2).prestar();
-        estanteriaNovelas.obtenerUnLibro(2).devolver();
+//        estanteriaNovelas.obtenerUnLibro(2).prestar();
+//        estanteriaNovelas.obtenerUnLibro(2).estaPrestado();
+//        estanteriaNovelas.obtenerUnLibro(2).prestar();
+//        estanteriaNovelas.obtenerUnLibro(2).devolver();
 
         // Elimino un libro de texto
-        estanteriaLibrosTexto.removerLibro(libroDeTexto1);
+//        estanteriaLibrosTexto.removerLibro(libroDeTexto1);
 
 
         // Listando novelas
@@ -80,6 +80,8 @@ public class Main {
         estanteriaLibrosTexto.deBurbuja("anioPublicacion");
         estanteriaLibrosTexto.listarLibros();
 
+
+//        estanteriaNovelas.ordenamiento.imprimirListaLibros();
 
     }
 }

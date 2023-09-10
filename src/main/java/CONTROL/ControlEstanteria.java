@@ -5,13 +5,12 @@ import CONTROL.ALGORITMOS.Busqueda;
 import CONTROL.ALGORITMOS.Ordenamiento;
 import MODELO.Libro;
 
-public class ControlEstanteria<L extends Libro> implements Ordenamiento, Busqueda {
+public class ControlEstanteria<L extends Libro>  {
 
-    private Libro listaLibros[];
+    private Libro listaLibros[] = new Libro[1] ;
 
-    public ControlEstanteria(){
-        listaLibros = new Libro[1];
-    }
+//    public Ordenamiento ordenamiento = new Ordenamiento(this.listaLibros);
+
 
     public void agregarLibro(L libro){
         if(listaLibros[listaLibros.length-1] == null){
@@ -37,7 +36,6 @@ public class ControlEstanteria<L extends Libro> implements Ordenamiento, Busqued
                 for(int j = 0; j < AuxIzquierda.length; j++){
                     AuxIzquierda[j] = listaLibros[j];
                 }
-
                 for(int j = 0; j < AuxDerecha.length; j++){
                     AuxDerecha[j] = listaLibros[j + i + 1];
                 }
@@ -72,7 +70,7 @@ public class ControlEstanteria<L extends Libro> implements Ordenamiento, Busqued
         return listaLibros;
     }
 
-    @Override
+
     public void deBurbuja(String atributo) {
         //se ordenana por anioPublicacion:
         for (int i = 0; i < listaLibros.length; i++){
@@ -95,8 +93,13 @@ public class ControlEstanteria<L extends Libro> implements Ordenamiento, Busqued
     }
 
 
-    @Override
+
     public int[] porSelección() {
         return new int[0];
+    }
+
+
+    public int busquedaOrdenada_String(String valor, String atributo) {
+        return 0;
     }
 }

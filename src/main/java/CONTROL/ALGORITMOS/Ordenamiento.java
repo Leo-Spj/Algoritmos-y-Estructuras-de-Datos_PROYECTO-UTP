@@ -1,10 +1,18 @@
 package CONTROL.ALGORITMOS;
 
-public interface Ordenamiento {
+import CONTROL.ControlEstanteria;
+import MODELO.Libro;
 
-    // Todas las clases que creemos deben ser "default"
+public class Ordenamiento extends ControlEstanteria<Libro> {
 
-    public int[] porSelección();
+    Libro listaLibros[];
+    public Ordenamiento(Libro[] listaLibros) {
+        this.listaLibros = listaLibros;
+    }
 
-    public void deBurbuja(String atributo);
+    public void imprimirListaLibros() {
+        for (int i = 0; i < this.getListaLibros().length; i++) {
+            System.out.println(this.getListaLibros()[i]);
+        }
+    }
 }

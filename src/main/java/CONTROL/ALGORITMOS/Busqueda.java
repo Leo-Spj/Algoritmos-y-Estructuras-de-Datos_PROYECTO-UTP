@@ -1,11 +1,20 @@
 package CONTROL.ALGORITMOS;
 
-public interface Busqueda {
+import CONTROL.ControlEstanteria;
+import MODELO.Libro;
+
+public class Busqueda extends ControlEstanteria<Libro> {
 
     // Todas las clases que creemos deben ser "default"
 
-    default public int busquedaOrdenada(int array[], int valor){
 
+    public static <T extends ControlEstanteria<Libro>> int funSum(int a, int b){
+        return a + b;
+    }
+
+    public int busquedaOrdenada(int array[], int valor){
+
+        //ordenamiento por seleccion
         int aux;
         int indice;
         for (int i = 0; i < array.length; i++){
@@ -22,6 +31,7 @@ public interface Busqueda {
             array[indice] = aux;
         }
 
+        //Busqueda binaria
         int indMayor = array.length-1;
         int ind = 0;
         while(ind<indMayor && valor != array[ind]) {
@@ -33,5 +43,8 @@ public interface Busqueda {
             return -1;
         }
     }
+
+    //busqueda por string abstracta
+    //public int busquedaOrdenada_String(String valor, String atributo);
 
 }
