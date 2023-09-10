@@ -106,10 +106,12 @@ public class Biblioteca extends javax.swing.JFrame {
         txtTitulo = new javax.swing.JTextField();
         txtAutor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        spnAnio = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
-        spnISBN = new javax.swing.JSpinner();
         jButton4 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        txtGenero = new javax.swing.JTextField();
+        txtAnio = new javax.swing.JTextField();
+        txtISBN = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         btnOrdNum_AnioPublic = new javax.swing.JButton();
         btnOrdNum_ISBN = new javax.swing.JButton();
@@ -145,15 +147,25 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel3.setText("Año");
 
-        spnAnio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel4.setText("ISBN");
 
-        spnISBN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton4.setText("Agregar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel7.setText("Genero");
+
+        txtGenero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtAnio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        txtISBN.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -161,23 +173,26 @@ public class Biblioteca extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(spnAnio)
-                    .addComponent(spnISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtGenero, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                    .addComponent(txtISBN)
+                    .addComponent(txtAnio))
+                .addGap(41, 41, 41)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtAutor)
-                    .addComponent(txtTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                .addContainerGap(455, Short.MAX_VALUE))
+                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(420, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,15 +202,18 @@ public class Biblioteca extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(spnAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtAutor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(spnISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
-                .addComponent(jButton4)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jLabel7)
+                    .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
@@ -441,6 +459,28 @@ public class Biblioteca extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnOrdNum_ISBNActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        String titulo = txtTitulo.getText();
+        String autor = txtAutor.getText();
+        String genero = txtGenero.getText();
+        int anio = Integer.parseInt(txtAnio.getText());
+        long ISBN = Long.parseLong(txtISBN.getText());
+
+        Novela nuevaNovela = new Novela(titulo, autor, anio, ISBN, genero);
+
+        estanteriaNovelas.agregarLibro(nuevaNovela);
+
+        model.addRow(new Object[]{
+            nuevaNovela.getTitulo(),
+            nuevaNovela.getAutor(),
+            nuevaNovela.getAnioPublicacion(),
+            nuevaNovela.getISBN()
+        });
+        
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -488,6 +528,7 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -499,10 +540,11 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JSpinner spnAnio;
-    private javax.swing.JSpinner spnISBN;
     private javax.swing.JTable tblLibrosEstante;
+    private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtAutor;
+    private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtISBN;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }
