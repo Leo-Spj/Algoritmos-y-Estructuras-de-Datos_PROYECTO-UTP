@@ -90,15 +90,21 @@ public class Biblioteca extends javax.swing.JFrame {
         model.addColumn("Autor");
         model.addColumn("Año");
         model.addColumn("ISBN");
-
-
+        model.addColumn("Genero");
+        Libro[] libros = estanteriaNovelas.getListaLibros();
+        
+        
         for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
+            Novela nov = (Novela) libros[i];
+            //nov.getGenero();
             model.addRow(new Object[]{
 
                     estanteriaNovelas.getListaLibros()[i].getTitulo(),
                     estanteriaNovelas.getListaLibros()[i].getAutor(),
                     estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
-                    estanteriaNovelas.getListaLibros()[i].getISBN()
+                    estanteriaNovelas.getListaLibros()[i].getISBN(),
+                    nov.getGenero()
+                    
 
             });
         }
