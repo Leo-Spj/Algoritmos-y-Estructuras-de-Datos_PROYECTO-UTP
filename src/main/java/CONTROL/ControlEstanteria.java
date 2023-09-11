@@ -4,8 +4,16 @@ package CONTROL;
 import MODELO.Libro;
 
 public class ControlEstanteria<L extends Libro>  {
+    
+    
 
     private Libro listaLibros[] = new Libro[1] ;
+    private int size;
+    
+    public ControlEstanteria() {
+        this.listaLibros =  new Libro[1];
+        this.size = 0;
+    }
 
     public L obtenerUnLibro(long isbn){
         for(Libro libro : listaLibros){
@@ -134,6 +142,111 @@ public class ControlEstanteria<L extends Libro>  {
             listaLibros[indice] = auxLibro;
         }
     }
+    
+    /*public void ordenarPorGeneroYAutor() {
+            mergeSortPorGenero(listaLibros, 0, size - 1);
+            mergeSortPorAutor(listaLibros, 0, size - 1);
+        }
+
+        private void mergeSortPorGenero(Libro[] lista, int izquierda, int derecha) {
+            if (izquierda < derecha) {
+                int medio = izquierda + (derecha - izquierda) / 2;
+                mergeSortPorGenero(lista, izquierda, medio);
+                mergeSortPorGenero(lista, medio + 1, derecha);
+                mergePorGenero(lista, izquierda, medio, derecha);
+            }
+        }
+
+        private void mergeSortPorAutor(Libro[] lista, int izquierda, int derecha) {
+            if (izquierda < derecha) {
+                int medio = izquierda + (derecha - izquierda) / 2;
+                mergeSortPorAutor(lista, izquierda, medio);
+                mergeSortPorAutor(lista, medio + 1, derecha);
+                mergePorAutor(lista, izquierda, medio, derecha);
+            }
+        }
+
+        private void mergePorGenero(Libro[] lista, int izquierda, int medio, int derecha) {
+            int n1 = medio - izquierda + 1;
+            int n2 = derecha - medio;
+
+            L[] izq = (L[]) new Libro[n1];
+            L[] der = (L[]) new Libro[n2];
+
+            for (int i = 0; i < n1; i++) {
+                izq[i] = lista[izquierda + i];
+            }
+
+            for (int j = 0; j < n2; j++) {
+                der[j] = lista[medio + 1 + j];
+            }
+
+            int i = 0, j = 0, k = izquierda;
+            while (i < n1 && j < n2) {
+                if (izq[i].getGenero().compareTo(der[j].getGenero()) <= 0) {
+                    lista[k] = izq[i];
+                    i++;
+                } else {
+                    lista[k] = der[j];
+                    j++;
+                }
+                k++;
+            }
+
+            while (i < n1) {
+                lista[k] = izq[i];
+                i++;
+                k++;
+            }
+
+            while (j < n2) {
+                lista[k] = der[j];
+                j++;
+                k++;
+            }
+        }
+
+        private void mergePorAutor(L[] lista, int izquierda, int medio, int derecha) {
+            int n1 = medio - izquierda + 1;
+            int n2 = derecha - medio;
+
+            L[] izq = (L[]) new Libro[n1];
+            L[] der = (L[]) new Libro[n2];
+
+            for (int i = 0; i < n1; i++) {
+                izq[i] = lista[izquierda + i];
+            }
+
+            for (int j = 0; j < n2; j++) {
+                der[j] = lista[medio + 1 + j];
+            }
+
+            int i = 0, j = 0, k = izquierda;
+            while (i < n1 && j < n2) {
+                if (izq[i].getAutor().compareTo(der[j].getAutor()) >= 0) {
+                    lista[k] = izq[i];
+                    i++;
+                } else {
+                    lista[k] = der[j];
+                    j++;
+                }
+                k++;
+            }
+
+            while (i < n1) {
+                lista[k] = izq[i];
+                i++;
+                k++;
+            }
+
+            while (j < n2) {
+                lista[k] = der[j];
+                j++;
+                k++;
+            }
+        }*/
+
+    
 
 
     // ------------------ Métodos de búsqueda : ------------------
