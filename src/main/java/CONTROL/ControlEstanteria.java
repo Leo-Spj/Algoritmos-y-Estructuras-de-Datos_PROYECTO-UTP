@@ -276,7 +276,7 @@ public class ControlEstanteria<L extends Libro> {
                     resultados = aux;
                 }
             } else if (atributo.equals("ISBN")) {
-                if (String.valueOf(listaLibros[i].getISBN()).indexOf(buscar) != -1) {
+                if (String.valueOf(listaLibros[i].getISBN()).startsWith(buscar)) {
                     Libro[] aux = new Libro[resultados.length + 1];
                     for (int j = 0; j < resultados.length; j++) {
                         aux[j] = resultados[j];
@@ -285,7 +285,7 @@ public class ControlEstanteria<L extends Libro> {
                     resultados = aux;
                 }
             } else if (atributo.equals("Autor")) {
-                if (listaLibros[i].getAutor().toLowerCase().startsWith(buscar.toLowerCase())) {
+                if (listaLibros[i].getAutor().toLowerCase().indexOf(buscar.toLowerCase()) != -1) {
                     Libro[] aux = new Libro[resultados.length + 1];
                     for (int j = 0; j < resultados.length; j++) {
                         aux[j] = resultados[j];
