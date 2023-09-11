@@ -288,7 +288,7 @@ public class ControlEstanteria<L extends Libro>  {
                     resultados = aux;
                 }
             } else if (atributo.equals("Autor")){
-                if (listaLibros[i].getAutor().toLowerCase().indexOf(buscar.toLowerCase()) != -1){
+                if (listaLibros[i].getAutor().toLowerCase().startsWith(buscar.toLowerCase())){
                     Libro[] aux = new Libro[resultados.length + 1];
                     for (int j = 0; j < resultados.length; j++){
                         aux[j] = resultados[j];
