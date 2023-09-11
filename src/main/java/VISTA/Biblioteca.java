@@ -46,6 +46,20 @@ public class Biblioteca extends javax.swing.JFrame {
         }
     }
 
+    public void rellenarTabla(){
+        Libro[] novelas = estanteriaNovelas.getListaLibros();
+        for (int i = 0; i < novelas.length; i++) {
+            Novela novela = (Novela) novelas[i];
+            model.addRow(new Object[]{
+                    novela.getTitulo(),
+                    novela.getAutor(),
+                    novela.getAnioPublicacion(),
+                    novela.getISBN(),
+                    novela.getGenero()
+            });
+        }
+    }
+
     public void datosPruebaEnTabla(){
 
         // Agregando novelas a la estantería
@@ -91,23 +105,9 @@ public class Biblioteca extends javax.swing.JFrame {
         model.addColumn("Año");
         model.addColumn("ISBN");
         model.addColumn("Genero");
-        Libro[] libros = estanteriaNovelas.getListaLibros();
-        
-        
-        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
-            Novela nov = (Novela) libros[i];
-            //nov.getGenero();
-            model.addRow(new Object[]{
 
-                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
-                    estanteriaNovelas.getListaLibros()[i].getAutor(),
-                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
-                    estanteriaNovelas.getListaLibros()[i].getISBN(),
-                    nov.getGenero()
-                    
 
-            });
-        }
+        rellenarTabla();
 
         tblLibrosEstante.setModel(model);
     }
@@ -559,16 +559,7 @@ public class Biblioteca extends javax.swing.JFrame {
         model.setRowCount(0);
 
         estanteriaNovelas.deBurbuja("anioPublicacion"); // "anioPublicacion
-        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
-            model.addRow(new Object[]{
-
-                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
-                    estanteriaNovelas.getListaLibros()[i].getAutor(),
-                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
-                    estanteriaNovelas.getListaLibros()[i].getISBN()
-
-            });
-        }
+        rellenarTabla();
 
     }//GEN-LAST:event_btnOrdNum_AnioPublicActionPerformed
 
@@ -578,16 +569,7 @@ public class Biblioteca extends javax.swing.JFrame {
         model.setRowCount(0);
 
         estanteriaNovelas.deBurbuja("ISBN");
-        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
-            model.addRow(new Object[]{
-
-                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
-                    estanteriaNovelas.getListaLibros()[i].getAutor(),
-                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
-                    estanteriaNovelas.getListaLibros()[i].getISBN()
-
-            });
-        }
+        rellenarTabla();
 
     }//GEN-LAST:event_btnOrdNum_ISBNActionPerformed
 
@@ -633,14 +615,7 @@ public class Biblioteca extends javax.swing.JFrame {
         model.setRowCount(0);
 
         estanteriaNovelas.porSeleccion_String("titulo");
-        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
-            model.addRow(new Object[]{
-                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
-                    estanteriaNovelas.getListaLibros()[i].getAutor(),
-                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
-                    estanteriaNovelas.getListaLibros()[i].getISBN()
-            });
-        }
+        rellenarTabla();
     }//GEN-LAST:event_btnOrdString_TituloActionPerformed
 
     private void btnOrdString_AutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdString_AutorActionPerformed
@@ -648,14 +623,7 @@ public class Biblioteca extends javax.swing.JFrame {
         model.setRowCount(0);
 
         estanteriaNovelas.deBurbuja("autor");
-        for (int i = 0; i < estanteriaNovelas.getListaLibros().length; i++) {
-            model.addRow(new Object[]{
-                    estanteriaNovelas.getListaLibros()[i].getTitulo(),
-                    estanteriaNovelas.getListaLibros()[i].getAutor(),
-                    estanteriaNovelas.getListaLibros()[i].getAnioPublicacion(),
-                    estanteriaNovelas.getListaLibros()[i].getISBN()
-            });
-        }
+        rellenarTabla();
     }//GEN-LAST:event_btnOrdString_AutorActionPerformed
 
     private void txtBuscarLibrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosKeyTyped
@@ -664,49 +632,54 @@ public class Biblioteca extends javax.swing.JFrame {
         String valor = txtBuscarLibros.getText();
 
         if(atributo.equals("ISBN")){
-
-            Libro encontrado[] = estanteriaNovelas.busquedaSecuencial(atributo, valor);
-
             model.setRowCount(0);
 
-            for (int i = 0; i < encontrado.length; i++) {
+            Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            for(int i = 0; i < encontrado.length; i++){
+                Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
-                        encontrado[i].getTitulo(),
-                        encontrado[i].getAutor(),
-                        encontrado[i].getAnioPublicacion(),
-                        encontrado[i].getISBN()
+                    novela.getTitulo(),
+                    novela.getAutor(),
+                    novela.getAnioPublicacion(),
+                    novela.getISBN(),
+                    novela.getGenero()
                 });
             }
         }
 
         if (atributo.equals("Titulo")) {
 
-            Libro encontrado[] = estanteriaNovelas.busquedaSecuencial(atributo, valor);
-
             model.setRowCount(0);
 
-            for (int i = 0; i < encontrado.length; i++) {
+            Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            for(int i = 0; i < encontrado.length; i++){
+                Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
-                        encontrado[i].getTitulo(),
-                        encontrado[i].getAutor(),
-                        encontrado[i].getAnioPublicacion(),
-                        encontrado[i].getISBN()
+                        novela.getTitulo(),
+                        novela.getAutor(),
+                        novela.getAnioPublicacion(),
+                        novela.getISBN(),
+                        novela.getGenero()
                 });
             }
         }
 
         if (atributo.equals("Autor")) {
 
-            Libro encontrado[] = estanteriaNovelas.busquedaSecuencial(atributo, valor);
-
             model.setRowCount(0);
 
-            for (int i = 0; i < encontrado.length; i++) {
+            Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            for(int i = 0; i < encontrado.length; i++){
+                Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
-                        encontrado[i].getTitulo(),
-                        encontrado[i].getAutor(),
-                        encontrado[i].getAnioPublicacion(),
-                        encontrado[i].getISBN()
+                        novela.getTitulo(),
+                        novela.getAutor(),
+                        novela.getAnioPublicacion(),
+                        novela.getISBN(),
+                        novela.getGenero()
                 });
             }
         }
