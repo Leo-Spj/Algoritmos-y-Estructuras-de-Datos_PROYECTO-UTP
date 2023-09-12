@@ -201,68 +201,6 @@ public class ControlEstanteria<L extends Libro> {
             return -1;
         }
     }
-
-
-    /*public Libro[] busquedaSecuencial(String atributo, String buscar){
-        Libro[] resultados = new Libro[0];
-        //Novela[] nov = new Novela[0];
-        for (int i = 0; i < listaLibros.length; i++){
-            if (atributo.equals("Titulo")){
-                if (listaLibros[i].getTitulo().toLowerCase().indexOf(buscar.toLowerCase()) != -1){
-=======
-    public Libro[] busquedaSecuencial(String atributo, String buscar) {
-        Libro[] resultados = new Libro[0];
-        for (int i = 0; i < listaLibros.length; i++) {
-            if (atributo.equals("Titulo")) {
-                if (listaLibros[i].getTitulo().toLowerCase().indexOf(buscar.toLowerCase()) != -1) {
->>>>>>> 82bd7c034b184f70bf5227dcb3cda46d304eac60
-                    Libro[] aux = new Libro[resultados.length + 1];
-                    for (int j = 0; j < resultados.length; j++) {
-                        aux[j] = resultados[j];
-                    }
-                    aux[resultados.length] = listaLibros[i];
-                    resultados = aux;
-                }
-            } else if (atributo.equals("ISBN")) {
-                if (String.valueOf(listaLibros[i].getISBN()).startsWith(buscar)) {
-                    Libro[] aux = new Libro[resultados.length + 1];
-                    for (int j = 0; j < resultados.length; j++) {
-                        aux[j] = resultados[j];
-                    }
-                    aux[resultados.length] = listaLibros[i];
-                    resultados = aux;
-                }
-            } else if (atributo.equals("Autor")) {
-                if (listaLibros[i].getAutor().toLowerCase().indexOf(buscar.toLowerCase()) != -1) {
-                    Libro[] aux = new Libro[resultados.length + 1];
-                    for (int j = 0; j < resultados.length; j++) {
-                        aux[j] = resultados[j];
-                    }
-                    aux[resultados.length] = listaLibros[i];
-                    resultados = aux;
-                }
-            }
-            else if (atributo.equals("Genero")){
-                if (genero[i].getGenero().toLowerCase().startsWith(buscar.toLowerCase())){
-                    for (int j = 0; j < listaLibros.length; j++) {
-                    if (listaLibros[j] instanceof Novela) {
-                        Novela novela = (Novela) listaLibros[i];
-                        if (novela.getGenero().toLowerCase().startsWith(buscar.toLowerCase())) {
-                            Libro[] aux = new Libro[resultados.length + 1];
-                            for (int k = 0; k < resultados.length; k++) {
-                                aux[k] = resultados[k];
-                            }
-                            aux[resultados.length] = listaLibros[j];
-                            resultados = aux;
-                        }
-                    }
-                }
-            }
-        }
-        
-        }
-        return resultados;
-    }*/
     public Libro[] busquedaSecuencial(String atributo, String buscar) {
             Libro[] resultados = new Libro[0];
 
