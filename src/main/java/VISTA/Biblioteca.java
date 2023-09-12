@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -742,9 +743,7 @@ public class Biblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAscDesActionPerformed
 
     private void txtAnio2FilterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnio2FilterKeyTyped
-
-
-
+        
     }//GEN-LAST:event_txtAnio2FilterKeyTyped
 
     private void txtGenro2FilterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGenro2FilterKeyTyped
@@ -770,20 +769,23 @@ public class Biblioteca extends javax.swing.JFrame {
 
     private void btnBuscar2FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar2FilterActionPerformed
 
-        String anio = txtAnio2Filter.getText();
+        String Año = txtAnio2Filter.getText();
         String Genero = txtGenro2Filter.getText();
-
+        if (Año.length() != 4) {
+            JOptionPane.showMessageDialog(this, "El año debe tener exactamente 4 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Sale del método si la validación falla
+        }
         model.setRowCount(0);
 
-        // se deben fultrar ambas y mostrar solo las coincidencias en tabla de:
+        // Realiza una búsqueda secuencial por género
         Libro[] encontradoGenero = estanteriaNovelas.busquedaSecuencial("Genero", Genero);
-        Libro[] encontradoAnio = estanteriaNovelas.busquedaSecuencial("Año", anio);
 
-        //obteniendo su interseccion de encontradosGenero y encontradosAnio
-
+        // Realiza una búsqueda binaria por año
+        Libro[] encontradoAño = estanteriaNovelas.busquedaBinariaSeleccion("Año", Año);
+        
         for(int i = 0; i < encontradoGenero.length; i++){
-            for(int j = 0; j < encontradoAnio.length; j++){
-                if(encontradoGenero[i].equals(encontradoAnio[j])){
+            for(int j = 0; j < encontradoAño.length; j++){
+                if(encontradoGenero[i].equals(encontradoAño[j])){
                     Novela novela = (Novela) encontradoGenero[i];
                     model.addRow(new Object[]{
                             novela.getTitulo(),
