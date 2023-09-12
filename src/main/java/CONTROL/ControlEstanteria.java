@@ -6,7 +6,6 @@ import MODELO.Libro;
 
 public class ControlEstanteria<L extends Libro> {
 
-    private Novela genero[] = new Novela[1] ;
     
 
     private Libro listaLibros[] = new Libro[1];
@@ -201,6 +200,7 @@ public class ControlEstanteria<L extends Libro> {
             return -1;
         }
     }
+    //busqueda secuencial
     public Libro[] busquedaSecuencial(String atributo, String buscar) {
             Libro[] resultados = new Libro[0];
 
