@@ -6,7 +6,6 @@ import MODELO.Libro;
 
 public class ControlEstanteria<L extends Libro> {
 
-    
 
     public Libro listaLibros[] = new Libro[1];
 
@@ -131,9 +130,10 @@ public class ControlEstanteria<L extends Libro> {
             listaLibros[indice] = auxLibro;
         }
     }
+
     private int compararLibrosPorAtributo(Libro libro1, Libro libro2, String atributo) {
         switch (atributo) {
-            case "año":
+            case "Año":
                 return Integer.compare(libro1.getAnioPublicacion(), libro2.getAnioPublicacion());
             case "ISBN":
                 return Long.compare(libro1.getISBN(), libro2.getISBN());
@@ -145,7 +145,7 @@ public class ControlEstanteria<L extends Libro> {
                 throw new IllegalArgumentException("Atributo desconocido: " + atributo);
         }
     }
-    
+
 
     public void ordenarNovelaPorGeneroYAnioPublicacion() {
 
@@ -203,53 +203,74 @@ public class ControlEstanteria<L extends Libro> {
             return -1;
         }
     }
-    //busqueda secuencial
-    public Libro[] busquedaSecuencial(String atributo, String buscar) {
-            Libro[] resultados = new Libro[0];
 
-            for (int i = 0; i < listaLibros.length; i++) {
-                if (atributo.equals("Titulo")) {
-                    if (listaLibros[i].getTitulo().toLowerCase().contains(buscar.toLowerCase())) {
-                        resultados = expandirArray(resultados, listaLibros[i]);
+    public Libro[] busquedaSecuencial(String atributo, String buscar) {
+        Libro[] resultados = new Libro[0];
+        for (int i = 0; i < listaLibros.length; i++) {
+            if (atributo.equals("Titulo")) {
+                if (listaLibros[i].getTitulo().toLowerCase().indexOf(buscar.toLowerCase()) != -1) {
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++) {
+                        aux[j] = resultados[j];
                     }
-                } else if (atributo.equals("ISBN")) {
-                    if (String.valueOf(listaLibros[i].getISBN()).contains(buscar)) {
-                        resultados = expandirArray(resultados, listaLibros[i]);
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
+            } else if (atributo.equals("ISBN")) {
+                if (String.valueOf(listaLibros[i].getISBN()).startsWith(buscar)) {
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++) {
+                        aux[j] = resultados[j];
                     }
-                } else if (atributo.equals("Autor")) {
-                    if (listaLibros[i].getAutor().toLowerCase().startsWith(buscar.toLowerCase())) {
-                        resultados = expandirArray(resultados, listaLibros[i]);
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
+            } else if (atributo.equals("Autor")) {
+                if (listaLibros[i].getAutor().toLowerCase().indexOf(buscar.toLowerCase()) != -1) {
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++) {
+                        aux[j] = resultados[j];
                     }
-                } else if (atributo.equals("Genero")) {
-                    if (listaLibros[i] instanceof Novela) {
-                        Novela novela = (Novela) listaLibros[i];
-                        if (novela.getGenero().toLowerCase().startsWith(buscar.toLowerCase())) {
-                            resultados = expandirArray(resultados, listaLibros[i]);
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
+                // para genero
+            } else if (atributo.equals("Genero")) {
+                if (listaLibros[i] instanceof Novela) {
+                    if (((Novela) listaLibros[i]).getGenero().toLowerCase().indexOf(buscar.toLowerCase()) != -1) {
+                        Libro[] aux = new Libro[resultados.length + 1];
+                        for (int j = 0; j < resultados.length; j++) {
+                            aux[j] = resultados[j];
                         }
+                        aux[resultados.length] = listaLibros[i];
+                        resultados = aux;
                     }
                 }
+                // año
+            } else if (atributo.equals("Año")) {
+                if (String.valueOf(listaLibros[i].getAnioPublicacion()).startsWith(buscar)) {
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++) {
+                        aux[j] = resultados[j];
+                    }
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
             }
-
-            return resultados;
         }
-
-    // Método para expandir un array de Libro
-    private Libro[] expandirArray(Libro[] array, Libro libro) {
-        Libro[] aux = new Libro[array.length + 1];
-        for (int i = 0; i < array.length; i++) {
-            aux[i] = array[i];
-        }
-        aux[array.length] = libro;
-        return aux;
+        return resultados;
     }
-    
-    public int busquedaBinariaSeleccion(String atributo, String valor) {
+
+    public Libro[] busquedaBinariaSeleccion(String atributo, String valor) {
         porSeleccion_String(atributo);
 
         int central, bajo, alto;
         long valorCentral;
         bajo = 0;
         alto = listaLibros.length - 1;
+
+        Libro[] librosEncontrados = new Libro[listaLibros.length]; // Crear un arreglo para almacenar los libros encontrados
+        int contador = 0; // Un contador para rastrear la cantidad de libros encontrados
 
         while (bajo <= alto) {
             central = (bajo + alto) / 2;
@@ -263,19 +284,27 @@ public class ControlEstanteria<L extends Libro> {
             }
 
             if (comparacion == 0) {
-                return central;
-            } else if (comparacion < 0) {
+                librosEncontrados[contador] = listaLibros[central];
+                contador++; // Incrementar el contador y seguir buscando más coincidencias
+            }
+
+            if (comparacion < 0) {
                 alto = central - 1;
             } else {
                 bajo = central + 1;
             }
         }
-        return -1; // No se encontró el elemento
+
+        // Crear un nuevo arreglo con el tamaño correcto para almacenar solo los libros encontrados
+        Libro[] resultado = new Libro[contador];
+        System.arraycopy(librosEncontrados, 0, resultado, 0, contador);
+        return resultado;
     }
+
 
     private long obtenerValorPorAtributo(Libro libro, String atributo) {
         switch (atributo) {
-            case "año":
+            case "Año":
                 return libro.getAnioPublicacion();
             case "ISBN":
                 return libro.getISBN();
@@ -287,7 +316,5 @@ public class ControlEstanteria<L extends Libro> {
                 throw new IllegalArgumentException("Atributo desconocido: " + atributo);
         }
     }
-
-
 
 }
