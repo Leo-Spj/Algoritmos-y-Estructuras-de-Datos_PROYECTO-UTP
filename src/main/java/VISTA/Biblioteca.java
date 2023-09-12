@@ -622,11 +622,44 @@ public class Biblioteca extends javax.swing.JFrame {
         String titulo = txtTitulo.getText();
         String autor = txtAutor.getText();
         String genero = txtGenero.getText();
-        int anio = Integer.parseInt(txtAnio.getText());
-        long ISBN = Long.parseLong(txtISBN.getText());
+        String anioStr = txtAnio.getText();
+        String isbnStr = txtISBN.getText();
+
+        if (titulo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de título.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+
+        if (autor.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de autor.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+        if (genero.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de género.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+        if (anioStr.length() != 4 || !anioStr.matches("\\d{4}")) {
+            JOptionPane.showMessageDialog(this, "Ingresa un año válido (4 dígitos numéricos).", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+
+        int anio;
+        try {
+            anio = Integer.parseInt(anioStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingresa un año válido (número entero).", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+
+        long ISBN;
+        try {
+            ISBN = Long.parseLong(isbnStr);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingresa un ISBN válido (número entero).", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
 
         Novela nuevaNovela = new Novela(titulo, autor, anio, ISBN, genero);
-
         estanteriaNovelas.agregarLibro(nuevaNovela);
 
         model.addRow(new Object[]{
@@ -771,6 +804,11 @@ public class Biblioteca extends javax.swing.JFrame {
 
         String Año = txtAnio2Filter.getText();
         String Genero = txtGenro2Filter.getText();
+        
+        if (Genero.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de género.", "Error", JOptionPane.ERROR_MESSAGE);
+            return; // Sale del método si la validación falla
+        }
         if (Año.length() != 4) {
             JOptionPane.showMessageDialog(this, "El año debe tener exactamente 4 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
             return; // Sale del método si la validación falla
