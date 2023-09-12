@@ -143,7 +143,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtGenero = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        btnAgregarLibro = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnOrdNum_AnioPublic = new javax.swing.JButton();
         btnOrdNum_ISBN = new javax.swing.JButton();
@@ -153,9 +153,13 @@ public class Biblioteca extends javax.swing.JFrame {
         btnOrdString_Titulo = new javax.swing.JButton();
         btnOrdString_Autor = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        btnAscDes = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        txtAnio2Filter = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtGenro2Filter = new javax.swing.JTextField();
+        btnReset2Filter = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLibrosEstante = new javax.swing.JTable();
@@ -163,6 +167,8 @@ public class Biblioteca extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 167, 54));
+
+        jTabbedPane3.setBackground(new java.awt.Color(204, 167, 54));
 
         jPanel3.setBackground(new java.awt.Color(204, 167, 54));
 
@@ -227,11 +233,11 @@ public class Biblioteca extends javax.swing.JFrame {
 
         txtGenero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton4.setText("Agregar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarLibro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnAgregarLibro.setText("Agregar");
+        btnAgregarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnAgregarLibroActionPerformed(evt);
             }
         });
 
@@ -261,7 +267,7 @@ public class Biblioteca extends javax.swing.JFrame {
                         .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(135, 135, 135)))
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtAutor)
                         .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -286,7 +292,7 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
+                    .addComponent(btnAgregarLibro))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
@@ -341,7 +347,7 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Insertar & Eliminar", jPanel3);
@@ -388,7 +394,7 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addComponent(btnOrdNum_AnioPublic, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOrdNum_ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Num Ord", jPanel4);
@@ -437,70 +443,91 @@ public class Biblioteca extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnOrdString_Autor, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                     .addComponent(btnOrdString_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("String Ord", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(204, 167, 54));
 
+        btnAscDes.setText("Asc & Desc");
+        btnAscDes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAscDesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(659, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Asc & Desc", jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(204, 167, 54));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel10.setText("Año");
+
+        txtAnio2Filter.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        jLabel12.setText("Genero");
+
+        txtGenro2Filter.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+
+        btnReset2Filter.setText("Reset");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtGenro2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(137, 137, 137)
+                .addComponent(btnReset2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(428, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(btnReset2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(txtGenro2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("tab4", jPanel7);
-
-        jPanel8.setBackground(new java.awt.Color(204, 167, 54));
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
-        );
-
-        jTabbedPane3.addTab("tab5", jPanel8);
-
-        jPanel9.setBackground(new java.awt.Color(204, 167, 54));
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
-        );
-
-        jTabbedPane3.addTab("tab6", jPanel9);
+        jTabbedPane3.addTab("2 Filtros Busqueda", jPanel7);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -574,7 +601,7 @@ public class Biblioteca extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnOrdNum_ISBNActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibroActionPerformed
 
         String titulo = txtTitulo.getText();
         String autor = txtAutor.getText();
@@ -615,11 +642,9 @@ public class Biblioteca extends javax.swing.JFrame {
             // Mostrar un mensaje de éxito cuando se haya agregado un nuevo libro
             JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo libro correctamente.");
         }
-
-
         
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnAgregarLibroActionPerformed
 
     private void cbxBuscarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxBuscarLibrosActionPerformed
         // TODO add your handling code here:
@@ -730,6 +755,16 @@ public class Biblioteca extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtBuscarLibrosKeyTyped
 
+    private void btnAscDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscDesActionPerformed
+
+        model.setRowCount(0);
+
+        estanteriaNovelas.ordenarNovelaPorGeneroYAnioPublicacion();
+        rellenarTabla();
+
+
+    }//GEN-LAST:event_btnAscDesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -766,15 +801,19 @@ public class Biblioteca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarLibro;
+    private javax.swing.JButton btnAscDes;
     private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnOrdNum_AnioPublic;
     private javax.swing.JButton btnOrdNum_ISBN;
     private javax.swing.JButton btnOrdString_Autor;
     private javax.swing.JButton btnOrdString_Titulo;
+    private javax.swing.JButton btnReset2Filter;
     private javax.swing.JComboBox<String> cbxBuscarLibros;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -791,16 +830,16 @@ public class Biblioteca extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable tblLibrosEstante;
     private javax.swing.JTextField txtAnio;
+    private javax.swing.JTextField txtAnio2Filter;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtBuscarLibros;
     private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtGenro2Filter;
     private javax.swing.JTextField txtISBN;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
