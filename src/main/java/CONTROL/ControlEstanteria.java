@@ -8,12 +8,6 @@ public class ControlEstanteria<L extends Libro> {
 
 
     private Libro listaLibros[] = new Libro[1];
-    private int size;
-
-    public ControlEstanteria() {
-        this.listaLibros = new Libro[1];
-        this.size = 0;
-    }
 
     public L obtenerUnLibro(long isbn) {
         for (Libro libro : listaLibros) {
@@ -97,13 +91,19 @@ public class ControlEstanteria<L extends Libro> {
                     }
                 }
                 if (atributo.equals("titulo")) {
-                    if (listaLibros[j].getTitulo().compareTo(listaLibros[j + 1].getTitulo()) > 0) {
+                    if (listaLibros[j].getTitulo().compareToIgnoreCase(listaLibros[j + 1].getTitulo()) > 0) {
                         Libro aux = listaLibros[j];
                         listaLibros[j] = listaLibros[j + 1];
                         listaLibros[j + 1] = aux;
                     }
                 } else if (atributo.equals("autor")) {
-                    if (listaLibros[j].getAutor().compareTo(listaLibros[j + 1].getAutor()) > 0) {
+                    if (listaLibros[j].getAutor().compareToIgnoreCase(listaLibros[j + 1].getAutor()) > 0) {
+                        Libro aux = listaLibros[j];
+                        listaLibros[j] = listaLibros[j + 1];
+                        listaLibros[j + 1] = aux;
+                    }
+                } else if (atributo.equals("genero")) {
+                    if ( ((Novela) listaLibros[j]).getGenero().compareToIgnoreCase(((Novela) listaLibros[j + 1]).getGenero()) > 0) {
                         Libro aux = listaLibros[j];
                         listaLibros[j] = listaLibros[j + 1];
                         listaLibros[j + 1] = aux;
@@ -145,45 +145,39 @@ public class ControlEstanteria<L extends Libro> {
 
     public void ordenarNovelaPorGeneroYAnioPublicacion() {
 
+        // Tipo de ordenamiento: Burbuja - Orden Ascendente
+        deBurbuja("genero");
+
         Novela[] listaNovelas = new Novela[listaLibros.length];
         int contador = 0;
-
         for (int i = 0; i < listaLibros.length; i++) {
             if (listaLibros[i] instanceof Novela) {
                 listaNovelas[contador] = (Novela) listaLibros[i];
                 contador++;
             }
         }
-        // Tipo de ordenamiento: Burbuja
-        for (int i = 0; i < listaNovelas.length; i++) {
-            for (int j = 0; j < listaNovelas.length - 1; j++) {
-                if (listaNovelas[j].getGenero().compareToIgnoreCase(listaNovelas[j + 1].getGenero()) > 0) {
-                    Novela aux = listaNovelas[j];
-                    listaNovelas[j] = listaNovelas[j + 1];
-                    listaNovelas[j + 1] = aux;
-                }
-            }
-        }
 
-        // Tipo de ordenamiento: Selección
-        int aux;
+        // Tipo de ordenamiento: Selección - Orden Descendente
         int indice;
-
-        for (int i = 0; i < listaNovelas.length; i++) {
+        Novela auxLibro;
+        for (int i = 0; i < listaNovelas.length - 1; i++) {
             indice = i;
-            int pequeño = listaNovelas[i].getAnioPublicacion();
-            for (int j = i; j < listaNovelas.length; j++) {
+
+            for (int j = i + 1; j < listaNovelas.length; j++) {
                 if (listaNovelas[j].getGenero().equals(listaNovelas[i].getGenero())) {
-                    if (listaNovelas[j].getAnioPublicacion() < pequeño) {
-                        pequeño = listaNovelas[j].getAnioPublicacion();
+                    if (listaNovelas[j].getAnioPublicacion() < listaNovelas[indice].getAnioPublicacion()) {
                         indice = j;
                     }
                 }
             }
-            Novela auxLibro = listaNovelas[i];
-            listaNovelas[i] = listaNovelas[indice];
-            listaNovelas[indice] = auxLibro;
+
+            if (indice != i) {
+                auxLibro = listaNovelas[i];
+                listaNovelas[i] = listaNovelas[indice];
+                listaNovelas[indice] = auxLibro;
+            }
         }
+
 
         listaLibros = listaNovelas;
     }
@@ -245,10 +239,14 @@ public class ControlEstanteria<L extends Libro> {
 
     public int busquedaBinaria(String atributo, String valor){// por ahora solo funciona para ISBN
 
-        long clave = Integer.parseInt(valor);
-
         if (atributo.equals("ISBN")){
             deBurbuja("ISBN");
+        } else if (atributo.equals("titulo")){
+            deBurbuja("titulo");
+        } else if (atributo.equals("autor")){
+            deBurbuja("autor");
+        } else if (atributo.equals("año")){
+            deBurbuja("anioPublicacion");
         }
 
         //busqueda binaria segun libro
@@ -258,13 +256,18 @@ public class ControlEstanteria<L extends Libro> {
         alto = listaLibros.length -1;
         while (bajo <= alto){
             central = (bajo+alto)/2;
-            valorCentral = listaLibros[central].getISBN();
-            if (clave == valorCentral){
-                return central;
-            } else if (clave < valorCentral) {
-                alto = central - 1;
-            } else {
-                bajo = central + 1;
+
+            if (atributo.equals("ISBN")) {
+                valorCentral = listaLibros[central].getISBN();
+
+
+                if (Long.parseLong(valor) == valorCentral) {
+                    return central;
+                } else if (Long.parseLong(valor) < valorCentral) {
+                    alto = central - 1;
+                } else {
+                    bajo = central + 1;
+                }
             }
         }
         return -1;
