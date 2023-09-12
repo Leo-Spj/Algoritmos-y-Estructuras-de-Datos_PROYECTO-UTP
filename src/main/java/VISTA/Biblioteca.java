@@ -192,7 +192,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel11.setText("Buscar por:");
 
         cbxBuscarLibros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxBuscarLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN" }));
+        cbxBuscarLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN", "Genero", "Año" }));
         cbxBuscarLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxBuscarLibrosActionPerformed(evt);
@@ -383,7 +383,7 @@ public class Biblioteca extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOrdNum_AnioPublic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnOrdNum_ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(655, Short.MAX_VALUE))
+                .addContainerGap(656, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,7 +432,7 @@ public class Biblioteca extends javax.swing.JFrame {
                         .addComponent(btnOrdString_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnOrdString_Autor, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(587, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,7 +464,7 @@ public class Biblioteca extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(217, 217, 217)
                 .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(659, Short.MAX_VALUE))
+                .addContainerGap(660, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -745,6 +745,40 @@ public class Biblioteca extends javax.swing.JFrame {
         }
 
         if (atributo.equals("Autor")) {
+
+            model.setRowCount(0);
+
+            Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            for(int i = 0; i < encontrado.length; i++){
+                Novela novela = (Novela) encontrado[i];
+                model.addRow(new Object[]{
+                        novela.getTitulo(),
+                        novela.getAutor(),
+                        novela.getAnioPublicacion(),
+                        novela.getISBN(),
+                        novela.getGenero()
+                });
+            }
+        }
+        if (atributo.equals("Genero")) {
+
+            model.setRowCount(0);
+
+            Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            for(int i = 0; i < encontrado.length; i++){
+                Novela novela = (Novela) encontrado[i];
+                model.addRow(new Object[]{
+                        novela.getTitulo(),
+                        novela.getAutor(),
+                        novela.getAnioPublicacion(),
+                        novela.getISBN(),
+                        novela.getGenero()
+                });
+            }
+        }
+        if (atributo.equals("Año")) {
 
             model.setRowCount(0);
 
