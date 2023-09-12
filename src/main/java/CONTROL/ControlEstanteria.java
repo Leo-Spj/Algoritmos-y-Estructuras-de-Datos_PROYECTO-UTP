@@ -1,6 +1,7 @@
 package CONTROL;
 
 
+import MODELO.CLASIFICACION.Novela;
 import MODELO.Libro;
 
 public class ControlEstanteria<L extends Libro>  {
@@ -8,6 +9,7 @@ public class ControlEstanteria<L extends Libro>  {
     
 
     private Libro listaLibros[] = new Libro[1] ;
+    private Novela genero[] = new Novela[1] ;
     private int size;
     
     public ControlEstanteria() {
@@ -266,8 +268,9 @@ public class ControlEstanteria<L extends Libro>  {
         }
     }
 
-    public Libro[] busquedaSecuencial(String atributo, String buscar){
+    /*public Libro[] busquedaSecuencial(String atributo, String buscar){
         Libro[] resultados = new Libro[0];
+        //Novela[] nov = new Novela[0];
         for (int i = 0; i < listaLibros.length; i++){
             if (atributo.equals("Titulo")){
                 if (listaLibros[i].getTitulo().toLowerCase().indexOf(buscar.toLowerCase()) != -1){
@@ -297,7 +300,64 @@ public class ControlEstanteria<L extends Libro>  {
                     resultados = aux;
                 }
             }
+            else if (atributo.equals("Genero")){
+                if (genero[i].getGenero().toLowerCase().startsWith(buscar.toLowerCase())){
+                    for (int j = 0; j < listaLibros.length; j++) {
+                    if (listaLibros[j] instanceof Novela) {
+                        Novela novela = (Novela) listaLibros[i];
+                        if (novela.getGenero().toLowerCase().startsWith(buscar.toLowerCase())) {
+                            Libro[] aux = new Libro[resultados.length + 1];
+                            for (int k = 0; k < resultados.length; k++) {
+                                aux[k] = resultados[k];
+                            }
+                            aux[resultados.length] = listaLibros[j];
+                            resultados = aux;
+                        }
+                    }
+                }
+            }
+        }
+        
         }
         return resultados;
+    }*/
+    public Libro[] busquedaSecuencial(String atributo, String buscar) {
+            Libro[] resultados = new Libro[0];
+
+            for (int i = 0; i < listaLibros.length; i++) {
+                if (atributo.equals("Titulo")) {
+                    if (listaLibros[i].getTitulo().toLowerCase().contains(buscar.toLowerCase())) {
+                        resultados = expandirArray(resultados, listaLibros[i]);
+                    }
+                } else if (atributo.equals("ISBN")) {
+                    if (String.valueOf(listaLibros[i].getISBN()).contains(buscar)) {
+                        resultados = expandirArray(resultados, listaLibros[i]);
+                    }
+                } else if (atributo.equals("Autor")) {
+                    if (listaLibros[i].getAutor().toLowerCase().startsWith(buscar.toLowerCase())) {
+                        resultados = expandirArray(resultados, listaLibros[i]);
+                    }
+                } else if (atributo.equals("Genero")) {
+                    if (listaLibros[i] instanceof Novela) {
+                        Novela novela = (Novela) listaLibros[i];
+                        if (novela.getGenero().toLowerCase().startsWith(buscar.toLowerCase())) {
+                            resultados = expandirArray(resultados, listaLibros[i]);
+                        }
+                    }
+                }
+            }
+
+            return resultados;
+        }
+
+    // Método para expandir un array de Libro
+    private Libro[] expandirArray(Libro[] array, Libro libro) {
+        Libro[] aux = new Libro[array.length + 1];
+        for (int i = 0; i < array.length; i++) {
+            aux[i] = array[i];
+        }
+        aux[array.length] = libro;
+        return aux;
     }
+
 }

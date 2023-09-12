@@ -13,6 +13,7 @@ import com.google.gson.GsonBuilder;
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -185,7 +186,7 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel11.setText("Buscar por:");
 
         cbxBuscarLibros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxBuscarLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN" }));
+        cbxBuscarLibros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN", "Genero" }));
         cbxBuscarLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxBuscarLibrosActionPerformed(evt);
@@ -578,19 +579,44 @@ public class Biblioteca extends javax.swing.JFrame {
         String titulo = txtTitulo.getText();
         String autor = txtAutor.getText();
         String genero = txtGenero.getText();
-        int anio = Integer.parseInt(txtAnio.getText());
-        long ISBN = Long.parseLong(txtISBN.getText());
 
-        Novela nuevaNovela = new Novela(titulo, autor, anio, ISBN, genero);
+        String anioText = txtAnio.getText();
+        int anio = -1; 
 
-        estanteriaNovelas.agregarLibro(nuevaNovela);
+        if (anioText.matches("\\d{4}")) {
+            try {
+                anio = Integer.parseInt(anioText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un año válido en formato de 4 dígitos.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese un año válido en formato de 4 dígitos.");
+        }
 
-        model.addRow(new Object[]{
-            nuevaNovela.getTitulo(),
-            nuevaNovela.getAutor(),
-            nuevaNovela.getAnioPublicacion(),
-            nuevaNovela.getISBN()
-        });
+        long ISBN = -1L; // Valor por defecto en caso de error de conversión
+            try {
+                ISBN = Long.parseLong(txtISBN.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido en el campo 'ISBN'.");
+            }
+
+        if (anio != -1 && ISBN != -1L) {
+            Novela nuevaNovela = new Novela(titulo, autor, anio, ISBN, genero);
+            estanteriaNovelas.agregarLibro(nuevaNovela);
+            model.addRow(new Object[]{
+                nuevaNovela.getTitulo(),
+                nuevaNovela.getAutor(),
+                nuevaNovela.getAnioPublicacion(),
+                nuevaNovela.getISBN(),
+                nuevaNovela.getGenero()
+                    
+            });
+
+            // Mostrar un mensaje de éxito cuando se haya agregado un nuevo libro
+            JOptionPane.showMessageDialog(null, "Se ha agregado un nuevo libro correctamente.");
+        }
+
+
         
 
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -667,6 +693,23 @@ public class Biblioteca extends javax.swing.JFrame {
         }
 
         if (atributo.equals("Autor")) {
+
+            model.setRowCount(0);
+
+            Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
+
+            for(int i = 0; i < encontrado.length; i++){
+                Novela novela = (Novela) encontrado[i];
+                model.addRow(new Object[]{
+                        novela.getTitulo(),
+                        novela.getAutor(),
+                        novela.getAnioPublicacion(),
+                        novela.getISBN(),
+                        novela.getGenero()
+                });
+            }
+        }
+        if (atributo.equals("Genero")) {
 
             model.setRowCount(0);
 
