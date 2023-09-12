@@ -2,6 +2,7 @@ package VISTA;
 
 import CONTROL.ControlEstanteria;
 import MODELO.CLASIFICACION.Novela;
+import MODELO.Libro;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,6 +32,7 @@ public class Main {
         // Ordeno las novelas por año de publicación
         estanteriaNovelas.deBurbuja("anioPublicacion");
         estanteriaNovelas.listarLibros();
+
 
     }
 }
