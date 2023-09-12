@@ -749,6 +749,22 @@ public class Biblioteca extends javax.swing.JFrame {
 
     private void txtGenro2FilterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGenro2FilterKeyTyped
 
+        String Genero = txtGenro2Filter.getText();
+
+        model.setRowCount(0);
+
+        Libro[] encontradoGenero = estanteriaNovelas.busquedaSecuencial("Genero", Genero);
+
+        for(int i = 0; i < encontradoGenero.length; i++){
+            Novela novela = (Novela) encontradoGenero[i];
+            model.addRow(new Object[]{
+                    novela.getTitulo(),
+                    novela.getAutor(),
+                    novela.getAnioPublicacion(),
+                    novela.getISBN(),
+                    novela.getGenero()
+            });
+        }
 
     }//GEN-LAST:event_txtGenro2FilterKeyTyped
 
@@ -779,11 +795,6 @@ public class Biblioteca extends javax.swing.JFrame {
                 }
             }
         }
-
-
-
-
-
 
     }//GEN-LAST:event_btnBuscar2FilterActionPerformed
 
