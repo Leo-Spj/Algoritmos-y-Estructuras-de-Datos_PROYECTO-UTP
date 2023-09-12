@@ -152,6 +152,7 @@ public class Biblioteca extends javax.swing.JFrame {
         btnOrdString_Titulo = new javax.swing.JButton();
         btnOrdString_Autor = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        btnAscDes = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLibrosEstante = new javax.swing.JTable();
@@ -440,15 +441,28 @@ public class Biblioteca extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(204, 167, 54));
 
+        btnAscDes.setText("Asc & Desc");
+        btnAscDes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAscDesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 987, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(217, 217, 217)
+                .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(659, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 254, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Asc & Desc", jPanel6);
@@ -640,6 +654,16 @@ public class Biblioteca extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtBuscarLibrosKeyTyped
 
+    private void btnAscDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscDesActionPerformed
+
+        model.setRowCount(0);
+
+        estanteriaNovelas.ordenarNovelaPorGeneroYAnioPublicacion();
+        rellenarTabla();
+
+
+    }//GEN-LAST:event_btnAscDesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -677,6 +701,7 @@ public class Biblioteca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarLibro;
+    private javax.swing.JButton btnAscDes;
     private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnOrdNum_AnioPublic;
     private javax.swing.JButton btnOrdNum_ISBN;

@@ -1,6 +1,7 @@
 package CONTROL;
 
 
+import MODELO.CLASIFICACION.Novela;
 import MODELO.Libro;
 
 public class ControlEstanteria<L extends Libro> {
@@ -125,12 +126,12 @@ public class ControlEstanteria<L extends Libro> {
             }
             for (int j = i; j < listaLibros.length; j++) {
                 if (atributo.equals("titulo")) {
-                    if (listaLibros[j].getTitulo().compareTo(pequeño) < 0) {
+                    if (listaLibros[j].getTitulo().compareToIgnoreCase(pequeño) < 0) {
                         pequeño = listaLibros[j].getTitulo();
                         indice = j;
                     }
                 } else if (atributo.equals("autor")) {
-                    if (listaLibros[j].getAutor().compareTo(pequeño) < 0) {
+                    if (listaLibros[j].getAutor().compareToIgnoreCase(pequeño) < 0) {
                         pequeño = listaLibros[j].getAutor();
                         indice = j;
                     }
@@ -141,109 +142,51 @@ public class ControlEstanteria<L extends Libro> {
             listaLibros[indice] = auxLibro;
         }
     }
-    
-    /*public void ordenarPorGeneroYAutor() {
-            mergeSortPorGenero(listaLibros, 0, size - 1);
-            mergeSortPorAutor(listaLibros, 0, size - 1);
-        }
 
-        private void mergeSortPorGenero(Libro[] lista, int izquierda, int derecha) {
-            if (izquierda < derecha) {
-                int medio = izquierda + (derecha - izquierda) / 2;
-                mergeSortPorGenero(lista, izquierda, medio);
-                mergeSortPorGenero(lista, medio + 1, derecha);
-                mergePorGenero(lista, izquierda, medio, derecha);
+    public void ordenarNovelaPorGeneroYAnioPublicacion() {
+
+        Novela[] listaNovelas = new Novela[listaLibros.length];
+        int contador = 0;
+
+        for (int i = 0; i < listaLibros.length; i++) {
+            if (listaLibros[i] instanceof Novela) {
+                listaNovelas[contador] = (Novela) listaLibros[i];
+                contador++;
             }
         }
-
-        private void mergeSortPorAutor(Libro[] lista, int izquierda, int derecha) {
-            if (izquierda < derecha) {
-                int medio = izquierda + (derecha - izquierda) / 2;
-                mergeSortPorAutor(lista, izquierda, medio);
-                mergeSortPorAutor(lista, medio + 1, derecha);
-                mergePorAutor(lista, izquierda, medio, derecha);
-            }
-        }
-
-        private void mergePorGenero(Libro[] lista, int izquierda, int medio, int derecha) {
-            int n1 = medio - izquierda + 1;
-            int n2 = derecha - medio;
-
-            L[] izq = (L[]) new Libro[n1];
-            L[] der = (L[]) new Libro[n2];
-
-            for (int i = 0; i < n1; i++) {
-                izq[i] = lista[izquierda + i];
-            }
-
-            for (int j = 0; j < n2; j++) {
-                der[j] = lista[medio + 1 + j];
-            }
-
-            int i = 0, j = 0, k = izquierda;
-            while (i < n1 && j < n2) {
-                if (izq[i].getGenero().compareTo(der[j].getGenero()) <= 0) {
-                    lista[k] = izq[i];
-                    i++;
-                } else {
-                    lista[k] = der[j];
-                    j++;
+        // Tipo de ordenamiento: Burbuja
+        for (int i = 0; i < listaNovelas.length; i++) {
+            for (int j = 0; j < listaNovelas.length - 1; j++) {
+                if (listaNovelas[j].getGenero().compareToIgnoreCase(listaNovelas[j + 1].getGenero()) > 0) {
+                    Novela aux = listaNovelas[j];
+                    listaNovelas[j] = listaNovelas[j + 1];
+                    listaNovelas[j + 1] = aux;
                 }
-                k++;
-            }
-
-            while (i < n1) {
-                lista[k] = izq[i];
-                i++;
-                k++;
-            }
-
-            while (j < n2) {
-                lista[k] = der[j];
-                j++;
-                k++;
             }
         }
 
-        private void mergePorAutor(L[] lista, int izquierda, int medio, int derecha) {
-            int n1 = medio - izquierda + 1;
-            int n2 = derecha - medio;
+        // Tipo de ordenamiento: Selección
+        int aux;
+        int indice;
 
-            L[] izq = (L[]) new Libro[n1];
-            L[] der = (L[]) new Libro[n2];
-
-            for (int i = 0; i < n1; i++) {
-                izq[i] = lista[izquierda + i];
-            }
-
-            for (int j = 0; j < n2; j++) {
-                der[j] = lista[medio + 1 + j];
-            }
-
-            int i = 0, j = 0, k = izquierda;
-            while (i < n1 && j < n2) {
-                if (izq[i].getAutor().compareTo(der[j].getAutor()) >= 0) {
-                    lista[k] = izq[i];
-                    i++;
-                } else {
-                    lista[k] = der[j];
-                    j++;
+        for (int i = 0; i < listaNovelas.length; i++) {
+            indice = i;
+            int pequeño = listaNovelas[i].getAnioPublicacion();
+            for (int j = i; j < listaNovelas.length; j++) {
+                if (listaNovelas[j].getGenero().equals(listaNovelas[i].getGenero())) {
+                    if (listaNovelas[j].getAnioPublicacion() < pequeño) {
+                        pequeño = listaNovelas[j].getAnioPublicacion();
+                        indice = j;
+                    }
                 }
-                k++;
             }
+            Novela auxLibro = listaNovelas[i];
+            listaNovelas[i] = listaNovelas[indice];
+            listaNovelas[indice] = auxLibro;
+        }
 
-            while (i < n1) {
-                lista[k] = izq[i];
-                i++;
-                k++;
-            }
-
-            while (j < n2) {
-                lista[k] = der[j];
-                j++;
-                k++;
-            }
-        }*/
+        listaLibros = listaNovelas;
+    }
 
 
     // ------------------ Métodos de búsqueda : ------------------
@@ -326,7 +269,5 @@ public class ControlEstanteria<L extends Libro> {
         }
         return -1;
     }
-
-
 
 }
