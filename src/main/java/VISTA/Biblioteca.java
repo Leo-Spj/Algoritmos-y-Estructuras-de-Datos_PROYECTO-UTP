@@ -158,7 +158,7 @@ public class Biblioteca extends javax.swing.JFrame {
         txtAnio2Filter = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtGenro2Filter = new javax.swing.JTextField();
-        btnReset2Filter = new javax.swing.JButton();
+        btnBuscar2Filter = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLibrosEstante = new javax.swing.JTable();
@@ -481,48 +481,64 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel10.setText("Año");
 
         txtAnio2Filter.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtAnio2Filter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtAnio2FilterKeyTyped(evt);
+            }
+        });
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel12.setText("Genero");
 
         txtGenro2Filter.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtGenro2Filter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGenro2FilterKeyTyped(evt);
+            }
+        });
 
-        btnReset2Filter.setText("Reset");
+        btnBuscar2Filter.setText("Buscar");
+        btnBuscar2Filter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscar2FilterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(91, 91, 91)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtGenro2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtGenro2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(137, 137, 137)
-                .addComponent(btnReset2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscar2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(428, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(122, 122, 122)
-                        .addComponent(btnReset2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel7Layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                        .addComponent(btnBuscar2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12)
-                            .addComponent(txtGenro2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtGenro2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(113, Short.MAX_VALUE))
         );
 
@@ -725,6 +741,52 @@ public class Biblioteca extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnAscDesActionPerformed
 
+    private void txtAnio2FilterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnio2FilterKeyTyped
+
+
+
+    }//GEN-LAST:event_txtAnio2FilterKeyTyped
+
+    private void txtGenro2FilterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGenro2FilterKeyTyped
+
+
+    }//GEN-LAST:event_txtGenro2FilterKeyTyped
+
+    private void btnBuscar2FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar2FilterActionPerformed
+
+        String anio = txtAnio2Filter.getText();
+        String Genero = txtGenro2Filter.getText();
+
+        model.setRowCount(0);
+
+        // se deben fultrar ambas y mostrar solo las coincidencias en tabla de:
+        Libro[] encontradoGenero = estanteriaNovelas.busquedaSecuencial("Genero", Genero);
+        Libro[] encontradoAnio = estanteriaNovelas.busquedaSecuencial("Año", anio);
+
+        //obteniendo su interseccion de encontradosGenero y encontradosAnio
+
+        for(int i = 0; i < encontradoGenero.length; i++){
+            for(int j = 0; j < encontradoAnio.length; j++){
+                if(encontradoGenero[i].equals(encontradoAnio[j])){
+                    Novela novela = (Novela) encontradoGenero[i];
+                    model.addRow(new Object[]{
+                            novela.getTitulo(),
+                            novela.getAutor(),
+                            novela.getAnioPublicacion(),
+                            novela.getISBN(),
+                            novela.getGenero()
+                    });
+                }
+            }
+        }
+
+
+
+
+
+
+    }//GEN-LAST:event_btnBuscar2FilterActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -763,12 +825,12 @@ public class Biblioteca extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarLibro;
     private javax.swing.JButton btnAscDes;
+    private javax.swing.JButton btnBuscar2Filter;
     private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnOrdNum_AnioPublic;
     private javax.swing.JButton btnOrdNum_ISBN;
     private javax.swing.JButton btnOrdString_Autor;
     private javax.swing.JButton btnOrdString_Titulo;
-    private javax.swing.JButton btnReset2Filter;
     private javax.swing.JComboBox<String> cbxBuscarLibros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

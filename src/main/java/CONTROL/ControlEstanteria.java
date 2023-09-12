@@ -230,12 +230,32 @@ public class ControlEstanteria<L extends Libro> {
                     aux[resultados.length] = listaLibros[i];
                     resultados = aux;
                 }
+                // para genero
+            } else if (atributo.equals("Genero")) {
+                if (listaLibros[i] instanceof Novela) {
+                    if (((Novela) listaLibros[i]).getGenero().toLowerCase().indexOf(buscar.toLowerCase()) != -1) {
+                        Libro[] aux = new Libro[resultados.length + 1];
+                        for (int j = 0; j < resultados.length; j++) {
+                            aux[j] = resultados[j];
+                        }
+                        aux[resultados.length] = listaLibros[i];
+                        resultados = aux;
+                    }
+                }
+                // año
+            } else if (atributo.equals("Año")) {
+                if (String.valueOf(listaLibros[i].getAnioPublicacion()).startsWith(buscar)) {
+                    Libro[] aux = new Libro[resultados.length + 1];
+                    for (int j = 0; j < resultados.length; j++) {
+                        aux[j] = resultados[j];
+                    }
+                    aux[resultados.length] = listaLibros[i];
+                    resultados = aux;
+                }
             }
         }
         return resultados;
     }
-
-    // busqueda binaria, primero se ordena mediante la funcion deBurbuja que recibe por el atributo a ordenar
 
     public int busquedaBinaria(String atributo, String valor){// por ahora solo funciona para ISBN
 
@@ -272,5 +292,4 @@ public class ControlEstanteria<L extends Libro> {
         }
         return -1;
     }
-
 }
