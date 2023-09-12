@@ -705,7 +705,7 @@ public class Biblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOrdString_AutorActionPerformed
 
     private void txtBuscarLibrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosKeyTyped
-
+        //busqueda secuencial
         String atributo = cbxBuscarLibros.getSelectedItem().toString();
         String valor = txtBuscarLibros.getText();
 
@@ -800,7 +800,7 @@ public class Biblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_txtBuscarLibrosKeyTyped
 
     private void btnAscDesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAscDesActionPerformed
-
+        //burbuja ascendente seleccion descendente
         model.setRowCount(0);
 
         estanteriaNovelas.ordenarNovelaPorGeneroYAnioPublicacion();
@@ -835,17 +835,17 @@ public class Biblioteca extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGenro2FilterKeyTyped
 
     private void btnBuscar2FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar2FilterActionPerformed
-
+        
         String Año = txtAnio2Filter.getText();
         String Genero = txtGenro2Filter.getText();
         
         if (Genero.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de género.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // Sale del método si la validación falla
+            return; 
         }
         if (Año.length() != 4) {
             JOptionPane.showMessageDialog(this, "El año debe tener exactamente 4 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // Sale del método si la validación falla
+            return; 
         }
         model.setRowCount(0);
 
