@@ -850,7 +850,11 @@ public class Biblioteca extends javax.swing.JFrame {
         model.setRowCount(0);
 
         // Realiza una búsqueda secuencial por género
-        Libro[] encontradoGenero = estanteriaNovelas.busquedaSecuencial("Genero", Genero);
+        Libro[] generosEncontradosLibro = estanteriaNovelas.busquedaSecuencial("Genero", Genero);
+        Novela[] encontradoGenero = new Novela[generosEncontradosLibro.length];
+        for(int i = 0; i < generosEncontradosLibro.length; i++){
+            encontradoGenero[i] = (Novela) generosEncontradosLibro[i];
+        }
 
         // Realiza una búsqueda binaria por año
         Libro[] encontradoAño = estanteriaNovelas.busquedaBinariaSeleccion("Año", Año);

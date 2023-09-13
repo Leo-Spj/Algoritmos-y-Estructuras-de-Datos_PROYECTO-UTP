@@ -7,7 +7,7 @@ import MODELO.Libro;
 public class ControlEstanteria<L extends Libro> {
 
 
-    public Libro listaLibros[] = new Libro[1];
+    private Libro listaLibros[] = new Libro[1];
 
     public L obtenerUnLibro(long isbn) {
         for (Libro libro : listaLibros) {
