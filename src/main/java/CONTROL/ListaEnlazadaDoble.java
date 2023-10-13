@@ -130,7 +130,7 @@ public class ListaEnlazadaDoble<L extends Libro> {
     public void borrarPorTitulo(String titulo) {
         Nodo actual = cabeza;
         while (actual != null) {
-            if (actual.getNovela().getTitulo().equals(titulo)) {
+            if (actual.getNovela().getTitulo().equalsIgnoreCase(titulo)) {
                 if (actual.getAnterior() == null) { // Si es el primer nodo
                     cabeza = actual.getSiguiente();
                     if (cabeza != null) {
