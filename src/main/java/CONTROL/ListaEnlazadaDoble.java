@@ -12,10 +12,10 @@ import MODELO.Libro;
 /**
  *
  * @author brandonluismenesessolorzano
- 
+ *
  */
 public class ListaEnlazadaDoble<L extends Libro> {
-    
+
     private Libro listaLibros[] = new Libro[1];
 
     public L obtenerUnLibro(long isbn) {
@@ -78,7 +78,7 @@ public class ListaEnlazadaDoble<L extends Libro> {
             }
         }
     }
-    
+
     private Nodo cabeza;
     private Nodo cola;
 
@@ -86,6 +86,7 @@ public class ListaEnlazadaDoble<L extends Libro> {
         cabeza = null;
         cola = null;
     }
+
     public boolean contieneNovela(Novela novela) {
         Nodo actual = cabeza;
         while (actual != null) {
@@ -127,6 +128,7 @@ public class ListaEnlazadaDoble<L extends Libro> {
             }
         }
     }
+
     public void borrarPorTitulo(String titulo) {
         Nodo actual = cabeza;
         while (actual != null) {
@@ -152,9 +154,6 @@ public class ListaEnlazadaDoble<L extends Libro> {
             actual = actual.getSiguiente();
         }
     }
-
-
-
 
     public void borrarNodo(Novela novela) {
         Nodo actual = getCabeza();

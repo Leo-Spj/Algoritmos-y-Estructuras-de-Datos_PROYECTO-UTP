@@ -27,12 +27,10 @@ public class Avance2Form extends javax.swing.JFrame {
     /**
      * Creates new form Biblioteca
      */
-
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
     DefaultTableModel model = new DefaultTableModel();
     ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
     ListaEnlazadaDoble<Novela> listalibro = new ListaEnlazadaDoble();
-
 
     public Avance2Form() {
         initComponents();
@@ -41,62 +39,63 @@ public class Avance2Form extends javax.swing.JFrame {
         llenaListaEnlazadaDoble();
     }
 
-    public void guardarEnFichero(ControlEstanteria estanteria){
+    public void guardarEnFichero(ControlEstanteria estanteria) {
 
-        try(PrintWriter pw = new PrintWriter(new File("src/main/java/estanteriaNovelas.json"))){
+        try (PrintWriter pw = new PrintWriter(new File("src/main/java/estanteriaNovelas.json"))) {
 
             pw.write(gson.toJson(estanteria.getListaLibros()));
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void rellenarTabla(){
+    public void rellenarTabla() {
         Libro[] novelas = estanteriaNovelas.getListaLibros();
         for (int i = 0; i < novelas.length; i++) {
             Novela novela = (Novela) novelas[i];
             model.addRow(new Object[]{
-                    novela.getTitulo(),
-                    novela.getAutor(),
-                    novela.getAnioPublicacion(),
-                    novela.getISBN(),
-                    novela.getGenero()
+                novela.getTitulo(),
+                novela.getAutor(),
+                novela.getAnioPublicacion(),
+                novela.getISBN(),
+                novela.getGenero()
             });
         }
     }
+
     public void rellenarTabla2(ListaEnlazadaDoble lista) {
         model.setRowCount(0);
-        Nodo actual = lista.getCabeza(); 
+        Nodo actual = lista.getCabeza();
         while (actual != null) {
-            Novela novela = actual.getNovela(); 
+            Novela novela = actual.getNovela();
             model.addRow(new Object[]{
-                    novela.getTitulo(),
-                    novela.getAutor(),
-                    novela.getAnioPublicacion(),
-                    novela.getISBN(),
-                    novela.getGenero()
+                novela.getTitulo(),
+                novela.getAutor(),
+                novela.getAnioPublicacion(),
+                novela.getISBN(),
+                novela.getGenero()
             });
-            actual = actual.getSiguiente(); 
+            actual = actual.getSiguiente();
         }
     }
-    public void llenaListaEnlazadaDoble(){
-        for (int row = 0; row < model.getRowCount(); row++) {
-                String tempTitulo = model.getValueAt(row, 0).toString();
-                String tempAutor = model.getValueAt(row, 1).toString();
-                int tempAño = Integer.parseInt(model.getValueAt(row, 2).toString());
-                long tempIsbn = Long.parseLong(model.getValueAt(row, 3).toString());
-                String tempGenero = model.getValueAt(row, 4).toString();
 
-                Novela tempNovela = new Novela(tempTitulo, tempAutor, tempAño, tempIsbn, tempGenero);
-                if (!listalibro.contieneNovela(tempNovela)) {
-                    listalibro.insertarOrdenado(tempNovela);
-                }
+    public void llenaListaEnlazadaDoble() {
+        for (int row = 0; row < model.getRowCount(); row++) {
+            String tempTitulo = model.getValueAt(row, 0).toString();
+            String tempAutor = model.getValueAt(row, 1).toString();
+            int tempAño = Integer.parseInt(model.getValueAt(row, 2).toString());
+            long tempIsbn = Long.parseLong(model.getValueAt(row, 3).toString());
+            String tempGenero = model.getValueAt(row, 4).toString();
+
+            Novela tempNovela = new Novela(tempTitulo, tempAutor, tempAño, tempIsbn, tempGenero);
+            if (!listalibro.contieneNovela(tempNovela)) {
+                listalibro.insertarOrdenado(tempNovela);
             }
+        }
     }
 
-
-    public void datosPruebaEnTabla(){
+    public void datosPruebaEnTabla() {
 
         // Agregando novelas a la estantería
         estanteriaNovelas.agregarLibro(new Novela("Harry Potter y la piedra filosofal", "J.K. Rowling", 1997, 9788478884454L, "Fantasía"));
@@ -135,13 +134,11 @@ public class Avance2Form extends javax.swing.JFrame {
         estanteriaNovelas.agregarLibro(new Novela("El nombre de la rosa", "Umberto Eco", 1980, 9788432217523L, "Misterio"));
         estanteriaNovelas.agregarLibro(new Novela("Pedro Páramo", "Juan Rulfo", 1955, 9786074211479L, "Realismo mágico"));
 
-
         model.addColumn("Titulo");
         model.addColumn("Autor");
         model.addColumn("Año");
         model.addColumn("ISBN");
         model.addColumn("Genero");
-
 
         rellenarTabla();
 
@@ -159,6 +156,8 @@ public class Avance2Form extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel16 = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
@@ -229,6 +228,10 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 167, 54));
 
         jTabbedPane3.setBackground(new java.awt.Color(204, 167, 54));
+
+        jPanel16.setBackground(new java.awt.Color(204, 167, 54));
+
+        jTabbedPane2.setBackground(new java.awt.Color(255, 204, 102));
 
         jPanel3.setBackground(new java.awt.Color(204, 167, 54));
 
@@ -380,7 +383,7 @@ public class Avance2Form extends javax.swing.JFrame {
                         .addComponent(txtBuscarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEliminarLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,10 +410,10 @@ public class Avance2Form extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Insertar & Eliminar", jPanel3);
+        jTabbedPane2.addTab("Insertar & Eliminar", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(204, 167, 54));
 
@@ -443,7 +446,7 @@ public class Avance2Form extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnOrdNum_AnioPublic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnOrdNum_ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(728, Short.MAX_VALUE))
+                .addContainerGap(740, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,10 +457,10 @@ public class Avance2Form extends javax.swing.JFrame {
                 .addComponent(btnOrdNum_AnioPublic, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOrdNum_ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Num Ord", jPanel4);
+        jTabbedPane2.addTab("Num Ord", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(204, 167, 54));
 
@@ -492,7 +495,7 @@ public class Avance2Form extends javax.swing.JFrame {
                         .addComponent(btnOrdString_Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnOrdString_Autor, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(660, Short.MAX_VALUE))
+                .addContainerGap(672, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,10 +506,10 @@ public class Avance2Form extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnOrdString_Autor, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                     .addComponent(btnOrdString_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("String Ord", jPanel5);
+        jTabbedPane2.addTab("String Ord", jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(204, 167, 54));
 
@@ -524,17 +527,17 @@ public class Avance2Form extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(217, 217, 217)
                 .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(732, Short.MAX_VALUE))
+                .addContainerGap(744, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(105, 105, 105)
                 .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Asc & Desc", jPanel6);
+        jTabbedPane2.addTab("Asc & Desc", jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(204, 167, 54));
 
@@ -582,7 +585,7 @@ public class Avance2Form extends javax.swing.JFrame {
                         .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(137, 137, 137)
                 .addComponent(btnBuscar2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(500, Short.MAX_VALUE))
+                .addContainerGap(512, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,10 +603,23 @@ public class Avance2Form extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("2 Filtros Busqueda", jPanel7);
+        jTabbedPane2.addTab("2 Filtros Busqueda", jPanel7);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane2)
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane2)
+        );
+
+        jTabbedPane3.addTab("Primer Avance", jPanel16);
 
         jPanel8.setBackground(new java.awt.Color(204, 167, 54));
 
@@ -782,7 +798,7 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGap(0, 1066, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -791,12 +807,12 @@ public class Avance2Form extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
+            .addGap(0, 357, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(0, 9, Short.MAX_VALUE)
+                    .addGap(0, 15, Short.MAX_VALUE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 10, Short.MAX_VALUE)))
+                    .addGap(0, 16, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Pregunta1", jPanel9);
@@ -807,11 +823,11 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGap(0, 1066, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
+            .addGap(0, 357, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pregunta2", jPanel11);
@@ -822,11 +838,11 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGap(0, 1066, Short.MAX_VALUE)
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
+            .addGap(0, 357, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pregunta3", jPanel12);
@@ -837,11 +853,11 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGap(0, 1066, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 345, Short.MAX_VALUE)
+            .addGap(0, 357, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pregunta4", jPanel13);
@@ -926,7 +942,6 @@ public class Avance2Form extends javax.swing.JFrame {
 
     private void btnOrdNum_ISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdNum_ISBNActionPerformed
 
-
         model.setRowCount(0);
 
         estanteriaNovelas.deBurbuja("ISBN");
@@ -944,20 +959,20 @@ public class Avance2Form extends javax.swing.JFrame {
 
         if (titulo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de título.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
 
         if (autor.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de autor.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
         if (genero.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de género.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
         if (anioStr.length() != 4 || !anioStr.matches("\\d{4}")) {
             JOptionPane.showMessageDialog(this, "Ingresa un año válido (4 dígitos numéricos).", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
 
         int anio;
@@ -965,7 +980,7 @@ public class Avance2Form extends javax.swing.JFrame {
             anio = Integer.parseInt(anioStr);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingresa un año válido (número entero).", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
 
         long ISBN;
@@ -973,7 +988,7 @@ public class Avance2Form extends javax.swing.JFrame {
             ISBN = Long.parseLong(isbnStr);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Ingresa un ISBN válido (número entero).", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
 
         Novela nuevaNovela = new Novela(titulo, autor, anio, ISBN, genero);
@@ -986,7 +1001,7 @@ public class Avance2Form extends javax.swing.JFrame {
             nuevaNovela.getISBN(),
             nuevaNovela.getGenero()
         });
-        
+
 
     }//GEN-LAST:event_btnAgregarLibroActionPerformed
 
@@ -1026,12 +1041,12 @@ public class Avance2Form extends javax.swing.JFrame {
         String atributo = cbxBuscarLibros.getSelectedItem().toString();
         String valor = txtBuscarLibros.getText();
 
-        if(atributo.equals("ISBN")){
+        if (atributo.equals("ISBN")) {
             model.setRowCount(0);
 
             Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
 
-            for(int i = 0; i < encontrado.length; i++){
+            for (int i = 0; i < encontrado.length; i++) {
                 Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
                     novela.getTitulo(),
@@ -1049,14 +1064,14 @@ public class Avance2Form extends javax.swing.JFrame {
 
             Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
 
-            for(int i = 0; i < encontrado.length; i++){
+            for (int i = 0; i < encontrado.length; i++) {
                 Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
-                        novela.getTitulo(),
-                        novela.getAutor(),
-                        novela.getAnioPublicacion(),
-                        novela.getISBN(),
-                        novela.getGenero()
+                    novela.getTitulo(),
+                    novela.getAutor(),
+                    novela.getAnioPublicacion(),
+                    novela.getISBN(),
+                    novela.getGenero()
                 });
             }
         }
@@ -1067,14 +1082,14 @@ public class Avance2Form extends javax.swing.JFrame {
 
             Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
 
-            for(int i = 0; i < encontrado.length; i++){
+            for (int i = 0; i < encontrado.length; i++) {
                 Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
-                        novela.getTitulo(),
-                        novela.getAutor(),
-                        novela.getAnioPublicacion(),
-                        novela.getISBN(),
-                        novela.getGenero()
+                    novela.getTitulo(),
+                    novela.getAutor(),
+                    novela.getAnioPublicacion(),
+                    novela.getISBN(),
+                    novela.getGenero()
                 });
             }
         }
@@ -1084,14 +1099,14 @@ public class Avance2Form extends javax.swing.JFrame {
 
             Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
 
-            for(int i = 0; i < encontrado.length; i++){
+            for (int i = 0; i < encontrado.length; i++) {
                 Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
-                        novela.getTitulo(),
-                        novela.getAutor(),
-                        novela.getAnioPublicacion(),
-                        novela.getISBN(),
-                        novela.getGenero()
+                    novela.getTitulo(),
+                    novela.getAutor(),
+                    novela.getAnioPublicacion(),
+                    novela.getISBN(),
+                    novela.getGenero()
                 });
             }
         }
@@ -1101,14 +1116,14 @@ public class Avance2Form extends javax.swing.JFrame {
 
             Libro[] encontrado = estanteriaNovelas.busquedaSecuencial(atributo, valor);
 
-            for(int i = 0; i < encontrado.length; i++){
+            for (int i = 0; i < encontrado.length; i++) {
                 Novela novela = (Novela) encontrado[i];
                 model.addRow(new Object[]{
-                        novela.getTitulo(),
-                        novela.getAutor(),
-                        novela.getAnioPublicacion(),
-                        novela.getISBN(),
-                        novela.getGenero()
+                    novela.getTitulo(),
+                    novela.getAutor(),
+                    novela.getAnioPublicacion(),
+                    novela.getISBN(),
+                    novela.getGenero()
                 });
             }
         }
@@ -1127,7 +1142,7 @@ public class Avance2Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAscDesActionPerformed
 
     private void txtAnio2FilterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAnio2FilterKeyTyped
-        
+
     }//GEN-LAST:event_txtAnio2FilterKeyTyped
 
     private void txtGenro2FilterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGenro2FilterKeyTyped
@@ -1138,54 +1153,54 @@ public class Avance2Form extends javax.swing.JFrame {
 
         Libro[] encontradoGenero = estanteriaNovelas.busquedaSecuencial("Genero", Genero);
 
-        for(int i = 0; i < encontradoGenero.length; i++){
+        for (int i = 0; i < encontradoGenero.length; i++) {
             Novela novela = (Novela) encontradoGenero[i];
             model.addRow(new Object[]{
-                    novela.getTitulo(),
-                    novela.getAutor(),
-                    novela.getAnioPublicacion(),
-                    novela.getISBN(),
-                    novela.getGenero()
+                novela.getTitulo(),
+                novela.getAutor(),
+                novela.getAnioPublicacion(),
+                novela.getISBN(),
+                novela.getGenero()
             });
         }
 
     }//GEN-LAST:event_txtGenro2FilterKeyTyped
 
     private void btnBuscar2FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar2FilterActionPerformed
-        
+
         String Año = txtAnio2Filter.getText();
         String Genero = txtGenro2Filter.getText();
-        
+
         if (Genero.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingresa al menos un carácter en el campo de género.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
         if (Año.length() != 4) {
             JOptionPane.showMessageDialog(this, "El año debe tener exactamente 4 dígitos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
+            return;
         }
         model.setRowCount(0);
 
         // Realiza una búsqueda secuencial por género
         Libro[] generosEncontradosLibro = estanteriaNovelas.busquedaSecuencial("Genero", Genero);
         Novela[] encontradoGenero = new Novela[generosEncontradosLibro.length];
-        for(int i = 0; i < generosEncontradosLibro.length; i++){
+        for (int i = 0; i < generosEncontradosLibro.length; i++) {
             encontradoGenero[i] = (Novela) generosEncontradosLibro[i];
         }
 
         // Realiza una búsqueda binaria por año
         Libro[] encontradoAño = estanteriaNovelas.busquedaBinariaSeleccion("Año", Año);
-        
-        for(int i = 0; i < encontradoGenero.length; i++){
-            for(int j = 0; j < encontradoAño.length; j++){
-                if(encontradoGenero[i].equals(encontradoAño[j])){
+
+        for (int i = 0; i < encontradoGenero.length; i++) {
+            for (int j = 0; j < encontradoAño.length; j++) {
+                if (encontradoGenero[i].equals(encontradoAño[j])) {
                     Novela novela = (Novela) encontradoGenero[i];
                     model.addRow(new Object[]{
-                            novela.getTitulo(),
-                            novela.getAutor(),
-                            novela.getAnioPublicacion(),
-                            novela.getISBN(),
-                            novela.getGenero()
+                        novela.getTitulo(),
+                        novela.getAutor(),
+                        novela.getAnioPublicacion(),
+                        novela.getISBN(),
+                        novela.getGenero()
                     });
                 }
             }
@@ -1198,7 +1213,7 @@ public class Avance2Form extends javax.swing.JFrame {
         String titulo = txtEliminarLibrosPre1.getText();
         listalibro.borrarPorTitulo(titulo);
         rellenarTabla2(listalibro);
-        
+
     }//GEN-LAST:event_btnEliminarLibroPre1ActionPerformed
 
     private void txtEliminarLibrosPre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEliminarLibrosPre1KeyTyped
@@ -1208,7 +1223,7 @@ public class Avance2Form extends javax.swing.JFrame {
     private void btnAgregarLibroPre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibroPre1ActionPerformed
         // TODO add your handling code here:
         try {
-            
+
             String titulo = txtTituloPre1.getText();
             String autor = txtAutorPre1.getText();
             String genero = txtGeneroPre1.getText();
@@ -1221,7 +1236,7 @@ public class Avance2Form extends javax.swing.JFrame {
             }
             if (añoStr.length() != 4 || !añoStr.matches("\\d{4}")) {
                 JOptionPane.showMessageDialog(this, "Ingresa un año válido (4 dígitos numéricos).", "Error", JOptionPane.ERROR_MESSAGE);
-                return; 
+                return;
             }
 
             int año;
@@ -1247,7 +1262,7 @@ public class Avance2Form extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Ingresa un ISBN válido (número entero).", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            
+
             Novela nov = new Novela(titulo, autor, año, isbn, genero);
 
             if (!listalibro.contieneNovela(nov)) {
@@ -1340,6 +1355,7 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1352,6 +1368,7 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTable tblLibrosEstante;
     private javax.swing.JTextField txtAnio;
