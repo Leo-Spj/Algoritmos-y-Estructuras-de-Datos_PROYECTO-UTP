@@ -10,7 +10,6 @@ public class Novela extends Libro{
         super(titulo, autor, anioPublicacion, ISBN);
         this.genero = genero;
     }
-
     public String getGenero() {
         return genero;
     }
