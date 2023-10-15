@@ -12,11 +12,17 @@ import CONTROL.Nodo;
 import MODELO.Libro;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import CONTROL.*;
 
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -33,10 +39,22 @@ public class Avance2Form extends javax.swing.JFrame {
     ListaEnlazadaDoble<Novela> listalibro = new ListaEnlazadaDoble();
 
     public Avance2Form() {
+
         initComponents();
         datosPruebaEnTabla();
         guardarEnFichero(estanteriaNovelas);
         llenaListaEnlazadaDoble();
+
+        tblLibrosEstante.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent presionar){
+                JTable tabla = (JTable) presionar.getSource();
+                Point point = presionar.getPoint();
+                int row = tabla.rowAtPoint(point);
+                if (presionar.getClickCount() == 1) {
+                    txtFrase.setText(tblLibrosEstante.getValueAt(tblLibrosEstante.getSelectedRow(),0).toString());
+                }
+            }
+        });
     }
 
     public void guardarEnFichero(ControlEstanteria estanteria) {
@@ -219,6 +237,23 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        txtFrase = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        txtCola = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        txtConsonante = new javax.swing.JTextField();
+        txtVocales = new javax.swing.JTextField();
+        txtValores = new javax.swing.JTextField();
+        btnIngresar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLibrosEstante = new javax.swing.JTable();
@@ -410,7 +445,7 @@ public class Avance2Form extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addGap(37, 37, 37)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Insertar & Eliminar", jPanel3);
@@ -457,7 +492,7 @@ public class Avance2Form extends javax.swing.JFrame {
                 .addComponent(btnOrdNum_AnioPublic, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOrdNum_ISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Num Ord", jPanel4);
@@ -506,7 +541,7 @@ public class Avance2Form extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnOrdString_Autor, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                     .addComponent(btnOrdString_Titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("String Ord", jPanel5);
@@ -534,7 +569,7 @@ public class Avance2Form extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(105, 105, 105)
                 .addComponent(btnAscDes, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Asc & Desc", jPanel6);
@@ -585,7 +620,7 @@ public class Avance2Form extends javax.swing.JFrame {
                         .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(137, 137, 137)
                 .addComponent(btnBuscar2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(512, Short.MAX_VALUE))
+                .addContainerGap(513, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -603,7 +638,7 @@ public class Avance2Form extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(txtAnio2Filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("2 Filtros Busqueda", jPanel7);
@@ -666,6 +701,11 @@ public class Avance2Form extends javax.swing.JFrame {
         jLabel17.setText("Titulo");
 
         txtTituloPre1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTituloPre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTituloPre1ActionPerformed(evt);
+            }
+        });
 
         txtAutorPre1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -758,7 +798,7 @@ public class Avance2Form extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)))
+                        .addGap(18, 18, 18)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -807,12 +847,12 @@ public class Avance2Form extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGap(0, 382, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(0, 15, Short.MAX_VALUE)
+                    .addGap(0, 22, Short.MAX_VALUE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 16, Short.MAX_VALUE)))
+                    .addGap(0, 22, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Pregunta1", jPanel9);
@@ -827,7 +867,7 @@ public class Avance2Form extends javax.swing.JFrame {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGap(0, 382, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pregunta2", jPanel11);
@@ -842,22 +882,160 @@ public class Avance2Form extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGap(0, 382, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pregunta3", jPanel12);
 
         jPanel13.setBackground(new java.awt.Color(255, 204, 102));
 
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel21.setText("Titulo Seleccionado");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel22.setText("Frase");
+        jLabel22.setToolTipText("");
+
+        txtFrase.setEditable(false);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel23.setText("Frase");
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel24.setText("Cola");
+
+        txtCola.setEditable(false);
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel26.setText("Consonantes");
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel27.setText("Vocales");
+        jLabel27.setToolTipText("");
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel28.setText("Valores");
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel25.setText("Pila");
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel29.setText("Pila");
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel30.setText("Pila");
+
+        txtConsonante.setEditable(false);
+        txtConsonante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConsonanteActionPerformed(evt);
+            }
+        });
+
+        txtVocales.setEditable(false);
+
+        txtValores.setEditable(false);
+
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1066, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel21)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnIngresar)
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(109, 109, 109)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel23)
+                        .addGroup(jPanel13Layout.createSequentialGroup()
+                            .addGap(41, 41, 41)
+                            .addComponent(jLabel24)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtCola)))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel27)
+                            .addGroup(jPanel13Layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel30)))
+                            .addComponent(jLabel28))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtConsonante)
+                            .addComponent(txtVocales)
+                            .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)))
+                .addGap(88, 88, 88))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator3)
+                .addContainerGap())
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(txtCola, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel26)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel27)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel29)
+                            .addComponent(txtVocales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel28)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel30)
+                            .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtConsonante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 32, Short.MAX_VALUE))
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel21)
+                .addGap(33, 33, 33)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37)
+                .addComponent(btnIngresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pregunta4", jPanel13);
@@ -1280,6 +1458,86 @@ public class Avance2Form extends javax.swing.JFrame {
         rellenarTabla2(listalibro);
     }//GEN-LAST:event_btnAgregarLibroPre1ActionPerformed
 
+    private void txtTituloPre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloPre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTituloPre1ActionPerformed
+
+    private void txtConsonanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsonanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConsonanteActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+       
+        String frase = txtFrase.getText(); // Obtenemos el titulo clikeado
+        
+        ColaCaracteres cola = new ColaCaracteres();
+        ConsonantesVocales comprobar = new ConsonantesVocales();
+        
+        PilaCaracteres consonantes = new PilaCaracteres();
+        PilaCaracteres vocales = new PilaCaracteres();
+        PilaCaracteres valores= new PilaCaracteres();
+        
+////////////////////////////////////// Rellenado de Cola ///////////////////////
+
+        for (int i = 0; i < frase.length(); i++) {
+            
+            char c = frase.charAt(i);
+
+            if (c != ' ') {
+                cola.encolar(c);
+            } 
+        }
+        
+//////////////////////////////// Desencolar y apilado //////////////////////////
+
+        String fraseCola = "";
+        
+        while (cola.getFrente() != null) {
+            
+            char c = cola.desencolar(); // aprovecho el desencolar para derivar y comprobar los caracteres a sus respectivas PILAS 
+            fraseCola += c;
+            
+            if (comprobar.isConsonant(c) && !comprobar.isVowel(c)) {
+                
+                consonantes.apilar(c);
+                
+            }else if (comprobar.isVowel(c)) {
+                
+                vocales.apilar(c);
+                
+            }else{
+                
+                valores.apilar(c);
+                
+            }            
+             System.out.print(c);
+        }
+//////////////////////////////// Desapilado ////////////////////////////////////
+
+        String fraseConsonantes = "";
+        String fraseVocales = "";
+        String fraseValores = "";
+        
+        for (int i = 0; i < fraseCola.length(); i++) {
+            
+            if (consonantes.getCima()!=null) {
+                fraseConsonantes +=consonantes.desapilar();
+            }
+            if (vocales.getCima()!=null) {
+                fraseVocales += vocales.desapilar();
+            }
+            if (valores.getCima()!=null) {
+                fraseValores += valores.desapilar();
+            }
+        }
+//////////////////////////////// Mostrar Datos en los texField /////////////////
+
+        txtCola.setText(fraseCola);
+        txtConsonante.setText(fraseConsonantes);
+        txtVocales.setText(fraseVocales);
+        txtValores.setText(fraseValores);
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1323,6 +1581,7 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscar2Filter;
     private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnEliminarLibroPre1;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnOrdNum_AnioPublic;
     private javax.swing.JButton btnOrdNum_ISBN;
     private javax.swing.JButton btnOrdString_Autor;
@@ -1341,7 +1600,17 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1367,6 +1636,7 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
@@ -1377,7 +1647,10 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtAutorPre1;
     private javax.swing.JTextField txtBuscarLibros;
+    private javax.swing.JTextField txtCola;
+    private javax.swing.JTextField txtConsonante;
     private javax.swing.JTextField txtEliminarLibrosPre1;
+    private javax.swing.JTextField txtFrase;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtGeneroPre1;
     private javax.swing.JTextField txtGenro2Filter;
@@ -1385,5 +1658,7 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtISBNPre1;
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtTituloPre1;
+    private javax.swing.JTextField txtValores;
+    private javax.swing.JTextField txtVocales;
     // End of variables declaration//GEN-END:variables
 }

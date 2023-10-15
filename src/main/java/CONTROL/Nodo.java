@@ -35,13 +35,29 @@ public class Nodo {
     public void setAnterior(Nodo anterior) {
         this.anterior = anterior;
     }
+
+    public char getData() {
+        return data;
+    }
+
+    public void setData(char data) {
+        this.data = data;
+    }
+    
+    
     private Novela novela;
     private Nodo siguiente;
     private Nodo anterior;
-
+    private char data;
+    
     public Nodo(Novela novela) {
         this.novela = novela;
         this.siguiente = null;
         this.anterior = null;
+    }
+    
+    public Nodo(char c) {
+        this.data = c;
+        this.siguiente = null;
     }
 }

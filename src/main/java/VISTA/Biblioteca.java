@@ -200,6 +200,11 @@ public class Biblioteca extends javax.swing.JFrame {
         });
 
         txtBuscarLibros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscarLibros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscarLibrosActionPerformed(evt);
+            }
+        });
         txtBuscarLibros.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBuscarLibrosKeyTyped(evt);
@@ -217,6 +222,11 @@ public class Biblioteca extends javax.swing.JFrame {
         jLabel1.setText("Titulo");
 
         txtTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTituloActionPerformed(evt);
+            }
+        });
 
         txtAutor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -875,6 +885,14 @@ public class Biblioteca extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnBuscar2FilterActionPerformed
+
+    private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTituloActionPerformed
+
+    private void txtBuscarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarLibrosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscarLibrosActionPerformed
 
     /**
      * @param args the command line arguments
