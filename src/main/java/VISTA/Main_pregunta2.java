@@ -15,13 +15,18 @@ import CONTROL.Persona;
 public class Main_pregunta2{
   
     public static void main(String[] args) {
-      Persona[] cola = new Persona[4];
+      Persona[] cola = new Persona[8];
 
-        cola[0] = new Persona("Daniel", 1);
+        cola[0] = new Persona("Daniel", 7);
         cola[1] = new Persona("Katherine", 3);
         cola[2] = new Persona("Julio", 2);
-        cola[3] = new Persona("Maria", 1);
+        cola[3] = new Persona("Maria", 5);
+        cola[4] = new Persona("Pepe", 6);
+        cola[5] = new Persona("Juan", 1);
+        cola[6] = new Persona("Lucas", 1);
+        cola[7] = new Persona("Pedro", 1);
 
+        String mensaje = "";
         // Ordenar el array directamente en el método main
         for (int i = 0; i < cola.length - 1; i++) {
             for (int j = 0; j < cola.length - i - 1; j++) {
@@ -32,6 +37,8 @@ public class Main_pregunta2{
                     cola[j + 1] = temp;
                 }
             }
+                    System.out.print(mensaje+cola[i].getNombre()+", ");
+
         }
 
         for (Persona a : cola) {
