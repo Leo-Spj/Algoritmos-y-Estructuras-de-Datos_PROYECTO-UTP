@@ -11,12 +11,12 @@ package CONTROL;
 public class Persona implements Comparable<Persona> {
 
     private String nombre;
-    private int tipo; // 1 joven, 2 niño, 3 adulto mayor
+    private int edad; // 1 joven, 2 niño, 3 adulto mayor
 
     //constructores,setters y getters
     public Persona(String nombre, int tipo) {
         this.nombre = nombre;
-        this.tipo = tipo;
+        this.edad = tipo;
     }
 
     public String getNombre() {
@@ -29,18 +29,18 @@ public class Persona implements Comparable<Persona> {
     }
 
     public int getTipo() {
-        return tipo;
+        return edad;
     }
 
     public void setTipo(int tipo) {
-        this.tipo = tipo;
+        this.edad = tipo;
     }
 
     @Override
     public int compareTo(Persona o) {
-        if (tipo < o.getTipo()) {
+        if (edad < o.getTipo()) {
             return 1;
-        } else if (tipo > o.getTipo()) {
+        } else if (edad > o.getTipo()) {
             return -1;
         } else {
             // si los tipos son iguales se compara en base a os nombres
