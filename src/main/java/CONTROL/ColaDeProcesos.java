@@ -153,15 +153,6 @@ public class ColaDeProcesos {
         hilo.start();
 
 
-        do {
-            if (cabeza != null) {
-                procesar(segundos); // dentro de "procesar" hago un sleep segun segundos ingresados
-                System.out.println(imprimir());
-            } else {
-                System.out.print("");
-            }
-
-        } while (continuar);
 
     }
 

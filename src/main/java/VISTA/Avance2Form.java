@@ -10,6 +10,7 @@ import CONTROL.ListaEnlazadaDoble;
 import MODELO.CLASIFICACION.Novela;
 import CONTROL.Nodo;
 import MODELO.Libro;
+import MODELO.Proceso;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.awt.Point;
@@ -45,7 +46,6 @@ public class Avance2Form extends javax.swing.JFrame {
         guardarEnFichero(estanteriaNovelas);
         llenaListaEnlazadaDoble();
 
-        iniciandoPregunta3_pc2(); // pregunta 3 pc2 - leonardo
 
         tblLibrosEstante.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent presionar){
@@ -1681,42 +1681,38 @@ public class Avance2Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresarActionPerformed
 
 
-    public void iniciandoPregunta3_pc2(){
-        // intancio ColaDeProcesos
-        ColaDeProcesos simulacion = new ColaDeProcesos();
 
-        // segundos de txtF_segundoPorProceso
-        int segundos = Integer.parseInt(txtF_segundoPorProceso.getText());
-        Thread hilo = new Thread(new Runnable() {
-            @Override
-            public void run() {
-
-                simulacion.switchProcesado(segundos);
-
-            }
-        });
-
-        hilo.start();
-    }
+    ColaDeProcesos simulacion = new ColaDeProcesos();
 
     private void btn_detenerProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_detenerProcesosActionPerformed
 
-
+        simulacion.setContinuar(false);
+        simulacion.switchProcesado(0);
 
     }//GEN-LAST:event_btn_detenerProcesosActionPerformed
 
     private void btn_continuarProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_continuarProcesosActionPerformed
 
-
+        simulacion.setContinuar(true);
+        simulacion.switchProcesado(Integer.parseInt(txtF_segundoPorProceso.getText()));
 
     }//GEN-LAST:event_btn_continuarProcesosActionPerformed
 
     private void btn_tiempoTareaManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tiempoTareaManualActionPerformed
-        // TODO add your handling code here:
+
+        // se crea una tarea con el tiempo pasado por el usuario en txtF_tiempoTareaManual
+        simulacion.agregarProceso(new Proceso(Integer.parseInt(txtF_tiempoTareaManual.getText())));
+
     }//GEN-LAST:event_btn_tiempoTareaManualActionPerformed
 
     private void btn_generarNtareasAleatoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarNtareasAleatoriasActionPerformed
-        // TODO add your handling code here:
+
+        // se generan n tareas aleatorias por lo que le pasemos por parametro
+        int n = Integer.parseInt(txtF_generarNtareasAleatorias.getText());
+        for (int i = 0; i < n; i++) {
+            simulacion.agregarProceso(new Proceso((int) (Math.random() * 5) + 1)); // podriamos pasale por parametro el intervalo de tiempo
+        }
+
     }//GEN-LAST:event_btn_generarNtareasAleatoriasActionPerformed
 
     /**
