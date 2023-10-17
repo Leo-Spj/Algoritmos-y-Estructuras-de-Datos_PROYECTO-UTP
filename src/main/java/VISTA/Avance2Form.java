@@ -1721,7 +1721,7 @@ public class Avance2Form extends javax.swing.JFrame {
                     for (int i = 0; i < array.length; i++) {
 
                         model.addRow(new Object[]{
-                            array[i].getNombre(),
+                            "Proceso "+array[i].getNombre(),
                             array[i].getTiempoRestante()
                         });
                     }
@@ -1747,7 +1747,7 @@ public class Avance2Form extends javax.swing.JFrame {
 
         for (int i = 0; i < array.length; i++) {
             model.addRow(new Object[]{
-                array[i].getNombre(),
+                "Proceso "+ array[i].getNombre(),
                 array[i].getTiempoRestante()
             });
 
@@ -1773,8 +1773,8 @@ public class Avance2Form extends javax.swing.JFrame {
 
         for (int i = 0; i < array.length; i++) {
             model.addRow(new Object[]{
-                    array[i].getNombre(),
-                    array[i].getTiempoRestante()
+                "Proceso "+ array[i].getNombre(),
+                array[i].getTiempoRestante()
             });
 
         }
