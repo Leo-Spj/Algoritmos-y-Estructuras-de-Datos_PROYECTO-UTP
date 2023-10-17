@@ -43,7 +43,7 @@ public class SimuladorProcesos {
                 @Override
                 public void run() {
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(5000); // en 5 segundos incerto 2 procesos mas
                         for (int i = 0; i < 2; i++) {
 
                             try {

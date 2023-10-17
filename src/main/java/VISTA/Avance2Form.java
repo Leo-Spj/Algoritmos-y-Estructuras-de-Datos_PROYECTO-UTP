@@ -10,6 +10,7 @@ import CONTROL.ListaEnlazadaDoble;
 import MODELO.CLASIFICACION.Novela;
 import CONTROL.Nodo;
 import MODELO.Libro;
+import MODELO.Persona_2;
 import MODELO.Proceso;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -1687,7 +1688,7 @@ public class Avance2Form extends javax.swing.JFrame {
     private void btn_detenerProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_detenerProcesosActionPerformed
 
         simulacion.setContinuar(false);
-        simulacion.switchProcesado(0);
+        //simulacion.switchProcesado(0);
 
     }//GEN-LAST:event_btn_detenerProcesosActionPerformed
 
@@ -1696,12 +1697,61 @@ public class Avance2Form extends javax.swing.JFrame {
         simulacion.setContinuar(true);
         simulacion.switchProcesado(Integer.parseInt(txtF_segundoPorProceso.getText()));
 
+        // simular los procesos en la tabla tblLibrosEstante
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (simulacion.getContinuar()) {
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    model.setRowCount(0);
+
+                    Proceso[] array = simulacion.imprimir();
+
+                    // borrar columnas y colocar solo las que necesitamos
+                    model.setColumnCount(0);
+                    model.addColumn("Nombre");
+                    model.addColumn("Tiempo Restante");
+
+
+                    //añadir a la tabla el nombre y el tiempo de cada proceso
+                    for (int i = 0; i < array.length; i++) {
+
+                        model.addRow(new Object[]{
+                            array[i].getNombre(),
+                            array[i].getTiempoRestante()
+                        });
+                    }
+
+
+                }
+            }
+        }).start();
+
     }//GEN-LAST:event_btn_continuarProcesosActionPerformed
 
     private void btn_tiempoTareaManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tiempoTareaManualActionPerformed
 
-        // se crea una tarea con el tiempo pasado por el usuario en txtF_tiempoTareaManual
         simulacion.agregarProceso(new Proceso(Integer.parseInt(txtF_tiempoTareaManual.getText())));
+
+        model.setRowCount(0);
+
+        Proceso[] array = simulacion.imprimir();
+
+        model.setColumnCount(0);
+        model.addColumn("Nombre");
+        model.addColumn("Tiempo Restante");
+
+        for (int i = 0; i < array.length; i++) {
+            model.addRow(new Object[]{
+                array[i].getNombre(),
+                array[i].getTiempoRestante()
+            });
+
+        }
 
     }//GEN-LAST:event_btn_tiempoTareaManualActionPerformed
 
@@ -1711,6 +1761,22 @@ public class Avance2Form extends javax.swing.JFrame {
         int n = Integer.parseInt(txtF_generarNtareasAleatorias.getText());
         for (int i = 0; i < n; i++) {
             simulacion.agregarProceso(new Proceso((int) (Math.random() * 5) + 1)); // podriamos pasale por parametro el intervalo de tiempo
+        }
+
+        model.setRowCount(0);
+
+        Proceso[] array = simulacion.imprimir();
+
+        model.setColumnCount(0);
+        model.addColumn("Nombre");
+        model.addColumn("Tiempo Restante");
+
+        for (int i = 0; i < array.length; i++) {
+            model.addRow(new Object[]{
+                    array[i].getNombre(),
+                    array[i].getTiempoRestante()
+            });
+
         }
 
     }//GEN-LAST:event_btn_generarNtareasAleatoriasActionPerformed
