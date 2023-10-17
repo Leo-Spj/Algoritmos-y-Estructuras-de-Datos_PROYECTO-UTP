@@ -9,7 +9,7 @@ public class PersonaColaPrioridadLinkedList {
 
 
     //agregar persona segun su edad al inicion de la cola, mayores al inicio, menores al ultimo
-    public void incertarPersona(Persona_2 persona){
+    public void insertarPersona(Persona_2 persona){
         if (cabeza == null){
             cabeza = persona;
         }else{
