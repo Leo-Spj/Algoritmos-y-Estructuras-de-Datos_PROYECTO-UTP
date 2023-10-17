@@ -5,6 +5,8 @@
 package VISTA;
 
 import CONTROL.Persona;
+import CONTROL.PersonaColaPrioridadLinkedList;
+import MODELO.Persona_2;
 
 
 /**
@@ -15,45 +17,35 @@ import CONTROL.Persona;
 public class Main_pregunta2{
   
     public static void main(String[] args) {
-      Persona[] cola = new Persona[8];
 
-        cola[0] = new Persona("Daniel", 7);
-        cola[1] = new Persona("Katherine", 3);
-        cola[2] = new Persona("Julio", 2);
-        cola[3] = new Persona("Maria", 5);
-        cola[4] = new Persona("Pepe", 6);
-        cola[5] = new Persona("Juan", 1);
-        cola[6] = new Persona("Lucas", 1);
-        cola[7] = new Persona("Pedro", 1);
+        PersonaColaPrioridadLinkedList colaPersonas = new PersonaColaPrioridadLinkedList();
 
-        String mensaje = "";
-        // Ordenar el array directamente en el método main
-        for (int i = 0; i < cola.length - 1; i++) {
-            for (int j = 0; j < cola.length - i - 1; j++) {
-                if (cola[j].compareTo(cola[j + 1]) > 0) {//
-                    // intercambian las posiciones de las persnas utlizando la variable aux temp
-                    Persona temp = cola[j];
-                    cola[j] = cola[j + 1];
-                    cola[j + 1] = temp;
-                }
-            }
-                    System.out.print(mensaje+cola[i].getNombre()+", ");
+        // insertando en la lista enlazada a las personas de prueba desde niños a adultos mayores aleatoriamente
+        colaPersonas.incertarPersona(new Persona_2("Juan", 10));
+        colaPersonas.incertarPersona(new Persona_2("Pedro", 20));
+        colaPersonas.incertarPersona(new Persona_2("Luis", 50));
+        colaPersonas.incertarPersona(new Persona_2("Ana", 60));
+        colaPersonas.incertarPersona(new Persona_2("Maria", 30));
+        colaPersonas.incertarPersona(new Persona_2("Carlos", 80));
+        colaPersonas.incertarPersona(new Persona_2("Luis", 90));
+        colaPersonas.incertarPersona(new Persona_2("Luisa", 100));
+        colaPersonas.incertarPersona(new Persona_2("Carlos", 110));
+        colaPersonas.incertarPersona(new Persona_2("Jose", 40));
+        colaPersonas.incertarPersona(new Persona_2("Luisa", 70));
 
-        }
+        // mostrando las personas de la lista enlazada
+        System.out.println(colaPersonas.mostrarPersonas());
 
-        for (Persona a : cola) {
-            System.out.println(a.getNombre() + " " + a.getTipo());//imprime n   ombre y tipos ddespues de ser cmparado
-        }
-        boolean colaVacia = esColaVacia(cola);
-        System.out.println("¿La cola está vacía? " + colaVacia);//solo para verificar que la cola este vaci
-    }
-    public static boolean esColaVacia(Persona[] cola) {//verifica si todas las posiciones del arreglo son nulas.
-        for (Persona persona : cola) {
-            if (persona != null) {
-                return false; // La cola no está vacía
-            }
-        }
-        return true;
+        // atendiendo a las personas de la lista enlazada
+        colaPersonas.atenderPersona();
+        System.out.println(colaPersonas.mostrarPersonas());
+
+        colaPersonas.atenderPersona();
+        System.out.println(colaPersonas.mostrarPersonas());
+
+        colaPersonas.atenderPersona();
+        System.out.println(colaPersonas.mostrarPersonas());
+
     }
 }
    
