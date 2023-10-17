@@ -130,7 +130,8 @@ public class ColaDeProcesos {
     }
 
     // funcion para apagar o prender el procesado mediante parametro booleano
-    public void switchProcesado(boolean estado, int segundos){
+    public void switchProcesado( int segundos){
+
         do {
             if (cabeza != null) {
                 procesar(segundos); // dentro de "procesar" hago un sleep segun segundos ingresados
@@ -140,6 +141,7 @@ public class ColaDeProcesos {
             }
 
         } while (continuar);
+
     }
 
 

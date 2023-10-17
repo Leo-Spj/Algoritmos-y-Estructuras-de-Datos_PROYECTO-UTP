@@ -15,7 +15,7 @@ public class SimuladorProcesos {
                 @Override
                 public void run() {
 
-                    simulacion.switchProcesado(true, 2); // mi metodo para encender el procesador
+                    simulacion.switchProcesado( 2); // mi metodo para encender el procesador
 
                 }
             });

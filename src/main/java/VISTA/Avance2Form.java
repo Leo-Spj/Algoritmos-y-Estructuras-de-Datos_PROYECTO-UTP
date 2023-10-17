@@ -45,6 +45,8 @@ public class Avance2Form extends javax.swing.JFrame {
         guardarEnFichero(estanteriaNovelas);
         llenaListaEnlazadaDoble();
 
+        iniciandoPregunta3_pc2(); // pregunta 3 pc2 - leonardo
+
         tblLibrosEstante.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent presionar){
                 JTable tabla = (JTable) presionar.getSource();
@@ -236,6 +238,19 @@ public class Avance2Form extends javax.swing.JFrame {
         btnAgregarLibroPre1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        jPanel17 = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        txtF_tiempoTareaManual = new javax.swing.JTextField();
+        btn_tiempoTareaManual = new javax.swing.JButton();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        txtF_generarNtareasAleatorias = new javax.swing.JTextField();
+        btn_generarNtareasAleatorias = new javax.swing.JButton();
+        btn_detenerProcesos = new javax.swing.JButton();
+        btn_continuarProcesos = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        txtF_segundoPorProceso = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -838,7 +853,7 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1066, Short.MAX_VALUE)
+            .addGap(0, 1069, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -847,12 +862,12 @@ public class Avance2Form extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGap(0, 383, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
-                    .addGap(0, 22, Short.MAX_VALUE)
+                    .addGap(0, 43, Short.MAX_VALUE)
                     .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 22, Short.MAX_VALUE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Pregunta1", jPanel9);
@@ -863,26 +878,154 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1066, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pregunta2", jPanel11);
 
         jPanel12.setBackground(new java.awt.Color(255, 204, 102));
 
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel31.setText("Simulacion de procesamiento");
+
+        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel32.setText("Tiempo de tarea:");
+
+        btn_tiempoTareaManual.setText("Añadir tarea");
+        btn_tiempoTareaManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tiempoTareaManualActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_tiempoTareaManual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addComponent(jLabel32)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtF_tiempoTareaManual, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32)
+                    .addComponent(txtF_tiempoTareaManual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_tiempoTareaManual)
+                .addGap(19, 19, 19))
+        );
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel33.setText("Cantidad de Tareas:");
+
+        btn_generarNtareasAleatorias.setText("jButton2");
+        btn_generarNtareasAleatorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_generarNtareasAleatoriasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_generarNtareasAleatorias, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtF_generarNtareasAleatorias, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel33)
+                    .addComponent(txtF_generarNtareasAleatorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_generarNtareasAleatorias)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        btn_detenerProcesos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_detenerProcesos.setText("Detener");
+        btn_detenerProcesos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_detenerProcesosActionPerformed(evt);
+            }
+        });
+
+        btn_continuarProcesos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btn_continuarProcesos.setText("Continuar");
+        btn_continuarProcesos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_continuarProcesosActionPerformed(evt);
+            }
+        });
+
+        jLabel34.setText("Segundos por proceso:");
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1066, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(158, 158, 158)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(btn_detenerProcesos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_continuarProcesos))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addComponent(jLabel34)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtF_segundoPorProceso, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 382, Short.MAX_VALUE)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel31)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel34)
+                            .addComponent(txtF_segundoPorProceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_detenerProcesos)
+                            .addComponent(btn_continuarProcesos))))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Pregunta3", jPanel12);
@@ -973,23 +1116,23 @@ public class Avance2Form extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtCola)))
                     .addGroup(jPanel13Layout.createSequentialGroup()
-                        .addComponent(jLabel26)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel27)
+                            .addComponent(jLabel26)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel29)
-                                    .addComponent(jLabel25)
-                                    .addComponent(jLabel30)))
-                            .addComponent(jLabel28))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtConsonante)
-                            .addComponent(txtVocales)
-                            .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel27)
+                                    .addGroup(jPanel13Layout.createSequentialGroup()
+                                        .addGap(43, 43, 43)
+                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel29)
+                                            .addComponent(jLabel25)
+                                            .addComponent(jLabel30)))
+                                    .addComponent(jLabel28))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtConsonante)
+                                    .addComponent(txtVocales)
+                                    .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(16, 16, 16)))
                 .addGap(88, 88, 88))
         );
@@ -1025,7 +1168,7 @@ public class Avance2Form extends javax.swing.JFrame {
                             .addComponent(jLabel30)
                             .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txtConsonante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 42, Short.MAX_VALUE))
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabel21)
@@ -1069,7 +1212,6 @@ public class Avance2Form extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 102, 0));
 
         tblLibrosEstante.setBackground(new java.awt.Color(204, 181, 66));
-        tblLibrosEstante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblLibrosEstante.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jScrollPane1.setViewportView(tblLibrosEstante);
 
@@ -1538,6 +1680,45 @@ public class Avance2Form extends javax.swing.JFrame {
         txtValores.setText(fraseValores);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
+
+    public void iniciandoPregunta3_pc2(){
+        // intancio ColaDeProcesos
+        ColaDeProcesos simulacion = new ColaDeProcesos();
+
+        // segundos de txtF_segundoPorProceso
+        int segundos = Integer.parseInt(txtF_segundoPorProceso.getText());
+        Thread hilo = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                simulacion.switchProcesado(segundos);
+
+            }
+        });
+
+        hilo.start();
+    }
+
+    private void btn_detenerProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_detenerProcesosActionPerformed
+
+
+
+    }//GEN-LAST:event_btn_detenerProcesosActionPerformed
+
+    private void btn_continuarProcesosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_continuarProcesosActionPerformed
+
+
+
+    }//GEN-LAST:event_btn_continuarProcesosActionPerformed
+
+    private void btn_tiempoTareaManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tiempoTareaManualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_tiempoTareaManualActionPerformed
+
+    private void btn_generarNtareasAleatoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarNtareasAleatoriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_generarNtareasAleatoriasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1586,6 +1767,10 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JButton btnOrdNum_ISBN;
     private javax.swing.JButton btnOrdString_Autor;
     private javax.swing.JButton btnOrdString_Titulo;
+    private javax.swing.JButton btn_continuarProcesos;
+    private javax.swing.JButton btn_detenerProcesos;
+    private javax.swing.JButton btn_generarNtareasAleatorias;
+    private javax.swing.JButton btn_tiempoTareaManual;
     private javax.swing.JComboBox<String> cbxBuscarLibros;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1611,6 +1796,10 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1625,6 +1814,8 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1650,6 +1841,9 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtCola;
     private javax.swing.JTextField txtConsonante;
     private javax.swing.JTextField txtEliminarLibrosPre1;
+    private javax.swing.JTextField txtF_generarNtareasAleatorias;
+    private javax.swing.JTextField txtF_segundoPorProceso;
+    private javax.swing.JTextField txtF_tiempoTareaManual;
     private javax.swing.JTextField txtFrase;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtGeneroPre1;
