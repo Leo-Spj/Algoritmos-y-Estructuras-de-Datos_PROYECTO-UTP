@@ -1,5 +1,6 @@
 package CONTROL;
 
+import MODELO.Persona_2;
 import MODELO.Proceso;
 
 public class ColaDeProcesos {
@@ -43,6 +44,7 @@ public class ColaDeProcesos {
 
         proceso.setNombre(NombreMayor);
 
+        System.out.println("Se ha agregado el proceso " + proceso.getNombre() + " con " + proceso.getTiempoRestante() + " segundos restantes");
     }
 
     public void eliminarProceso() {
@@ -91,9 +93,9 @@ public class ColaDeProcesos {
                 try {
                     Thread.sleep(tiempoProcesar * 1000);
                     if (cabeza != null){
-                        System.out.println("El proceso " + cabeza.getNombre() + " ha terminado");
+                        //System.out.println("El proceso " + cabeza.getNombre() + " ha terminado");
                     } else {
-                        System.out.println("No hay procesos en la cola");
+                        //System.out.println("No hay procesos en la cola");
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -104,9 +106,9 @@ public class ColaDeProcesos {
                 try {
                     Thread.sleep(tiempoProcesar * 1000);
                     if(cabeza != null) {
-                        System.out.println("Proceso " + cabeza.getNombre() + " movido al final, le quedan " + cabeza.getTiempoRestante() + " segundos");
+                        //System.out.println("Proceso " + cabeza.getNombre() + " movido al final, le quedan " + cabeza.getTiempoRestante() + " segundos");
                     } else {
-                        System.out.println("No hay procesos en la cola");
+                        //System.out.println("No hay procesos en la cola");
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -114,32 +116,42 @@ public class ColaDeProcesos {
                 moverAlFinal();
             }
         } else {
-            System.out.println("No hay procesos en la cola");
+            //System.out.println("No hay procesos en la cola");
         }
     }
 
-    public String imprimir() {
 
-        Proceso temp = cabeza;
-        String cadena = "";
-        while (temp != null) {
-            cadena = cadena + temp.getNombre() + " -> ";
-            temp = temp.getSiguiente();
+    //devolviendo en un arreglo los objetos de la cola en el metodo imprimir
+    public Proceso[] imprimir() {
+        Proceso[] procesos = new Proceso[tamaño];
+        Proceso aux = cabeza;
+        for (int i = 0; i < tamaño; i++) {
+            procesos[i] = aux;
+            aux = aux.getSiguiente();
         }
-        return cadena;
+        return procesos;
     }
 
     // funcion para apagar o prender el procesado mediante parametro booleano
-    public void switchProcesado(boolean estado, int segundos){
-        do {
-            if (cabeza != null) {
-                procesar(segundos); // dentro de "procesar" hago un sleep segun segundos ingresados
-                System.out.println(imprimir());
-            } else {
-                System.out.print("");
-            }
+    public void switchProcesado( int segundos){
+        Thread hilo = new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-        } while (continuar);
+                do {
+                    if (cabeza != null) {
+                        procesar(segundos); // dentro de "procesar" hago un sleep segun segundos ingresados
+                        //System.out.println(imprimir());
+                    } else {
+                        //System.out.print("");
+                    }
+
+                } while (continuar);
+
+            }
+        });
+        hilo.start();
+
     }
 
 

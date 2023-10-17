@@ -15,7 +15,7 @@ public class SimuladorProcesos {
                 @Override
                 public void run() {
 
-                    simulacion.switchProcesado(true, 2); // mi metodo para encender el procesador
+                    simulacion.switchProcesado( 2); // mi metodo para encender el procesador
 
                 }
             });
@@ -28,7 +28,7 @@ public class SimuladorProcesos {
                 public void run() {
                     for (int i = 0; i < 3; i++) {
                         simulacion.agregarProceso(new Proceso((int) (Math.random() * 5) + 1));
-                        System.out.println(simulacion.imprimir());
+                        //System.out.println(simulacion.imprimir());
                         try {
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
@@ -50,8 +50,8 @@ public class SimuladorProcesos {
                                 Thread.sleep(4000); // cada 4 segundos inserto un proceso
 
                                 simulacion.agregarProceso(new Proceso((int) (Math.random() * 6) + 1));
-                                System.out.println("Se ha agregado un proceso");
-                                System.out.println(simulacion.imprimir());
+                                //System.out.println("Se ha agregado un proceso");
+                                //System.out.println(simulacion.imprimir());
 
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
@@ -76,8 +76,8 @@ public class SimuladorProcesos {
                                 Thread.sleep(500);
 
                                 simulacion.agregarProceso(new Proceso((int) (Math.random() * 10) + 1));
-                                System.out.println("Se ha agregado un proceso");
-                                System.out.println(simulacion.imprimir());
+                                //System.out.println("Se ha agregado un proceso");
+                                //System.out.println(simulacion.imprimir());
 
                             } catch (InterruptedException e) {
                                 e.printStackTrace();

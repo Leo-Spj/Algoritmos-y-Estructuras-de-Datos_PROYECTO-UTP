@@ -17,7 +17,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import CONTROL.*;
-import MODELO.Persona_2;
 
 import javax.swing.table.DefaultTableModel;
 import java.io.File;
@@ -38,7 +37,6 @@ public class Avance2Form extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
     ListaEnlazadaDoble<Novela> listalibro = new ListaEnlazadaDoble();
-    PersonaColaPrioridadLinkedList colaPersonas = new PersonaColaPrioridadLinkedList();
 
     public Avance2Form() {
 
@@ -237,13 +235,6 @@ public class Avance2Form extends javax.swing.JFrame {
         txtGeneroPre1 = new javax.swing.JTextField();
         btnAgregarLibroPre1 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        txtEdadPre2 = new javax.swing.JTextField();
-        txtNombrePre2 = new javax.swing.JTextField();
-        btnAgregarPersona = new javax.swing.JButton();
-        btnAtenderPersona = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
@@ -263,7 +254,6 @@ public class Avance2Form extends javax.swing.JFrame {
         txtVocales = new javax.swing.JTextField();
         txtValores = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLibrosEstante = new javax.swing.JTable();
@@ -869,82 +859,15 @@ public class Avance2Form extends javax.swing.JFrame {
 
         jPanel11.setBackground(new java.awt.Color(255, 204, 102));
 
-        jLabel31.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel31.setText("Ingrese nombre");
-
-        jLabel32.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel32.setText("Ingrese edad");
-
-        txtEdadPre2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-
-        txtNombrePre2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-
-        btnAgregarPersona.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        btnAgregarPersona.setText("Agregar persona");
-        btnAgregarPersona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarPersonaActionPerformed(evt);
-            }
-        });
-
-        btnAtenderPersona.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        btnAtenderPersona.setText("Atender persona");
-        btnAtenderPersona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtenderPersonaActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("Cargar tabla libros");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(jLabel31))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jLabel32)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNombrePre2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEdadPre2, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAtenderPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(410, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(427, 427, 427))
+            .addGap(0, 1066, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(txtNombrePre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregarPersona))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtEdadPre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAtenderPersona))
-                    .addComponent(jLabel32))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(72, 72, 72))
+            .addGap(0, 382, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Pregunta2", jPanel11);
@@ -1022,13 +945,6 @@ public class Avance2Form extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cargar tabla libros");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
@@ -1044,8 +960,7 @@ public class Avance2Form extends javax.swing.JFrame {
                             .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addComponent(jLabel22)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton2))
+                                .addComponent(txtFrase, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(109, 109, 109)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96)
@@ -1058,24 +973,24 @@ public class Avance2Form extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtCola)))
                     .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel26)
+                            .addComponent(jLabel27)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel27)
-                                    .addGroup(jPanel13Layout.createSequentialGroup()
-                                        .addGap(43, 43, 43)
-                                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel29)
-                                            .addComponent(jLabel25)
-                                            .addComponent(jLabel30)))
-                                    .addComponent(jLabel28))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtConsonante)
-                                    .addComponent(txtVocales)
-                                    .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(22, 22, 22)))
+                                .addGap(43, 43, 43)
+                                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel29)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel30)))
+                            .addComponent(jLabel28))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtConsonante)
+                            .addComponent(txtVocales)
+                            .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(16, 16, 16)))
                 .addGap(88, 88, 88))
         );
         jPanel13Layout.setVerticalGroup(
@@ -1110,11 +1025,9 @@ public class Avance2Form extends javax.swing.JFrame {
                             .addComponent(jLabel30)
                             .addComponent(txtValores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(txtConsonante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 58, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel21)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1159,12 +1072,6 @@ public class Avance2Form extends javax.swing.JFrame {
         tblLibrosEstante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblLibrosEstante.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jScrollPane1.setViewportView(tblLibrosEstante);
-        if (tblLibrosEstante.getColumnModel().getColumnCount() > 0) {
-            tblLibrosEstante.getColumnModel().getColumn(0).setHeaderValue("Title 1");
-            tblLibrosEstante.getColumnModel().getColumn(1).setHeaderValue("Title 2");
-            tblLibrosEstante.getColumnModel().getColumn(2).setHeaderValue("Title 3");
-            tblLibrosEstante.getColumnModel().getColumn(3).setHeaderValue("Title 4");
-        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1631,67 +1538,6 @@ public class Avance2Form extends javax.swing.JFrame {
         txtValores.setText(fraseValores);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
-    private void btnAgregarPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarPersonaActionPerformed
-        // TODO add your handling code here:
-        String nombre = txtNombrePre2.getText();
-        int edad = Integer.parseInt(txtEdadPre2.getText());
-
-        colaPersonas.insertarPersona(new Persona_2(nombre, edad));
-
-
-        txtNombrePre2.setText("");
-        txtEdadPre2.setText("");
-        model.setRowCount(0); 
-        model.setColumnCount(0); 
-        model.addColumn("Persona");
-        model.addColumn("Edad");
-
-        String personasString = colaPersonas.mostrarPersonas();
-
-        String[] personasArray = personasString.split(";");
-
-        for (String persona : personasArray) {
-            String[] datosPersona = persona.split(" "); 
-            model.addRow(datosPersona); 
-        }
-    }//GEN-LAST:event_btnAgregarPersonaActionPerformed
-
-    private void btnAtenderPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtenderPersonaActionPerformed
-        // TODO add your handling code here:
-        colaPersonas.atenderPersona();
-
-        model.setRowCount(0);
-
-        model.setColumnCount(0); 
-        model.addColumn("Persona");
-        model.addColumn("Edad");
-
-        String personasString = colaPersonas.mostrarPersonas();
-
-        String[] personasArray = personasString.split(";");
-
-        for (String persona : personasArray) {
-            String[] datosPersona = persona.split(" "); 
-            model.addRow(datosPersona); 
-        }
-    }//GEN-LAST:event_btnAtenderPersonaActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        model.setRowCount(0); 
-        model.setColumnCount(0);
-        datosPruebaEnTabla();
-        guardarEnFichero(estanteriaNovelas);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        model.setRowCount(0); 
-        model.setColumnCount(0);
-        datosPruebaEnTabla();
-        guardarEnFichero(estanteriaNovelas);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -1731,9 +1577,7 @@ public class Avance2Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarLibro;
     private javax.swing.JButton btnAgregarLibroPre1;
-    private javax.swing.JButton btnAgregarPersona;
     private javax.swing.JButton btnAscDes;
-    private javax.swing.JButton btnAtenderPersona;
     private javax.swing.JButton btnBuscar2Filter;
     private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnEliminarLibroPre1;
@@ -1743,8 +1587,6 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JButton btnOrdString_Autor;
     private javax.swing.JButton btnOrdString_Titulo;
     private javax.swing.JComboBox<String> cbxBuscarLibros;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1769,8 +1611,6 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1809,7 +1649,6 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscarLibros;
     private javax.swing.JTextField txtCola;
     private javax.swing.JTextField txtConsonante;
-    private javax.swing.JTextField txtEdadPre2;
     private javax.swing.JTextField txtEliminarLibrosPre1;
     private javax.swing.JTextField txtFrase;
     private javax.swing.JTextField txtGenero;
@@ -1817,7 +1656,6 @@ public class Avance2Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtGenro2Filter;
     private javax.swing.JTextField txtISBN;
     private javax.swing.JTextField txtISBNPre1;
-    private javax.swing.JTextField txtNombrePre2;
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtTituloPre1;
     private javax.swing.JTextField txtValores;
