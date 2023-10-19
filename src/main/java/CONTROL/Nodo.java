@@ -11,6 +11,21 @@ import MODELO.CLASIFICACION.Novela;
  * @author brandonluismenesessolorzano
  */
 public class Nodo {
+    private Novela novela;
+    private Nodo siguiente;
+    private Nodo anterior;
+    private char data;
+    
+    public Nodo(Novela novela) {
+        this.novela = novela;
+        this.siguiente = null;
+        this.anterior = null;
+    }
+    
+    public Nodo(char c) {
+        this.data = c;
+        this.siguiente = null;
+    }
 
     public Novela getNovela() {
         return novela;
@@ -45,19 +60,5 @@ public class Nodo {
     }
     
     
-    private Novela novela;
-    private Nodo siguiente;
-    private Nodo anterior;
-    private char data;
     
-    public Nodo(Novela novela) {
-        this.novela = novela;
-        this.siguiente = null;
-        this.anterior = null;
-    }
-    
-    public Nodo(char c) {
-        this.data = c;
-        this.siguiente = null;
-    }
 }
