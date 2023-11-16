@@ -22,4 +22,25 @@ public class Novela extends Libro{
     public Libro getLibro() {
         return this;
     }
+
+    public String[] getAttributeNames() {
+        return new String[]{"titulo", "autor", "genero", "anio", "isbn"};
+    }
+
+    public String getAttributeValue(String attributeName) {
+        switch (attributeName) {
+            case "titulo":
+                return getTitulo();
+            case "autor":
+                return getAutor();
+            case "genero":
+                return getGenero();
+            case "anio":
+                return getAnioPublicacion()+"";
+            case "isbn":
+                return getISBN()+"";
+            default:
+                return null;
+        }
+    }
 }

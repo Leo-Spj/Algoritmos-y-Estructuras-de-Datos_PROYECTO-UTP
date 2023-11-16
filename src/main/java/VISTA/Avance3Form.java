@@ -4,6 +4,7 @@
  */
 package VISTA;
 
+import CONTROL.HashTable;
 import CONTROL.ControlEstanteria;
 
 import CONTROL.ListaEnlazadaDoble;
@@ -28,8 +29,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author Leo
- * prueba git ssh
+ * @author Leo prueba git ssh
  */
 public class Avance3Form extends javax.swing.JFrame {
 
@@ -41,6 +41,7 @@ public class Avance3Form extends javax.swing.JFrame {
     ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
     ListaEnlazadaDoble<Novela> listalibro = new ListaEnlazadaDoble();
     PersonaColaPrioridadLinkedList colaPersonas = new PersonaColaPrioridadLinkedList();
+    HashTable hashTable = new HashTable(10);
 
     public Avance3Form() {
 
@@ -49,14 +50,13 @@ public class Avance3Form extends javax.swing.JFrame {
         guardarEnFichero(estanteriaNovelas);
         llenaListaEnlazadaDoble();
 
-
         tblLibrosEstante.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent presionar){
+            public void mousePressed(MouseEvent presionar) {
                 JTable tabla = (JTable) presionar.getSource();
                 Point point = presionar.getPoint();
                 int row = tabla.rowAtPoint(point);
                 if (presionar.getClickCount() == 1) {
-                    txtFrase.setText(tblLibrosEstante.getValueAt(tblLibrosEstante.getSelectedRow(),0).toString());
+                    txtFrase.setText(tblLibrosEstante.getValueAt(tblLibrosEstante.getSelectedRow(), 0).toString());
                 }
             }
         });
@@ -284,6 +284,10 @@ public class Avance3Form extends javax.swing.JFrame {
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel20 = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
+        btnAlmacen = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
+        cbxBuscarLibrosHash = new javax.swing.JComboBox<>();
+        txtBuscarLibrosHash = new javax.swing.JTextField();
         jPanel22 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -1317,15 +1321,58 @@ public class Avance3Form extends javax.swing.JFrame {
 
         jPanel21.setBackground(new java.awt.Color(255, 204, 102));
 
+        btnAlmacen.setText("Almacen");
+        btnAlmacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlmacenActionPerformed(evt);
+            }
+        });
+
+        jLabel37.setText("Buscar por:");
+
+        cbxBuscarLibrosHash.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxBuscarLibrosHash.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN", "Genero", "Año" }));
+        cbxBuscarLibrosHash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxBuscarLibrosHashActionPerformed(evt);
+            }
+        });
+
+        txtBuscarLibrosHash.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBuscarLibrosHash.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarLibrosHashKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1093, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(btnAlmacen)
+                .addGap(205, 205, 205)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel37))
+                .addContainerGap(382, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAlmacen))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Pregunta 2", jPanel21);
@@ -1389,8 +1436,15 @@ public class Avance3Form extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 102, 0));
 
         tblLibrosEstante.setBackground(new java.awt.Color(204, 181, 66));
+        tblLibrosEstante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tblLibrosEstante.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         jScrollPane1.setViewportView(tblLibrosEstante);
+        if (tblLibrosEstante.getColumnModel().getColumnCount() > 0) {
+            tblLibrosEstante.getColumnModel().getColumn(0).setHeaderValue("Title 1");
+            tblLibrosEstante.getColumnModel().getColumn(1).setHeaderValue("Title 2");
+            tblLibrosEstante.getColumnModel().getColumn(2).setHeaderValue("Title 3");
+            tblLibrosEstante.getColumnModel().getColumn(3).setHeaderValue("Title 4");
+        }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1507,7 +1561,7 @@ public class Avance3Form extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxBuscarLibrosActionPerformed
 
     private void btnEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibroActionPerformed
-
+  
         int filaSeleccionada = tblLibrosEstante.getSelectedRow();
         long isbn = Long.parseLong(tblLibrosEstante.getValueAt(filaSeleccionada, 3).toString());
 
@@ -1786,66 +1840,64 @@ public class Avance3Form extends javax.swing.JFrame {
     }//GEN-LAST:event_txtConsonanteActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-       
+
         String frase = txtFrase.getText(); // Obtenemos el titulo clikeado
-        
+
         ColaCaracteres cola = new ColaCaracteres();
         ConsonantesVocales comprobar = new ConsonantesVocales();
-        
+
         PilaCaracteres consonantes = new PilaCaracteres();
         PilaCaracteres vocales = new PilaCaracteres();
-        PilaCaracteres valores= new PilaCaracteres();
-        
-////////////////////////////////////// Rellenado de Cola ///////////////////////
+        PilaCaracteres valores = new PilaCaracteres();
 
+////////////////////////////////////// Rellenado de Cola ///////////////////////
         for (int i = 0; i < frase.length(); i++) {
-            
+
             char c = frase.charAt(i);
 
             if (c != ' ') {
                 cola.encolar(c);
-            } 
+            }
         }
-        
-//////////////////////////////// Desencolar y apilado //////////////////////////
 
+//////////////////////////////// Desencolar y apilado //////////////////////////
         String fraseCola = "";
-        
+
         while (cola.getFrente() != null) {
-            
+
             char c = cola.desencolar(); // aprovecho el desencolar para derivar y comprobar los caracteres a sus respectivas PILAS 
             fraseCola += c;
-            
+
             if (comprobar.isConsonant(c) && !comprobar.isVowel(c)) {
-                
+
                 consonantes.apilar(c);
-                
-            }else if (comprobar.isVowel(c)) {
-                
+
+            } else if (comprobar.isVowel(c)) {
+
                 vocales.apilar(c);
-                
-            }else{
-                
+
+            } else {
+
                 valores.apilar(c);
-                
-            }            
-             System.out.print(c);
+
+            }
+            System.out.print(c);
         }
 //////////////////////////////// Desapilado ////////////////////////////////////
 
         String fraseConsonantes = "";
         String fraseVocales = "";
         String fraseValores = "";
-        
+
         for (int i = 0; i < fraseCola.length(); i++) {
-            
-            if (consonantes.getCima()!=null) {
-                fraseConsonantes +=consonantes.desapilar();
+
+            if (consonantes.getCima() != null) {
+                fraseConsonantes += consonantes.desapilar();
             }
-            if (vocales.getCima()!=null) {
+            if (vocales.getCima() != null) {
                 fraseVocales += vocales.desapilar();
             }
-            if (valores.getCima()!=null) {
+            if (valores.getCima() != null) {
                 fraseValores += valores.desapilar();
             }
         }
@@ -1856,8 +1908,6 @@ public class Avance3Form extends javax.swing.JFrame {
         txtVocales.setText(fraseVocales);
         txtValores.setText(fraseValores);
     }//GEN-LAST:event_btnIngresarActionPerformed
-
-
 
     ColaDeProcesos simulacion = new ColaDeProcesos();
 
@@ -1892,16 +1942,14 @@ public class Avance3Form extends javax.swing.JFrame {
                     model.addColumn("Nombre");
                     model.addColumn("Tiempo Restante");
 
-
                     //añadir a la tabla el nombre y el tiempo de cada proceso
                     for (int i = 0; i < array.length; i++) {
 
                         model.addRow(new Object[]{
-                            "Proceso "+array[i].getNombre(),
+                            "Proceso " + array[i].getNombre(),
                             array[i].getTiempoRestante()
                         });
                     }
-
 
                 }
             }
@@ -1923,7 +1971,7 @@ public class Avance3Form extends javax.swing.JFrame {
 
         for (int i = 0; i < array.length; i++) {
             model.addRow(new Object[]{
-                "Proceso "+ array[i].getNombre(),
+                "Proceso " + array[i].getNombre(),
                 array[i].getTiempoRestante()
             });
 
@@ -1949,7 +1997,7 @@ public class Avance3Form extends javax.swing.JFrame {
 
         for (int i = 0; i < array.length; i++) {
             model.addRow(new Object[]{
-                "Proceso "+ array[i].getNombre(),
+                "Proceso " + array[i].getNombre(),
                 array[i].getTiempoRestante()
             });
 
@@ -2017,6 +2065,47 @@ public class Avance3Form extends javax.swing.JFrame {
         guardarEnFichero(estanteriaNovelas);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void cbxBuscarLibrosHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxBuscarLibrosHashActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxBuscarLibrosHashActionPerformed
+
+    private void txtBuscarLibrosHashKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosHashKeyTyped
+        // TODO add your handling code here:
+        String atributo = cbxBuscarLibrosHash.getSelectedItem().toString();
+
+        // Obtén el texto ingresado en el JTextField
+        String valorABuscar = txtBuscarLibrosHash.getText();
+
+        // Realiza la búsqueda en la tabla hash
+        Novela resultado = hashTable.search(atributo, valorABuscar);
+
+        model.setRowCount(0);
+
+        if (resultado != null) {
+            Object[] fila = {resultado.getTitulo(), resultado.getAutor(), resultado.getGenero(), resultado.getAnioPublicacion(), resultado.getISBN()};
+            model.addRow(fila);
+        } else {
+            System.out.println("No se encontraron resultados para la búsqueda.");
+        }
+    }//GEN-LAST:event_txtBuscarLibrosHashKeyTyped
+
+    private void btnAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlmacenActionPerformed
+        // TODO add your handling code here:
+        
+        // Itera sobre las filas del modelo y almacena cada novela en la tabla hash
+        int rowCount = model.getRowCount();
+        for (int i = 0; i < rowCount; i++) {
+            String titulo = model.getValueAt(i, 0).toString();  
+            String autor = model.getValueAt(i, 1).toString(); 
+            int anio = Integer.parseInt(model.getValueAt(i, 2).toString()); 
+            long isbn = Long.parseLong(model.getValueAt(i, 3).toString());
+            String genero = model.getValueAt(i, 4).toString(); 
+
+            Novela nuevaNovela = new Novela(titulo, autor, anio, isbn, genero);
+            hashTable.insert(nuevaNovela);
+        }
+    }//GEN-LAST:event_btnAlmacenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2063,6 +2152,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarLibro;
     private javax.swing.JButton btnAgregarLibroPre1;
     private javax.swing.JButton btnAgregarPersona;
+    private javax.swing.JButton btnAlmacen;
     private javax.swing.JButton btnAscDes;
     private javax.swing.JButton btnAtenderPersona;
     private javax.swing.JButton btnBuscar2Filter;
@@ -2078,6 +2168,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JButton btn_generarNtareasAleatorias;
     private javax.swing.JButton btn_tiempoTareaManual;
     private javax.swing.JComboBox<String> cbxBuscarLibros;
+    private javax.swing.JComboBox<String> cbxBuscarLibrosHash;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -2110,6 +2201,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2154,6 +2246,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtAutorPre1;
     private javax.swing.JTextField txtBuscarLibros;
+    private javax.swing.JTextField txtBuscarLibrosHash;
     private javax.swing.JTextField txtCola;
     private javax.swing.JTextField txtConsonante;
     private javax.swing.JTextField txtEdadPre2;
