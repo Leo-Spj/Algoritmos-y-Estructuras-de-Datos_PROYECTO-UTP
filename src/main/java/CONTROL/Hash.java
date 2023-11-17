@@ -93,55 +93,42 @@ public class Hash {
     
 
     // Buscar una novela por ISBN
-    public Novela buscar(String atributo, String valor) {
-        switch (atributo.toLowerCase()) {
-            case "titulo":
-                return buscarPorTitulo(valor);
-            case "autor":
-                return buscarPorAutor(valor);
-            case "genero":
-                return buscarPorGenero(valor);
-            default:
-                System.out.println("Atributo no válido");
-                return null;
-        }
-    }
+    public Novela buscar(long isbn) {
+        int indice = hash(isbn);
 
-    private Novela buscarPorTitulo(String titulo) {
-        for (Novela novela : tabla) {
-            if (novela != null && novela.getTitulo().equalsIgnoreCase(titulo)) {
-                return novela;
+        while (tabla[indice] != null) {
+            if (tabla[indice].getISBN() == isbn) {
+                // Se encontró la novela
+                return tabla[indice];
             }
+            indice = colisionSondeoCuadratico(indice, 1); // O utiliza el método de colisión que prefieras
         }
+
+        // No se encontró la novela
         return null;
     }
+    public Novela[] buscarPorISBNParcial(long isbnParcial) {
+    // Crea una lista temporal para almacenar las novelas que coinciden
+        Novela[] resultados = new Novela[capacidad];
+        int count = 0;
 
-    private Novela buscarPorAutor(String autor) {
-        for (Novela novela : tabla) {
-            if (novela != null && novela.getAutor().equalsIgnoreCase(autor)) {
-                return novela;
-            }
-        }
-        return null;
-    }
-
-    private Novela buscarPorGenero(String genero) {
-        for (Novela novela : tabla) {
-            if (novela != null && novela.getGenero().equalsIgnoreCase(genero)) {
-                return novela;
-            }
-        }
-        return null;
-    }
-
-    // Mostrar todos los datos del arreglo
-    /*(public void mostrarDatos() {
         for (int i = 0; i < capacidad; i++) {
             if (tabla[i] != null) {
-                System.out.println(tabla[i]);
+                long isbnActual = tabla[i].getISBN();
+                // Verifica si el ISBN de la novela comienza con el prefijo proporcionado
+                if (String.valueOf(isbnActual).startsWith(String.valueOf(isbnParcial))) {
+                    resultados[count++] = tabla[i];
+                }
             }
         }
-    }*/
+
+        // Ajusta el tamaño del array si no está completamente lleno
+        return Arrays.copyOf(resultados, count);
+    }
+
+
+
+    
     public Novela[] mostrarDatos() {
         Novela[] novelas = new Novela[capacidad];
         int count = 0;

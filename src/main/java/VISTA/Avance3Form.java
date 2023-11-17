@@ -60,6 +60,12 @@ public class Avance3Form extends javax.swing.JFrame {
                 }
             }
         });
+        txtIsbnHash.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIsbnHashKeyReleased(evt);
+            }
+        });
+
     }
 
     public void guardarEnFichero(ControlEstanteria estanteria) {
@@ -286,8 +292,7 @@ public class Avance3Form extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         btnAlmacen = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
-        cbxBuscarLibrosHash = new javax.swing.JComboBox<>();
-        txtBuscarLibrosHash = new javax.swing.JTextField();
+        txtIsbnHash = new javax.swing.JTextField();
         btnEliminarAlmacen = new javax.swing.JButton();
         btnMostrarDatosAlmacen = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -338,6 +343,9 @@ public class Avance3Form extends javax.swing.JFrame {
 
         txtBuscarLibros.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtBuscarLibros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscarLibrosKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtBuscarLibrosKeyTyped(evt);
             }
@@ -1331,20 +1339,15 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
-        jLabel37.setText("Buscar por:");
+        jLabel37.setText("Ingrese ISBN:");
 
-        cbxBuscarLibrosHash.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxBuscarLibrosHash.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo", "Autor", "ISBN", "Genero", "Año" }));
-        cbxBuscarLibrosHash.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxBuscarLibrosHashActionPerformed(evt);
+        txtIsbnHash.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtIsbnHash.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIsbnHashKeyReleased(evt);
             }
-        });
-
-        txtBuscarLibrosHash.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtBuscarLibrosHash.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtBuscarLibrosHashKeyTyped(evt);
+                txtIsbnHashKeyTyped(evt);
             }
         });
 
@@ -1381,18 +1384,15 @@ public class Avance3Form extends javax.swing.JFrame {
                         .addComponent(btnAlmacen)
                         .addGap(18, 18, 18)
                         .addComponent(btnMostrarDatosAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
+                        .addGap(71, 71, 71)
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel37)))
+                            .addComponent(jLabel37)
+                            .addComponent(txtIsbnHash, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addComponent(btnEliminarAlmacen)
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)))
-                .addContainerGap(345, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1401,15 +1401,14 @@ public class Avance3Form extends javax.swing.JFrame {
                 .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIsbnHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlmacen)
                     .addComponent(btnMostrarDatosAlmacen))
                 .addGap(77, 77, 77)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Pregunta 2", jPanel21);
@@ -2102,29 +2101,10 @@ public class Avance3Form extends javax.swing.JFrame {
         guardarEnFichero(estanteriaNovelas);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void cbxBuscarLibrosHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxBuscarLibrosHashActionPerformed
+    private void txtIsbnHashKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIsbnHashKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbxBuscarLibrosHashActionPerformed
-
-    private void txtBuscarLibrosHashKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosHashKeyTyped
-        // TODO add your handling code here:
-        String atributo = cbxBuscarLibrosHash.getSelectedItem().toString();
-
-        // Obtén el texto ingresado en el JTextField
-        String valorABuscar = txtBuscarLibrosHash.getText();
-
-        // Realiza la búsqueda en la tabla hash
-        Novela resultado = hash.buscar(atributo, valorABuscar);
-
-        model.setRowCount(0);
-
-        if (resultado != null) {
-            Object[] fila = {resultado.getTitulo(), resultado.getAutor(), resultado.getGenero(), resultado.getAnioPublicacion(), resultado.getISBN()};
-            model.addRow(fila);
-        } else {
-            System.out.println("No se encontraron resultados para la búsqueda.");
-        }
-    }//GEN-LAST:event_txtBuscarLibrosHashKeyTyped
+        
+    }//GEN-LAST:event_txtIsbnHashKeyTyped
 
     private void btnAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlmacenActionPerformed
         // TODO add your handling code here:
@@ -2172,6 +2152,37 @@ public class Avance3Form extends javax.swing.JFrame {
         datosPruebaEnTabla();
         guardarEnFichero(estanteriaNovelas);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtBuscarLibrosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtBuscarLibrosKeyPressed
+
+    private void txtIsbnHashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIsbnHashKeyReleased
+        // TODO add your handling code here:
+        try {
+            // Obtén el ISBN del campo de texto
+            long isbn = Long.parseLong(txtIsbnHash.getText());
+
+            // Realiza la búsqueda en la tabla hash
+            Novela[] resultados = hash.buscarPorISBNParcial(isbn);
+
+            // Limpia la tabla antes de agregar nuevos resultados
+            model.setRowCount(0);
+
+            // Agrega los resultados a la tabla
+            for (Novela resultado : resultados) {
+                if (resultado != null) {
+                    Object[] fila = {resultado.getTitulo(), resultado.getAutor(), resultado.getGenero(), resultado.getAnioPublicacion(), resultado.getISBN()};
+                    model.addRow(fila);
+                }
+            }
+        } catch (NumberFormatException e) {
+            // Maneja la excepción si el texto no se puede convertir a un número largo
+            // Puedes mostrar un mensaje en la consola y/o en la interfaz gráfica
+            System.out.println("Error: Ingresa un número de ISBN válido.");
+        }
+    }//GEN-LAST:event_txtIsbnHashKeyReleased
 
     /**
      * @param args the command line arguments
@@ -2237,7 +2248,6 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JButton btn_generarNtareasAleatorias;
     private javax.swing.JButton btn_tiempoTareaManual;
     private javax.swing.JComboBox<String> cbxBuscarLibros;
-    private javax.swing.JComboBox<String> cbxBuscarLibrosHash;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -2316,7 +2326,6 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtAutorPre1;
     private javax.swing.JTextField txtBuscarLibros;
-    private javax.swing.JTextField txtBuscarLibrosHash;
     private javax.swing.JTextField txtCola;
     private javax.swing.JTextField txtConsonante;
     private javax.swing.JTextField txtEdadPre2;
@@ -2330,6 +2339,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtGenro2Filter;
     private javax.swing.JTextField txtISBN;
     private javax.swing.JTextField txtISBNPre1;
+    private javax.swing.JTextField txtIsbnHash;
     private javax.swing.JTextField txtNombrePre2;
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtTituloPre1;

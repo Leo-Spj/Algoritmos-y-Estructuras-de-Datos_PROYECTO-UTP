@@ -255,6 +255,7 @@
                             </Property>
                           </Properties>
                           <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarLibrosKeyPressed"/>
                             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarLibrosKeyTyped"/>
                           </Events>
                         </Component>
@@ -1835,14 +1836,10 @@
                                           <Component id="btnAlmacen" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="btnMostrarDatosAlmacen" min="-2" pref="213" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="cbxBuscarLibrosHash" min="-2" pref="113" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="txtBuscarLibrosHash" min="-2" pref="154" max="-2" attributes="0"/>
-                                              </Group>
                                               <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtIsbnHash" min="-2" pref="154" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -1851,7 +1848,7 @@
                                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="345" max="32767" attributes="0"/>
+                                  <EmptySpace pref="441" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1862,8 +1859,7 @@
                                   <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cbxBuscarLibrosHash" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
-                                      <Component id="txtBuscarLibrosHash" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="txtIsbnHash" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
                                       <Component id="btnAlmacen" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnMostrarDatosAlmacen" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1872,7 +1868,7 @@
                                       <Component id="btnEliminarAlmacen" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="183" max="32767" attributes="0"/>
+                                  <EmptySpace pref="184" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1888,39 +1884,18 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel37">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Buscar por:"/>
+                            <Property name="text" type="java.lang.String" value="Ingrese ISBN:"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="cbxBuscarLibrosHash">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="14" style="0"/>
-                            </Property>
-                            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="5">
-                                <StringItem index="0" value="Titulo"/>
-                                <StringItem index="1" value="Autor"/>
-                                <StringItem index="2" value="ISBN"/>
-                                <StringItem index="3" value="Genero"/>
-                                <StringItem index="4" value="A&#xf1;o"/>
-                              </StringArray>
-                            </Property>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxBuscarLibrosHashActionPerformed"/>
-                          </Events>
-                          <AuxValues>
-                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                          </AuxValues>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="txtBuscarLibrosHash">
+                        <Component class="javax.swing.JTextField" name="txtIsbnHash">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI" size="14" style="0"/>
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarLibrosHashKeyTyped"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIsbnHashKeyReleased"/>
+                            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIsbnHashKeyTyped"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btnEliminarAlmacen">
