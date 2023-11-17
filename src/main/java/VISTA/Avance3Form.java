@@ -297,6 +297,8 @@ public class Avance3Form extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         btnEliminarHash = new javax.swing.JButton();
         btnBuscarLibroHash = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        jLabel38 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -1333,6 +1335,7 @@ public class Avance3Form extends javax.swing.JFrame {
 
         jPanel21.setBackground(new java.awt.Color(255, 204, 153));
 
+        btnAlmacen.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         btnAlmacen.setText("Almacenar en Hash");
         btnAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1340,9 +1343,10 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
+        jLabel37.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         jLabel37.setText("Ingrese ISBN:");
 
-        txtIsbnHash.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtIsbnHash.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         txtIsbnHash.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtIsbnHashKeyReleased(evt);
@@ -1352,6 +1356,7 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
+        btnMostrarDatosAlmacen.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         btnMostrarDatosAlmacen.setText("Mostrar datos Almacen (Hash)");
         btnMostrarDatosAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1359,6 +1364,7 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         jButton3.setText("Cargar tabla libros");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1366,6 +1372,7 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
+        btnEliminarHash.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         btnEliminarHash.setText("Eliminar libro (Hash)");
         btnEliminarHash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1373,6 +1380,7 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarLibroHash.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         btnBuscarLibroHash.setText("Buscar libro (Hash)");
         btnBuscarLibroHash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1380,14 +1388,13 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
+        jLabel38.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel38.setText("Funcion Hash");
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminarHash)
-                .addGap(294, 294, 294))
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1395,31 +1402,48 @@ public class Avance3Form extends javax.swing.JFrame {
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addComponent(btnAlmacen)
                         .addGap(18, 18, 18)
-                        .addComponent(btnMostrarDatosAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel37)
-                            .addComponent(txtIsbnHash, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscarLibroHash))))
-                .addContainerGap(441, Short.MAX_VALUE))
+                        .addComponent(btnMostrarDatosAlmacen)))
+                .addGap(18, 32, Short.MAX_VALUE)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel37)
+                    .addComponent(txtIsbnHash, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarHash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscarLibroHash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(345, Short.MAX_VALUE))
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(428, 428, 428)
+                .addComponent(jLabel38)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel37)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIsbnHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAlmacen)
-                    .addComponent(btnMostrarDatosAlmacen))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEliminarHash)
-                    .addComponent(btnBuscarLibroHash))
-                .addGap(64, 64, 64)
-                .addComponent(jButton3)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel38)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtIsbnHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAlmacen)
+                            .addComponent(btnMostrarDatosAlmacen))
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGap(107, 107, 107)
+                                .addComponent(jButton3))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(btnBuscarLibroHash)
+                                .addGap(12, 12, 12)
+                                .addComponent(btnEliminarHash))))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Pregunta 2", jPanel21);
@@ -2325,6 +2349,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -2358,6 +2383,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
