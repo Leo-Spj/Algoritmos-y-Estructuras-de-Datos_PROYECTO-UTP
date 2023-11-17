@@ -43,4 +43,13 @@ public class Novela extends Libro{
                 return null;
         }
     }
+    public String toString() {
+        return "Novela{" +
+                "titulo='" + getTitulo() + '\'' +
+                ", autor='" + getAutor() + '\'' +
+                ", anio=" + getAnioPublicacion() +
+                ", isbn=" + getISBN() +
+                ", genero='" + getGenero() + '\'' +
+                '}';
+    }
 }

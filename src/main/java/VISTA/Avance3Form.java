@@ -4,7 +4,7 @@
  */
 package VISTA;
 
-import CONTROL.HashTable;
+import CONTROL.Hash;
 import CONTROL.ControlEstanteria;
 
 import CONTROL.ListaEnlazadaDoble;
@@ -41,7 +41,7 @@ public class Avance3Form extends javax.swing.JFrame {
     ControlEstanteria<Novela> estanteriaNovelas = new ControlEstanteria();
     ListaEnlazadaDoble<Novela> listalibro = new ListaEnlazadaDoble();
     PersonaColaPrioridadLinkedList colaPersonas = new PersonaColaPrioridadLinkedList();
-    HashTable hashTable = new HashTable(10);
+    Hash hash = new Hash(10);
 
     public Avance3Form() {
 
@@ -288,6 +288,9 @@ public class Avance3Form extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         cbxBuscarLibrosHash = new javax.swing.JComboBox<>();
         txtBuscarLibrosHash = new javax.swing.JTextField();
+        btnEliminarAlmacen = new javax.swing.JButton();
+        btnMostrarDatosAlmacen = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -1321,7 +1324,7 @@ public class Avance3Form extends javax.swing.JFrame {
 
         jPanel21.setBackground(new java.awt.Color(255, 204, 102));
 
-        btnAlmacen.setText("Almacen");
+        btnAlmacen.setText("Almacenar en Hash");
         btnAlmacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlmacenActionPerformed(evt);
@@ -1345,21 +1348,51 @@ public class Avance3Form extends javax.swing.JFrame {
             }
         });
 
+        btnEliminarAlmacen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEliminarAlmacen.setText("Eliminar datos tabla");
+        btnEliminarAlmacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarAlmacenActionPerformed(evt);
+            }
+        });
+
+        btnMostrarDatosAlmacen.setText("Mostrar datos Almacen (Hash)");
+        btnMostrarDatosAlmacen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarDatosAlmacenActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Cargar tabla libros");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addComponent(btnAlmacen)
-                .addGap(205, 205, 205)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAlmacen)
                         .addGap(18, 18, 18)
-                        .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel37))
-                .addContainerGap(382, Short.MAX_VALUE))
+                        .addComponent(btnMostrarDatosAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel37)))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(btnEliminarAlmacen)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1367,12 +1400,16 @@ public class Avance3Form extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAlmacen))
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarLibrosHash, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlmacen)
+                    .addComponent(btnMostrarDatosAlmacen))
+                .addGap(77, 77, 77)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminarAlmacen, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Pregunta 2", jPanel21);
@@ -2077,7 +2114,7 @@ public class Avance3Form extends javax.swing.JFrame {
         String valorABuscar = txtBuscarLibrosHash.getText();
 
         // Realiza la búsqueda en la tabla hash
-        Novela resultado = hashTable.search(atributo, valorABuscar);
+        Novela resultado = hash.buscar(atributo, valorABuscar);
 
         model.setRowCount(0);
 
@@ -2102,9 +2139,39 @@ public class Avance3Form extends javax.swing.JFrame {
             String genero = model.getValueAt(i, 4).toString(); 
 
             Novela nuevaNovela = new Novela(titulo, autor, anio, isbn, genero);
-            hashTable.insert(nuevaNovela);
+            hash.insert(nuevaNovela);
         }
+        hash.mostrarDatos();
     }//GEN-LAST:event_btnAlmacenActionPerformed
+
+    private void btnEliminarAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAlmacenActionPerformed
+        // TODO add your handling code here:
+        int filaSeleccionada = tblLibrosEstante.getSelectedRow();
+        long isbn = Long.parseLong(tblLibrosEstante.getValueAt(filaSeleccionada, 3).toString());
+
+        estanteriaNovelas.removerLibro(estanteriaNovelas.obtenerUnLibro(isbn));
+
+        model.removeRow(filaSeleccionada);
+    }//GEN-LAST:event_btnEliminarAlmacenActionPerformed
+
+    private void btnMostrarDatosAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDatosAlmacenActionPerformed
+        // TODO add your handling code here:
+        model.setRowCount(0); // Limpiar la tabla antes de mostrar los nuevos datos
+
+        Novela[] novelas = hash.mostrarDatos();
+
+        for (Novela novela : novelas) {
+            model.addRow(new Object[]{novela.getTitulo(), novela.getAutor(), novela.getAnioPublicacion(), novela.getISBN(), novela.getGenero()});
+        }
+    }//GEN-LAST:event_btnMostrarDatosAlmacenActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        model.setRowCount(0);
+        model.setColumnCount(0);
+        datosPruebaEnTabla();
+        guardarEnFichero(estanteriaNovelas);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2156,9 +2223,11 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JButton btnAscDes;
     private javax.swing.JButton btnAtenderPersona;
     private javax.swing.JButton btnBuscar2Filter;
+    private javax.swing.JButton btnEliminarAlmacen;
     private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnEliminarLibroPre1;
     private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnMostrarDatosAlmacen;
     private javax.swing.JButton btnOrdNum_AnioPublic;
     private javax.swing.JButton btnOrdNum_ISBN;
     private javax.swing.JButton btnOrdString_Autor;
@@ -2171,6 +2240,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbxBuscarLibrosHash;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
