@@ -19,10 +19,10 @@ public class Hash {
 
     // Función hash de multiplicacion, se usa constante que ayuda a distribuir uniformemente las claves
     private int hash(long isbn) {
-        final int A = 265443576;
-        int hashValue = Math.abs((int) ((A * isbn) % capacidad));
+        final long A = 2654435761L; // Cambié A a un número primo impar
+        long hashValue = Math.abs((A * isbn) % capacidad);
         System.out.println("Hash de ISBN " + isbn + ": " + hashValue);
-        return hashValue;
+        return (int) hashValue;
     }
 
 
@@ -36,12 +36,12 @@ public class Hash {
 
         long isbn = novela.getISBN();
         int indice = hash(isbn);
-        
+        int intento=1;
 
         while (tabla[indice] != null) {
             System.out.println("Colisión en índice: " + indice);
-            indice = colisionVisitaAleatoria(indice);
-            
+            indice = colisionSondeoCuadratico(indice, intento);
+            intento++;
         }
 
         System.out.println("Insertando en índice: " + indice);
@@ -78,6 +78,7 @@ public class Hash {
     }
 
     // Método de manejo de colisiones por sondeo aleatorio
+    /*
     public int colisionVisitaAleatoria(int indice) {
         int j = 0;
         int r = (int)(Math.random() * capacidad);
@@ -85,7 +86,7 @@ public class Hash {
             r = (int)(Math.random() * capacidad);
         }
         return (indice + r) % capacidad;
-    }
+    }*/
     public int colisionSondeoCuadratico(int indice, int intento) {
         int r = intento * intento;
         return (indice + r) % capacidad;
@@ -94,37 +95,37 @@ public class Hash {
 
     // Buscar una novela por ISBN
     public Novela buscar(long isbn) {
-        int indice = hash(isbn);
+        int indice = hash(isbn); 
 
-        while (tabla[indice] != null) {
-            if (tabla[indice].getISBN() == isbn) {
+        for (int i = 0; i < capacidad; i++) {
+            indice = colisionSondeoCuadratico(indice, i + 1);
+
+            if (tabla[indice] != null && tabla[indice].getISBN() == isbn) {
                 // Se encontró la novela
                 return tabla[indice];
             }
-            indice = colisionSondeoCuadratico(indice, 1); // O utiliza el método de colisión que prefieras
         }
 
         // No se encontró la novela
         return null;
     }
-    public Novela[] buscarPorISBNParcial(long isbnParcial) {
-    // Crea una lista temporal para almacenar las novelas que coinciden
-        Novela[] resultados = new Novela[capacidad];
-        int count = 0;
-
+    
+    public boolean eliminar(long isbn) {
         for (int i = 0; i < capacidad; i++) {
-            if (tabla[i] != null) {
-                long isbnActual = tabla[i].getISBN();
-                // Verifica si el ISBN de la novela comienza con el prefijo proporcionado
-                if (String.valueOf(isbnActual).startsWith(String.valueOf(isbnParcial))) {
-                    resultados[count++] = tabla[i];
-                }
+            int indice = colisionSondeoCuadratico(hash(isbn), i + 1);
+
+            if (tabla[indice] != null && Long.valueOf(tabla[indice].getISBN()).equals(isbn)) {
+                tabla[indice] = null;
+                tamaño--;
+                System.out.println("Novela eliminada con ISBN " + isbn);
+                return true;
             }
         }
 
-        // Ajusta el tamaño del array si no está completamente lleno
-        return Arrays.copyOf(resultados, count);
+        System.out.println("No se encontró ninguna novela con ISBN " + isbn);
+        return false;
     }
+
 
 
 

@@ -98,7 +98,7 @@
                 <Container class="javax.swing.JTabbedPane" name="jTabbedPane2">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="cc" red="ff" type="rgb"/>
+                      <Color blue="36" green="a7" red="cc" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -1779,7 +1779,7 @@
                 <Container class="javax.swing.JTabbedPane" name="jTabbedPane4">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="66" green="cc" red="ff" type="rgb"/>
+                      <Color blue="99" green="cc" red="ff" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -1788,7 +1788,7 @@
                     <Container class="javax.swing.JPanel" name="jPanel20">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="66" green="cc" red="ff" type="rgb"/>
+                          <Color blue="99" green="cc" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -1815,7 +1815,7 @@
                     <Container class="javax.swing.JPanel" name="jPanel21">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="66" green="cc" red="ff" type="rgb"/>
+                          <Color blue="99" green="cc" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -1829,9 +1829,15 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnEliminarHash" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="294" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="btnAlmacen" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1840,12 +1846,8 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                                               <Component id="txtIsbnHash" min="-2" pref="154" max="-2" attributes="0"/>
+                                              <Component id="btnBuscarLibroHash" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnEliminarAlmacen" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace pref="441" max="32767" attributes="0"/>
@@ -1863,12 +1865,14 @@
                                       <Component id="btnAlmacen" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnMostrarDatosAlmacen" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnEliminarAlmacen" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnEliminarHash" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnBuscarLibroHash" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="184" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="160" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -1898,17 +1902,6 @@
                             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtIsbnHashKeyTyped"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="btnEliminarAlmacen">
-                          <Properties>
-                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                              <Font name="Segoe UI" size="14" style="0"/>
-                            </Property>
-                            <Property name="text" type="java.lang.String" value="Eliminar datos tabla"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarAlmacenActionPerformed"/>
-                          </Events>
-                        </Component>
                         <Component class="javax.swing.JButton" name="btnMostrarDatosAlmacen">
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Mostrar datos Almacen (Hash)"/>
@@ -1925,12 +1918,28 @@
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
                           </Events>
                         </Component>
+                        <Component class="javax.swing.JButton" name="btnEliminarHash">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Eliminar libro (Hash)"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarHashActionPerformed"/>
+                          </Events>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnBuscarLibroHash">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Buscar libro (Hash)"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarLibroHashActionPerformed"/>
+                          </Events>
+                        </Component>
                       </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="jPanel22">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="66" green="cc" red="ff" type="rgb"/>
+                          <Color blue="99" green="cc" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -1957,7 +1966,7 @@
                     <Container class="javax.swing.JPanel" name="jPanel23">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="66" green="cc" red="ff" type="rgb"/>
+                          <Color blue="99" green="cc" red="ff" type="rgb"/>
                         </Property>
                       </Properties>
                       <Constraints>
