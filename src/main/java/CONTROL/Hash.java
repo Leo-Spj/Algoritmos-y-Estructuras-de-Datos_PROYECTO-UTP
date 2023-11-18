@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Hash {
-    private double FACTOR_DE_CARGA_MAXIMO = 0.6;
     private Novela[] tabla;
     private int capacidad;
     private int tamaño;
@@ -29,10 +28,10 @@ public class Hash {
 
     // Insertar una novela en la tabla
     public void insert(Novela novela) {
-        if ((double) tamaño / capacidad > FACTOR_DE_CARGA_MAXIMO) {
+        /*if ((double) tamaño / capacidad > FACTOR_DE_CARGA_MAXIMO) {
             System.out.println("Rehashing...");
             rehash();
-        }
+        }*/
 
         long isbn = novela.getISBN();
         int indice = hash(isbn);
@@ -40,7 +39,7 @@ public class Hash {
 
         while (tabla[indice] != null) {
             System.out.println("Colisión en índice: " + indice);
-            indice = colisionSondeoCuadratico(indice, intento);
+            indice = colisionSondeoCuadratico(indice,intento);
             intento++;
         }
 
@@ -48,7 +47,7 @@ public class Hash {
         tabla[indice] = novela;
         tamaño++;
     }
-
+    /*
     private void rehash() {
         int nuevaCapacidad = capacidad * 2; 
         Novela[] nuevaTabla = new Novela[nuevaCapacidad];
@@ -75,11 +74,10 @@ public class Hash {
         // Actualizar la tabla y la capacidad
         tabla = nuevaTabla;
         capacidad = nuevaCapacidad;
-    }
+    }*/
 
     // Método de manejo de colisiones por sondeo aleatorio
-    /*
-    public int colisionVisitaAleatoria(int indice) {
+    /*public int colisionVisitaAleatoria(int indice) {
         int j = 0;
         int r = (int)(Math.random() * capacidad);
         while (tabla[(indice + r) % capacidad] != null) {
@@ -87,6 +85,7 @@ public class Hash {
         }
         return (indice + r) % capacidad;
     }*/
+    // Método de manejo de colisiones por sondeo cuadrático
     public int colisionSondeoCuadratico(int indice, int intento) {
         int r = intento * intento;
         return (indice + r) % capacidad;
@@ -96,29 +95,61 @@ public class Hash {
     // Buscar una novela por ISBN
     public Novela buscar(long isbn) {
         int indice = hash(isbn); 
+        int intento = 1;
 
-        for (int i = 0; i < capacidad; i++) {
-            indice = colisionSondeoCuadratico(indice, i + 1);
+        while (tabla[indice] != null) {
+            System.out.println("Buscando en índice: " + indice);
 
-            if (tabla[indice] != null && tabla[indice].getISBN() == isbn) {
+            if (tabla[indice].getISBN() == isbn) {
                 // Se encontró la novela
+                System.out.println("Novela encontrada en índice: " + indice);
                 return tabla[indice];
+            }
+
+            // Manejar la colisión usando sondeo cuadrático
+            int nuevaPosicion = colisionSondeoCuadratico(indice, intento);
+            System.out.println("Colisión en índice " + indice + ", probando nueva posición: " + nuevaPosicion);
+
+            // Actualizar la posición para el siguiente intento
+            indice = nuevaPosicion;
+            intento++;
+
+            // Evitar un bucle infinito si no se encuentra la novela
+            if (intento > capacidad) {
+                break;
             }
         }
 
         // No se encontró la novela
+        System.out.println("No se encontró la novela con ISBN " + isbn);
         return null;
     }
-    
-    public boolean eliminar(long isbn) {
-        for (int i = 0; i < capacidad; i++) {
-            int indice = colisionSondeoCuadratico(hash(isbn), i + 1);
 
-            if (tabla[indice] != null && Long.valueOf(tabla[indice].getISBN()).equals(isbn)) {
+    //Eliminar novela por ISBN
+    public boolean eliminar(long isbn) {
+        int intento = 1;
+        int indice = hash(isbn);
+
+        while (tabla[indice] != null) {
+            if (tabla[indice].getISBN() == isbn) {
                 tabla[indice] = null;
                 tamaño--;
                 System.out.println("Novela eliminada con ISBN " + isbn);
                 return true;
+            }
+
+            // Manejar la colisión usando sondeo cuadrático
+            int nuevaPosicion = colisionSondeoCuadratico(indice, intento);
+            System.out.println("Colisión en índice " + indice + ", probando nueva posición: " + nuevaPosicion);
+
+            // Actualizar la posición para el siguiente intento
+            indice = nuevaPosicion;
+            intento++;
+
+            // Evitar un bucle infinito si no se encuentra la novela
+            if (intento > capacidad) {
+                System.out.println("No se encontró ninguna novela con ISBN " + isbn);
+                return false;
             }
         }
 
@@ -127,9 +158,7 @@ public class Hash {
     }
 
 
-
-
-    
+    //mostrar novela en tabla
     public Novela[] mostrarDatos() {
         Novela[] novelas = new Novela[capacidad];
         int count = 0;

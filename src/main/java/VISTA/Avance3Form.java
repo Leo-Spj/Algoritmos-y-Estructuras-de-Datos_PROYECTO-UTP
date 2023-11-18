@@ -60,11 +60,6 @@ public class Avance3Form extends javax.swing.JFrame {
                 }
             }
         });
-        txtIsbnHash.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtIsbnHashKeyReleased(evt);
-            }
-        });
 
     }
 
@@ -2222,7 +2217,7 @@ public class Avance3Form extends javax.swing.JFrame {
             Novela novelaEncontrada = hash.buscar(isbn);
 
             if (novelaEncontrada != null) {
-                // Se encontró la novela, puedes mostrar la información o realizar otras acciones
+                // Se encontró la novela
                 JOptionPane.showMessageDialog(null, "Novela encontrada:\n" + novelaEncontrada.toString(),
                         "Búsqueda Exitosa", JOptionPane.INFORMATION_MESSAGE);
                 model.setRowCount(0);
@@ -2239,13 +2234,16 @@ public class Avance3Form extends javax.swing.JFrame {
                 model.addRow(fila);
 
                 // Enfocar la fila recién agregada
-                tblLibrosEstante.scrollRectToVisible(tblLibrosEstante.getCellRect(model.getRowCount() - 1, 0, true));
-            } else {
+                if (model.getRowCount() > 0) {
+                    tblLibrosEstante.scrollRectToVisible(tblLibrosEstante.getCellRect(model.getRowCount() - 1, 0, true));
+                }
+                } else {
                 // No se encontró la novela
                 JOptionPane.showMessageDialog(null, "No se encontró ninguna novela con ISBN " + isbn,
                         "Búsqueda Fallida", JOptionPane.WARNING_MESSAGE);
             }
         } catch (NumberFormatException e) {
+            e.printStackTrace(); 
             JOptionPane.showMessageDialog(null, "Ingrese un ISBN válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarLibroHashActionPerformed
