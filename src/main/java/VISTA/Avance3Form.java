@@ -42,6 +42,7 @@ public class Avance3Form extends javax.swing.JFrame {
     ListaEnlazadaDoble<Novela> listalibro = new ListaEnlazadaDoble();
     PersonaColaPrioridadLinkedList colaPersonas = new PersonaColaPrioridadLinkedList();
     Hash hash = new Hash(100);
+    private int suma = 0;
 
     public Avance3Form() {
 
@@ -169,6 +170,41 @@ public class Avance3Form extends javax.swing.JFrame {
         tblLibrosEstante.setModel(model);
     }
 
+    public static int calcularLongitudMaxima(Libro[] libros) {
+        int maxTituloLength = 0;
+        for (Libro libro : libros) {
+            Novela novela = (Novela) libro;
+            int tituloLength = novela.getTitulo().length();
+            if (tituloLength > maxTituloLength) {
+                maxTituloLength = tituloLength;
+            }
+        }
+        return maxTituloLength;
+    }
+
+    public String obtainTwoAttributes(Libro[] novelas, int index) {
+        String cadena = "";
+
+        // Verifica si el índice es menor que la longitud del arreglo
+        if (index < novelas.length) {
+            int maxTituloLength = calcularLongitudMaxima(estanteriaNovelas.getListaLibros());;
+            Novela novela = (Novela) novelas[index];
+
+            // Añade el título con un espacio fijo después
+            cadena += String.format("%-" + (maxTituloLength + 5) + "s", novela.getTitulo());
+
+            // Añade el año de publicación
+            cadena += novela.getAnioPublicacion() + "\n";
+
+            // Llama recursivamente para el siguiente índice
+            cadena += obtainTwoAttributes(novelas, index + 1);
+
+            suma += novela.getAnioPublicacion();
+        }
+
+        return cadena;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -284,6 +320,7 @@ public class Avance3Form extends javax.swing.JFrame {
         jPanel19 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel20 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         btnAlmacen = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
@@ -1315,15 +1352,28 @@ public class Avance3Form extends javax.swing.JFrame {
 
         jPanel20.setBackground(new java.awt.Color(255, 204, 153));
 
+        jButton4.setText("Mostrar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1093, Short.MAX_VALUE)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addGap(248, 248, 248)
+                .addComponent(jButton4)
+                .addContainerGap(772, Short.MAX_VALUE))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jButton4)
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Pregunta 1", jPanel20);
@@ -1627,7 +1677,7 @@ public class Avance3Form extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxBuscarLibrosActionPerformed
 
     private void btnEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibroActionPerformed
-  
+
         int filaSeleccionada = tblLibrosEstante.getSelectedRow();
         long isbn = Long.parseLong(tblLibrosEstante.getValueAt(filaSeleccionada, 3).toString());
 
@@ -2133,27 +2183,27 @@ public class Avance3Form extends javax.swing.JFrame {
 
     private void txtIsbnHashKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIsbnHashKeyTyped
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtIsbnHashKeyTyped
 
     private void btnAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlmacenActionPerformed
         // TODO add your handling code here:
-        
+
         // Itera sobre las filas del modelo y almacena cada novela en la tabla hash
         int rowCount = model.getRowCount();
         for (int i = 0; i < rowCount; i++) {
-            String titulo = model.getValueAt(i, 0).toString();  
-            String autor = model.getValueAt(i, 1).toString(); 
-            int anio = Integer.parseInt(model.getValueAt(i, 2).toString()); 
+            String titulo = model.getValueAt(i, 0).toString();
+            String autor = model.getValueAt(i, 1).toString();
+            int anio = Integer.parseInt(model.getValueAt(i, 2).toString());
             long isbn = Long.parseLong(model.getValueAt(i, 3).toString());
-            String genero = model.getValueAt(i, 4).toString(); 
+            String genero = model.getValueAt(i, 4).toString();
 
             Novela nuevaNovela = new Novela(titulo, autor, anio, isbn, genero);
             hash.insert(nuevaNovela);
         }
         hash.mostrarDatos();
         JOptionPane.showMessageDialog(null, "Datos guardados en Hash", "Información", JOptionPane.INFORMATION_MESSAGE);
-                
+
     }//GEN-LAST:event_btnAlmacenActionPerformed
 
     private void btnMostrarDatosAlmacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarDatosAlmacenActionPerformed
@@ -2177,7 +2227,7 @@ public class Avance3Form extends javax.swing.JFrame {
 
     private void txtBuscarLibrosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarLibrosKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtBuscarLibrosKeyPressed
 
     private void txtIsbnHashKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIsbnHashKeyReleased
@@ -2191,7 +2241,7 @@ public class Avance3Form extends javax.swing.JFrame {
 
             if (hash.eliminar(isbn)) {
                 JOptionPane.showMessageDialog(null, "Novela eliminada con éxito",
-                    "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                        "Éxito", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró ninguna novela con ISBN " + isbn,
                         "Error", JOptionPane.ERROR_MESSAGE);
@@ -2206,7 +2256,7 @@ public class Avance3Form extends javax.swing.JFrame {
         for (Novela novela : novelas) {
             model.addRow(new Object[]{novela.getTitulo(), novela.getAutor(), novela.getAnioPublicacion(), novela.getISBN(), novela.getGenero()});
         }
-        
+
     }//GEN-LAST:event_btnEliminarHashActionPerformed
 
     private void btnBuscarLibroHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarLibroHashActionPerformed
@@ -2224,7 +2274,6 @@ public class Avance3Form extends javax.swing.JFrame {
 
                 // Agregar la novela encontrada al modelo de la tabla
                 Object[] fila = {
-                    
                     novelaEncontrada.getTitulo(),
                     novelaEncontrada.getAutor(),
                     novelaEncontrada.getAnioPublicacion(),
@@ -2237,16 +2286,21 @@ public class Avance3Form extends javax.swing.JFrame {
                 if (model.getRowCount() > 0) {
                     tblLibrosEstante.scrollRectToVisible(tblLibrosEstante.getCellRect(model.getRowCount() - 1, 0, true));
                 }
-                } else {
+            } else {
                 // No se encontró la novela
                 JOptionPane.showMessageDialog(null, "No se encontró ninguna novela con ISBN " + isbn,
                         "Búsqueda Fallida", JOptionPane.WARNING_MESSAGE);
             }
         } catch (NumberFormatException e) {
-            e.printStackTrace(); 
+            e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Ingrese un ISBN válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarLibroHashActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        System.out.println(obtainTwoAttributes(estanteriaNovelas.getListaLibros(), 0));
+        System.out.println(suma);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2316,6 +2370,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
