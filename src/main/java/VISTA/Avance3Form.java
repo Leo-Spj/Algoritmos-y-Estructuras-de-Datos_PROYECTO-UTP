@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTA;
+import APF3.P3.*;
 
 import CONTROL.Hash;
 import CONTROL.ControlEstanteria;
@@ -332,6 +333,7 @@ public class Avance3Form extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel38 = new javax.swing.JLabel();
         jPanel22 = new javax.swing.JPanel();
+        btn_Avance3_Pregunta3 = new javax.swing.JButton();
         jPanel23 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -1495,15 +1497,28 @@ public class Avance3Form extends javax.swing.JFrame {
 
         jPanel22.setBackground(new java.awt.Color(255, 204, 153));
 
+        btn_Avance3_Pregunta3.setText("Pregunta 3");
+        btn_Avance3_Pregunta3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Avance3_Pregunta3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
         jPanel22.setLayout(jPanel22Layout);
         jPanel22Layout.setHorizontalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1093, Short.MAX_VALUE)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(btn_Avance3_Pregunta3)
+                .addContainerGap(892, Short.MAX_VALUE))
         );
         jPanel22Layout.setVerticalGroup(
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 383, Short.MAX_VALUE)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(btn_Avance3_Pregunta3)
+                .addContainerGap(300, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Pregunta 3", jPanel22);
@@ -2302,6 +2317,12 @@ public class Avance3Form extends javax.swing.JFrame {
         System.out.println(suma);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void btn_Avance3_Pregunta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Avance3_Pregunta3ActionPerformed
+        // Este boton abre la ventana de la pregunta 3 que está en el paquete de APF3.P3 vistaHash
+        vistaHash vHash = new vistaHash();
+        vHash.setVisible(true);á
+    }//GEN-LAST:event_btn_Avance3_Pregunta3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2362,6 +2383,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JButton btnOrdNum_ISBN;
     private javax.swing.JButton btnOrdString_Autor;
     private javax.swing.JButton btnOrdString_Titulo;
+    private javax.swing.JButton btn_Avance3_Pregunta3;
     private javax.swing.JButton btn_continuarProcesos;
     private javax.swing.JButton btn_detenerProcesos;
     private javax.swing.JButton btn_generarNtareasAleatorias;
