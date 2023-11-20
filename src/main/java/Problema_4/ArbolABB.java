@@ -11,92 +11,8 @@ import java.util.Scanner;
  * @author Alexis
  */
 
-// Clase que representa el árbol binario de búsqueda (ABB)
-//class ArbolABB {
-//     private NodoABB raiz;
-//
-//    public ArbolABB() {
-//        this.raiz = null;
-//    }
-//
-//    public void insertar(Arreglo libro) {
-//        raiz = insertarRec(raiz, libro);
-//    }
-//
-//    private NodoABB insertarRec(NodoABB raiz, Arreglo libro) {
-//        if (raiz == null) {
-//            raiz = new NodoABB(libro);
-//            return raiz;
-//        }
-//
-//        if (libro.getIsbn().compareTo(raiz.libro.getIsbn()) < 0) {
-//            raiz.izquierda = insertarRec(raiz.izquierda, libro);
-//        } else if (libro.getIsbn().compareTo(raiz.libro.getIsbn()) > 0) {
-//            raiz.derecha = insertarRec(raiz.derecha, libro);
-//        }
-//
-//        return raiz;
-//    }
-//
-//    public boolean buscar(String isbn) {
-//        return buscarRec(raiz, isbn);
-//    }
-//
-//    private boolean buscarRec(NodoABB raiz, String isbn) {
-//        if (raiz == null || raiz.libro.getIsbn().equals(isbn)) {
-//            return raiz != null;
-//        }
-//
-//        if (isbn.compareTo(raiz.libro.getIsbn()) < 0) {
-//            return buscarRec(raiz.izquierda, isbn);
-//        } else {
-//            return buscarRec(raiz.derecha, isbn);
-//        }
-//    }
-//
-//    public void inordenSoloISBN() {
-//        inordenRecSoloISBN(raiz);
-//    }
-//
-//    private void inordenRecSoloISBN(NodoABB raiz) {
-//        if (raiz != null) {
-//            inordenRecSoloISBN(raiz.izquierda);
-//            System.out.println(raiz.libro.getIsbn());
-//            inordenRecSoloISBN(raiz.derecha);
-//        }
-//    }
-//
-//    public void preordenSoloISBN() {
-//        preordenRecSoloISBN(raiz);
-//    }
-//
-//    private void preordenRecSoloISBN(NodoABB raiz) {
-//        if (raiz != null) {
-//            System.out.println(raiz.libro.getIsbn());
-//            preordenRecSoloISBN(raiz.izquierda);
-//            preordenRecSoloISBN(raiz.derecha);
-//        }
-//    }
-//
-//    public void postordenSoloISBN() {
-//        postordenRecSoloISBN(raiz);
-//    }
-//
-//    private void postordenRecSoloISBN(NodoABB raiz) {
-//        if (raiz != null) {
-//            postordenRecSoloISBN(raiz.izquierda);
-//            postordenRecSoloISBN(raiz.derecha);
-//            System.out.println(raiz.libro.getIsbn());
-//        }
-//    }
-//
-//    public NodoABB getRaiz() {
-//        return raiz;
-//    }
-//}
-//////////////////////////////////////////////////////////////////////////////VRSION 2
 class ArbolABB {
-  private NodoABB raiz;
+    private NodoABB raiz;
 
     // Constructor
     public ArbolABB() {
@@ -178,46 +94,52 @@ class ArbolABB {
         return raiz.libro;
     }
 
-    // Método para realizar el recorrido inorden y mostrar solo los ISBN
-    public void inordenSoloISBN() {
-        inordenRecSoloISBN(raiz);
+    // Método para realizar el recorrido inorden y obtener solo los ISBN como cadena
+    public String obtenerRecorridoInordenSoloISBN() {
+        return inordenRecSoloISBN(raiz);
     }
 
     // Método auxiliar para el recorrido inorden
-    private void inordenRecSoloISBN(NodoABB raiz) {
+    private String inordenRecSoloISBN(NodoABB raiz) {
+        StringBuilder resultado = new StringBuilder();
         if (raiz != null) {
-            inordenRecSoloISBN(raiz.izquierda);
-            System.out.println(raiz.libro.getIsbn());
-            inordenRecSoloISBN(raiz.derecha);
+            resultado.append(inordenRecSoloISBN(raiz.izquierda));
+            resultado.append(raiz.libro.getIsbn()).append("\n");
+            resultado.append(inordenRecSoloISBN(raiz.derecha));
         }
+        return resultado.toString();
     }
 
-    // Método para realizar el recorrido preorden y mostrar solo los ISBN
-    public void preordenSoloISBN() {
-        preordenRecSoloISBN(raiz);
+    // Método para realizar el recorrido preorden y obtener solo los ISBN como cadena
+    public String obtenerRecorridoPreordenSoloISBN() {
+        return preordenRecSoloISBN(raiz);
     }
 
     // Método auxiliar para el recorrido preorden
-    private void preordenRecSoloISBN(NodoABB raiz) {
+    private String preordenRecSoloISBN(NodoABB raiz) {
+        StringBuilder resultado = new StringBuilder();
         if (raiz != null) {
-            System.out.println(raiz.libro.getIsbn());
-            preordenRecSoloISBN(raiz.izquierda);
-            preordenRecSoloISBN(raiz.derecha);
+            resultado.append(raiz.libro.getIsbn()).append("\n");
+            resultado.append(preordenRecSoloISBN(raiz.izquierda));
+            resultado.append(preordenRecSoloISBN(raiz.derecha));
         }
+        return resultado.toString();
     }
 
-    // Método para realizar el recorrido postorden y mostrar solo los ISBN
-    public void postordenSoloISBN() {
-        postordenRecSoloISBN(raiz);
+    // Método para realizar el recorrido postorden y obtener solo los ISBN como cadena
+    public String obtenerRecorridoPostordenSoloISBN() {
+        return postordenRecSoloISBN(raiz);
     }
 
     // Método auxiliar para el recorrido postorden
-    private void postordenRecSoloISBN(NodoABB raiz) {
+    private String postordenRecSoloISBN(NodoABB raiz) {
+        StringBuilder resultado = new StringBuilder();
         if (raiz != null) {
-            postordenRecSoloISBN(raiz.izquierda);
-            postordenRecSoloISBN(raiz.derecha);
-            System.out.println(raiz.libro.getIsbn());
+            resultado.append(postordenRecSoloISBN(raiz.izquierda));
+            resultado.append(postordenRecSoloISBN(raiz.derecha));
+            resultado.append(raiz.libro.getIsbn()).append("\n");
         }
+        return resultado.toString();
     }
 
     // Método para obtener la raíz del árbol
