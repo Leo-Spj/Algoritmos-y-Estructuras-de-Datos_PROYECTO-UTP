@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package VISTA;
+
 import APF3.P3.*;
 
 import CONTROL.Hash;
@@ -183,26 +184,21 @@ public class Avance3Form extends javax.swing.JFrame {
         return maxTituloLength;
     }
 
+
     public String obtainTwoAttributes(Libro[] novelas, int index) {
+
         String cadena = "";
 
-        // Verifica si el índice es menor que la longitud del arreglo
         if (index < novelas.length) {
-            int maxTituloLength = calcularLongitudMaxima(estanteriaNovelas.getListaLibros());;
+
             Novela novela = (Novela) novelas[index];
 
-            // Añade el título con un espacio fijo después
-            cadena += String.format("%-" + (maxTituloLength + 5) + "s", novela.getTitulo());
+            cadena += novela.getTitulo() + "          " + novela.getAnioPublicacion() + "\n";
 
-            // Añade el año de publicación
-            cadena += novela.getAnioPublicacion() + "\n";
-
-            // Llama recursivamente para el siguiente índice
             cadena += obtainTwoAttributes(novelas, index + 1);
 
             suma += novela.getAnioPublicacion();
         }
-
         return cadena;
     }
 
@@ -321,7 +317,14 @@ public class Avance3Form extends javax.swing.JFrame {
         jPanel19 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel20 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        btMostrar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAtributosRelevantes = new javax.swing.JTextArea();
+        jLabel39 = new javax.swing.JLabel();
+        txtSumaAtributo = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        jLabel41 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
         jPanel21 = new javax.swing.JPanel();
         btnAlmacen = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
@@ -1354,28 +1357,70 @@ public class Avance3Form extends javax.swing.JFrame {
 
         jPanel20.setBackground(new java.awt.Color(255, 204, 153));
 
-        jButton4.setText("Mostrar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btMostrar.setText("Ok");
+        btMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btMostrarActionPerformed(evt);
             }
         });
+
+        txtAtributosRelevantes.setColumns(20);
+        txtAtributosRelevantes.setRows(5);
+        jScrollPane2.setViewportView(txtAtributosRelevantes);
+
+        jLabel39.setFont(new java.awt.Font("Harlow Solid Italic", 1, 36)); // NOI18N
+        jLabel39.setText("Función Recursiva");
+
+        jLabel40.setText("Mostrar");
+
+        jLabel41.setText("Dos atributos relevantes:");
+
+        jLabel42.setText("Suma atributo numerico:");
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(jButton4)
-                .addContainerGap(772, Short.MAX_VALUE))
+                .addGap(227, 227, 227)
+                .addComponent(btMostrar)
+                .addGap(77, 77, 77)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel40)
+                            .addComponent(jLabel39))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2)
+                                .addGap(61, 61, 61)))
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel42)
+                            .addComponent(txtSumaAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(224, 224, 224))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jButton4)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addComponent(jLabel39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel41)
+                    .addComponent(jLabel42))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSumaAtributo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btMostrar))
+                .addGap(25, 25, 25))
         );
 
         jTabbedPane4.addTab("Pregunta 1", jPanel20);
@@ -2312,15 +2357,17 @@ public class Avance3Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarLibroHashActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        System.out.println(obtainTwoAttributes(estanteriaNovelas.getListaLibros(), 0));
-        System.out.println(suma);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void btMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarActionPerformed
+
+        txtAtributosRelevantes.setText(obtainTwoAttributes(estanteriaNovelas.getListaLibros(), 0));
+        txtSumaAtributo.setText("" + suma);
+        suma = 0;
+    }//GEN-LAST:event_btMostrarActionPerformed
 
     private void btn_Avance3_Pregunta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Avance3_Pregunta3ActionPerformed
         // Este boton abre la ventana de la pregunta 3 que está en el paquete de APF3.P3 vistaHash
         vistaHash vHash = new vistaHash();
-        vHash.setVisible(true);á
+        vHash.setVisible(true);
     }//GEN-LAST:event_btn_Avance3_Pregunta3ActionPerformed
 
     /**
@@ -2366,6 +2413,7 @@ public class Avance3Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btMostrar;
     private javax.swing.JButton btnAgregarLibro;
     private javax.swing.JButton btnAgregarLibroPre1;
     private javax.swing.JButton btnAgregarPersona;
@@ -2392,7 +2440,6 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2425,7 +2472,11 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -2455,6 +2506,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -2467,6 +2519,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtAnio;
     private javax.swing.JTextField txtAnio2Filter;
     private javax.swing.JTextField txtAnioPre1;
+    private javax.swing.JTextArea txtAtributosRelevantes;
     private javax.swing.JTextField txtAutor;
     private javax.swing.JTextField txtAutorPre1;
     private javax.swing.JTextField txtBuscarLibros;
@@ -2485,6 +2538,7 @@ public class Avance3Form extends javax.swing.JFrame {
     private javax.swing.JTextField txtISBNPre1;
     private javax.swing.JTextField txtIsbnHash;
     private javax.swing.JTextField txtNombrePre2;
+    private javax.swing.JTextField txtSumaAtributo;
     private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txtTituloPre1;
     private javax.swing.JTextField txtValores;
