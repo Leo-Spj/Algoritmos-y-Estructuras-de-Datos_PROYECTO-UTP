@@ -5,6 +5,7 @@
 package VISTA;
 
 import APF3.P3.*;
+import APF3.P1.*;
 
 import CONTROL.Hash;
 import CONTROL.ControlEstanteria;
@@ -44,8 +45,8 @@ public class Avance3Form extends javax.swing.JFrame {
     ListaEnlazadaDoble<Novela> listalibro = new ListaEnlazadaDoble();
     PersonaColaPrioridadLinkedList colaPersonas = new PersonaColaPrioridadLinkedList();
     Hash hash = new Hash(100);
-    private int suma = 0;
-
+    Recursividad listaLibrosRecursivo = new Recursividad();
+    
     public Avance3Form() {
 
         initComponents();
@@ -172,38 +173,7 @@ public class Avance3Form extends javax.swing.JFrame {
         tblLibrosEstante.setModel(model);
     }
 
-    public static int calcularLongitudMaxima(Libro[] libros) {
-        int maxTituloLength = 0;
-        for (Libro libro : libros) {
-            Novela novela = (Novela) libro;
-            int tituloLength = novela.getTitulo().length();
-            if (tituloLength > maxTituloLength) {
-                maxTituloLength = tituloLength;
-            }
-        }
-        return maxTituloLength;
-    }
 
-
-    public String obtainTwoAttributes(Libro[] novelas, int index) {
-
-        String cadena = "";
-
-        if (index >= novelas.length){
-            return cadena;
-            
-        }else {
-
-            Novela novela = (Novela) novelas[index];
-
-            cadena += novela.getTitulo() + "\t" + novela.getAnioPublicacion() + "\n";
-
-            cadena += obtainTwoAttributes(novelas, index + 1);
-
-            suma += novela.getAnioPublicacion();
-        }
-        return cadena;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -2362,9 +2332,9 @@ public class Avance3Form extends javax.swing.JFrame {
 
     private void btMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarActionPerformed
 
-        txtAtributosRelevantes.setText(obtainTwoAttributes(estanteriaNovelas.getListaLibros(), 0));
-        txtSumaAtributo.setText("" + suma);
-        suma = 0;
+        txtAtributosRelevantes.setText(listaLibrosRecursivo.obtainTwoAttributes(estanteriaNovelas.getListaLibros(), 0));
+        txtSumaAtributo.setText("" + listaLibrosRecursivo.getSuma());
+        listaLibrosRecursivo.setSuma(0); 
     }//GEN-LAST:event_btMostrarActionPerformed
 
     private void btn_Avance3_Pregunta3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Avance3_Pregunta3ActionPerformed
