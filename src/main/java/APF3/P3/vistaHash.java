@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -23,7 +24,9 @@ public class vistaHash extends javax.swing.JFrame {
     /**
      * Creates new form vistaHash
      */
-    HashMap<String, Persona> hashtable = new HashMap<>();
+
+    //crear un hashtable llamado hashtableX
+    Hashtable<String, Persona> hashtable = new Hashtable<>();
     DefaultTableModel model = new DefaultTableModel();
     public vistaHash() {
         initComponents();
