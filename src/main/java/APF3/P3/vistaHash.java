@@ -25,7 +25,6 @@ public class vistaHash extends javax.swing.JFrame {
      * Creates new form vistaHash
      */
 
-    //crear un hashtable llamado hashtableX
     Hashtable<String, Persona> hashtable = new Hashtable<>();
     DefaultTableModel model = new DefaultTableModel();
     public vistaHash() {
