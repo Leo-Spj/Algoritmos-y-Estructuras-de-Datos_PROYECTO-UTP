@@ -189,11 +189,14 @@ public class Avance3Form extends javax.swing.JFrame {
 
         String cadena = "";
 
-        if (index < novelas.length) {
+        if (index >= novelas.length){
+            return cadena;
+            
+        }else {
 
             Novela novela = (Novela) novelas[index];
 
-            cadena += novela.getTitulo() + "          " + novela.getAnioPublicacion() + "\n";
+            cadena += novela.getTitulo() + "\t" + novela.getAnioPublicacion() + "\n";
 
             cadena += obtainTwoAttributes(novelas, index + 1);
 
