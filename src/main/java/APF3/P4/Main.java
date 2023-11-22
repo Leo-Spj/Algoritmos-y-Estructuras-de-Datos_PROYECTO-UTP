@@ -2,20 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Problema_4;
-
-import java.util.Scanner;
+package APF3.P4;
 
 /**
  *
  * @author Alexis
  */
 
-  import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 
-public class Main {
+public class Main extends JFrame{
     // Método principal que inicia la ejecución del programa
      ArbolABB arbol = new ArbolABB();
 

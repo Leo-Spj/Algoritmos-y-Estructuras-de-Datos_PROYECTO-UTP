@@ -1,4 +1,4 @@
-package CONTROL;
+package APF3.P2;
 
 import MODELO.CLASIFICACION.Novela;
 import java.util.Arrays;

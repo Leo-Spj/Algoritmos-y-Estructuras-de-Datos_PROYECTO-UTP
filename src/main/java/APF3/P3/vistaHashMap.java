@@ -19,15 +19,15 @@ import java.util.List;
  *
  * @author Leo
  */
-public class vistaHash extends javax.swing.JFrame {
+public class vistaHashMap extends javax.swing.JFrame {
 
     /**
      * Creates new form vistaHash
      */
 
-    Hashtable<String, Persona> hashtable = new Hashtable<>();
+    HashMap<String, Persona> hashtable = new HashMap<>();
     DefaultTableModel model = new DefaultTableModel();
-    public vistaHash() {
+    public vistaHashMap() {
         initComponents();
         obteniendoJSON();
         cargarTabla();
@@ -243,7 +243,7 @@ public class vistaHash extends javax.swing.JFrame {
         });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("HashTable");
+        jLabel8.setText("HashMap");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -258,7 +258,7 @@ public class vistaHash extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_recargar_tbl)
-                        .addGap(69, 69, 69)
+                        .addGap(78, 78, 78)
                         .addComponent(jLabel8))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
@@ -347,21 +347,23 @@ public class vistaHash extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(vistaHash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaHashMap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(vistaHash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaHashMap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(vistaHash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaHashMap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(vistaHash.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(vistaHashMap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new vistaHash().setVisible(true);
+                new vistaHashMap().setVisible(true);
             }
         });
     }
